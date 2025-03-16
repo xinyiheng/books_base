@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Book Extractor - 本地服务状态</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #232f3e;
+            border-bottom: 2px solid #ff9900;
+            padding-bottom: 10px;
+        }
+        .status-card {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .status-item {
+            margin-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            width: 150px;
+        }
+        .value {
+            display: inline-block;
+        }
+        .success {
+            color: #28a745;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .warning {
+            color: #ffc107;
+        }
+        .refresh-btn {
+            background-color: #232f3e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .refresh-btn:hover {
+            background-color: #1a2530;
+        }
+    </style>
+</head>
+<body>
+    <h1>Amazon Book Extractor - 本地服务状态</h1>
+    
+    <div class="status-card">
+        <h2>服务信息</h2>
+        <div class="status-item">
+            <span class="label">状态:</span>
+            <span class="value success" id="service-status">运行中</span>
+        </div>
+        <div class="status-item">
+            <span class="label">启动时间:</span>
+            <span class="value" id="start-time">-</span>
+        </div>
+        <div class="status-item">
+            <span class="label">运行时间:</span>
+            <span class="value" id="uptime">-</span>
+        </div>
+    </div>
+    
+    <div class="status-card">
+        <h2>配置信息</h2>
+        <div class="status-item">
+            <span class="label">保存目录:</span>
+            <span class="value" id="save-directory">-</span>
+        </div>
+        <div class="status-item">
+            <span class="label">飞书Webhook:</span>
+            <span class="value" id="feishu-webhook">-</span>
+        </div>
+        <div class="status-item">
+            <span class="label">服务端口:</span>
+            <span class="value" id="service-port">-</span>
+        </div>
+    </div>
+    
+    <div class="status-card">
+        <h2>使用说明</h2>
+        <p>本服务为Amazon Book Extractor浏览器插件提供后端支持，实现自动化处理亚马逊图书信息。</p>
+        <p>请确保浏览器插件已正确配置本地服务地址。</p>
+        <p>如需更改配置，请使用浏览器插件的设置页面。</p>
+    </div>
+    
+    <button class="refresh-btn" onclick="refreshStatus()">刷新状态</button>
+    
+    <script>
+        // 服务启动时间
+        let startTime = new Date();
+        
+        // 页面加载时获取状态
+        window.onload = function() {
+            refreshStatus();
+            // 每30秒自动刷新一次
+            setInterval(refreshStatus, 30000);
+        };
+        
+        // 刷新状态
+        function refreshStatus() {
+            fetch('/status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('service-status').textContent = data.status;
+                    document.getElementById('save-directory').textContent = data.save_directory || '未设置';
+                    document.getElementById('feishu-webhook').textContent = data.feishu_webhook ? '已配置' : '未配置';
+                    document.getElementById('service-port').textContent = window.location.port;
+                    
+                    // 更新时间信息
+                    document.getElementById('start-time').textContent = startTime.toLocaleString();
+                    const now = new Date();
+                    const diff = Math.floor((now - startTime) / 1000);
+                    document.getElementById('uptime').textContent = formatUptime(diff);
+                })
+                .catch(error => {
+                    console.error('获取状态失败:', error);
+                    document.getElementById('service-status').textContent = '错误';
+                    document.getElementById('service-status').className = 'value error';
+                });
+        }
+        
+        // 格式化运行时间
+        function formatUptime(seconds) {
+            const days = Math.floor(seconds / 86400);
+            seconds %= 86400;
+            const hours = Math.floor(seconds / 3600);
+            seconds %= 3600;
+            const minutes = Math.floor(seconds / 60);
+            seconds %= 60;
+            
+            let result = '';
+            if (days > 0) result += days + '天 ';
+            if (hours > 0 || days > 0) result += hours + '小时 ';
+            if (minutes > 0 || hours > 0 || days > 0) result += minutes + '分钟 ';
+            result += seconds + '秒';
+            
+            return result;
+        }
+    </script>
+</body>
+</html>

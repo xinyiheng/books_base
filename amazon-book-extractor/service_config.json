@@ -1,0 +1,6 @@
+{
+  "save_directory": "/Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks",
+  "feishu_webhook": "https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh",
+  "port": 5001,
+  "auto_open_browser": true
+}

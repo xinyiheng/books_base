@@ -1,0 +1,4 @@
+2025-03-16 22:31:24,260 - AmazonBookProcessor - INFO - 从HTML文件提取图书信息: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1836200072_2025-03-16T14-28-18-477Z.html
+2025-03-16 22:31:25,088 - AmazonBookProcessor - INFO - 保存JSON文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_1836200072_2025-03-16T14-28-18-477Z.json
+2025-03-16 22:31:25,088 - AmazonBookProcessor - INFO - 保存Markdown文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/amazon_book_1836200072_2025-03-16T14-28-18-477Z.md
+2025-03-16 22:31:25,089 - AmazonBookProcessor - INFO - 处理完成!

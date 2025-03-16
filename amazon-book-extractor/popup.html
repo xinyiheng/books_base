@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Amazon Book Info Extractor</title>
+  <link rel="stylesheet" href="css/popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Amazon Book Info Extractor</h1>
+    
+    <div class="settings-info">
+      <div class="directory-info">
+        <span class="label">保存目录:</span>
+        <span id="directoryPath" class="value">未设置</span>
+      </div>
+      <button id="settingsBtn" class="settings-btn">设置</button>
+    </div>
+    
+    <div id="status">
+      <p>访问亚马逊图书页面并点击"提取信息"按钮获取图书详情。</p>
+    </div>
+    
+    <button id="extractBtn" class="primary-btn">提取信息</button>
+    
+    <div id="results" class="hidden">
+      <h2>提取的信息</h2>
+      <div class="book-info">
+        <div class="info-item">
+          <span class="label">书名:</span>
+          <span id="bookTitle" class="value"></span>
+        </div>
+        <div class="info-item">
+          <span class="label">作者:</span>
+          <span id="author" class="value"></span>
+        </div>
+        <div class="info-item">
+          <span class="label">出版社:</span>
+          <span id="publisher" class="value"></span>
+        </div>
+        <div class="info-item">
+          <span class="label">出版日期:</span>
+          <span id="pubDate" class="value"></span>
+        </div>
+        <div class="info-item">
+          <span class="label">ISBN:</span>
+          <span id="isbn" class="value"></span>
+        </div>
+        <div class="info-item">
+          <span class="label">封面图片:</span>
+          <div id="coverImage" class="value"></div>
+        </div>
+        <div class="info-item">
+          <span class="label">描述:</span>
+          <div id="description" class="value"></div>
+        </div>
+        <div class="info-item">
+          <span class="label">作者简介:</span>
+          <div id="authorBio" class="value"></div>
+        </div>
+        <div class="info-item">
+          <span class="label">关联图书:</span>
+          <div id="relatedBooks" class="value"></div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="copyBtn">Copy to Clipboard</button>
+        <button id="exportBtn">Export as JSON</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/popup.js"></script>
+</body>
+</html>

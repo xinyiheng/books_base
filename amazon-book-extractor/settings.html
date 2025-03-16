@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Amazon Book Info Extractor - 设置</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: #232f3e;
+      border-bottom: 2px solid #ff9900;
+      padding-bottom: 10px;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .section h2 {
+      margin-top: 0;
+      color: #232f3e;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    input[type="text"], input[type="url"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    button {
+      background-color: #232f3e;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    button:hover {
+      background-color: #1a2530;
+    }
+    
+    button.secondary {
+      background-color: #f0c14b;
+      border: 1px solid #a88734;
+      color: #111;
+    }
+    
+    button.secondary:hover {
+      background-color: #ddb347;
+    }
+    
+    .status {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .warning {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    
+    .info {
+      background-color: #d1ecf1;
+      color: #0c5460;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    .service-status {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    
+    .status-connected {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .status-disconnected {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .status-unknown {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    
+    .status-disabled {
+      background-color: #e9ecef;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Amazon Book Info Extractor - 设置</h1>
+  
+  <div class="section">
+    <h2>保存目录</h2>
+    <div class="form-group">
+      <label for="saveDirectory">选择保存目录</label>
+      <input type="text" id="saveDirectory" placeholder="例如: /Users/username/Documents/amazon-books">
+      <p>这是保存下载的HTML文件和生成的JSON、Markdown文件的目录。</p>
+    </div>
+    <button id="createDirectoriesBtn">创建必要的子目录</button>
+    <div id="directoryStatus" class="status" style="display: none;"></div>
+  </div>
+  
+  <div class="section">
+    <h2>自动提取</h2>
+    <div class="form-group">
+      <label for="autoExtractEnabled">打开插件时自动提取</label>
+      <div style="display: flex; align-items: center;">
+        <label class="toggle-switch">
+          <input type="checkbox" id="autoExtractEnabled" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p>启用后，打开插件时会自动提取当前页面的图书信息，无需点击"提取图书信息"按钮。</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>飞书集成</h2>
+    <div class="form-group">
+      <label for="feishuWebhook">飞书 Webhook URL</label>
+      <input type="url" id="feishuWebhook" placeholder="https://open.feishu.cn/open-apis/bot/v2/hook/...">
+      <p>如果您想将提取的图书信息发送到飞书，请提供一个飞书机器人的Webhook URL。</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>本地服务</h2>
+    <div class="form-group">
+      <label for="localServiceEnabled">启用本地服务</label>
+      <div style="display: flex; align-items: center;">
+        <label class="toggle-switch">
+          <input type="checkbox" id="localServiceEnabled">
+          <span class="slider"></span>
+        </label>
+        <div id="serviceStatus" class="service-status status-unknown">未知</div>
+      </div>
+      <p>启用后，浏览器插件将通过本地服务自动处理HTML文件，无需手动运行Python脚本。</p>
+    </div>
+    
+    <div class="form-group">
+      <label for="localServiceUrl">本地服务URL</label>
+      <input type="url" id="localServiceUrl" placeholder="http://localhost:5001">
+      <p>本地服务的URL地址，默认为 http://localhost:5001</p>
+    </div>
+    
+    <button id="testConnectionBtn">测试连接</button>
+    <div id="connectionStatus" class="status" style="display: none;"></div>
+  </div>
+  
+  <div class="section">
+    <h2>云服务</h2>
+    <div class="form-group">
+      <label for="cloudServiceEnabled">启用云服务</label>
+      <div style="display: flex; align-items: center;">
+        <label class="toggle-switch">
+          <input type="checkbox" id="cloudServiceEnabled">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p>启用后，浏览器插件将通过云服务自动处理HTML文件，无需在本地运行服务。</p>
+    </div>
+    
+    <div class="form-group">
+      <label for="cloudServiceUrl">云服务URL</label>
+      <input type="url" id="cloudServiceUrl" placeholder="https://amazon-book-extractor.zeabur.app">
+      <p>云服务的URL地址，例如 https://amazon-book-extractor.zeabur.app</p>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>数据同步</h2>
+    <p>在本地和云端之间同步数据，确保您的数据在两处都有备份。</p>
+    
+    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+      <button id="syncToCloudBtn">从本地同步到云端</button>
+      <button id="syncFromCloudBtn">从云端同步到本地</button>
+    </div>
+    
+    <div id="syncStatus" class="status" style="display: none;"></div>
+    
+    <p class="note">注意：同步功能需要您同时配置本地目录和云服务。同步过程中会比较文件修改时间，只同步较新的文件。</p>
+  </div>
+  
+  <div style="margin-top: 20px;">
+    <button id="saveBtn">保存设置</button>
+    <button id="cancelBtn" class="secondary" style="margin-left: 10px;">取消</button>
+  </div>
+  
+  <div id="saveStatus" class="status" style="display: none; margin-top: 20px;"></div>
+  
+  <script src="js/settings.js"></script>
+</body>
+</html>

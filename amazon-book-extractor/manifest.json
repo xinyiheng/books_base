@@ -1,37 +1,42 @@
 {
   "manifest_version": 3,
   "name": "Amazon Book Info Extractor",
-  "version": "1.0",
-  "description": "Extract book information from Amazon product pages",
-  "permissions": ["activeTab", "storage", "scripting", "downloads"],
-  "host_permissions": ["*://*.amazon.com/*", "*://*.amazon.cn/*"],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "images/icons8-books-3d-fluency-16.png",
-      "32": "images/icons8-books-3d-fluency-32.png",
-      "96": "images/icons8-books-3d-fluency-96.png"
-    }
-  },
+  "version": "1.0.0",
+  "description": "从亚马逊图书页面提取图书信息并生成Markdown文件",
   "icons": {
     "16": "images/icons8-books-3d-fluency-16.png",
     "32": "images/icons8-books-3d-fluency-32.png",
     "96": "images/icons8-books-3d-fluency-96.png"
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "*://*.amazon.com/*/dp/*", 
-        "*://*.amazon.com/dp/*", 
-        "*://*.amazon.com/*/gp/product/*",
-        "*://*.amazon.cn/*/dp/*", 
-        "*://*.amazon.cn/dp/*", 
-        "*://*.amazon.cn/*/gp/product/*"
-      ],
-      "js": ["js/content.js"]
-    }
-  ],
+  "action": {
+    "default_icon": {
+      "16": "images/icons8-books-3d-fluency-16.png",
+      "32": "images/icons8-books-3d-fluency-32.png",
+      "96": "images/icons8-books-3d-fluency-96.png"
+    },
+    "default_title": "Amazon Book Info Extractor"
+  },
+  "options_ui": {
+    "page": "settings.html",
+    "open_in_tab": true
+  },
   "background": {
     "service_worker": "js/background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "downloads",
+    "contextMenus",
+    "notifications"
+  ],
+  "host_permissions": [
+    "*://*.amazon.com/*",
+    "*://*.amazon.cn/*",
+    "http://localhost:5001/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   }
 }

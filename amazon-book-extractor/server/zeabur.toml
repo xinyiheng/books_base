@@ -1,2 +1,8 @@
 [build]
 builder = "dockerfile"
+
+[deploy]
+startCommand = "./start.sh"
+
+[volumes]
+"/app/data" = "amazon-book-data"

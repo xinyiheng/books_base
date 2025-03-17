@@ -3,3 +3,6 @@ builder = "dockerfile"
 
 [deploy]
 startCommand = "python local_service.py"
+
+[volumes]
+"/app/data" = "amazon-book-data"

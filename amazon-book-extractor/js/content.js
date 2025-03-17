@@ -3,160 +3,230 @@
  * 在亚马逊图书页面上运行，提取图书信息和HTML内容
  */
 
-// 监听来自popup的消息
+// 监听来自popup.js的消息
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request.action === 'extractInfo') {
-    // 提取图书信息和HTML内容
-    const bookInfo = extractBookInfo();
-    const html = document.documentElement.outerHTML;
-    
-    sendResponse({
-      bookInfo: bookInfo,
-      html: html
-    });
+  console.log('内容脚本收到消息:', request);
+  
+  // 响应ping消息，用于检测脚本是否已注入
+  if (request.action === 'ping') {
+    console.log('收到ping消息，回复pong');
+    sendResponse({pong: true});
+    return true; // 保持消息通道开放
   }
-  return true;
+  
+  if (request.action === 'extractInfo') {
+    console.log('开始提取图书信息...');
+    
+    try {
+      // 提取页面HTML
+      const html = document.documentElement.outerHTML;
+      
+      // 提取图书信息
+      const bookInfo = extractBookInfo();
+      
+      console.log('提取的图书信息:', bookInfo);
+      
+      // 发送提取的信息回background.js
+      sendResponse({
+        success: true,
+        bookInfo: bookInfo,
+        html: html
+      });
+    } catch (error) {
+      console.error('提取信息时发生错误:', error);
+      sendResponse({
+        success: false,
+        error: error.message
+      });
+    }
+    
+    return true; // 保持消息通道开放
+  }
 });
 
-// 提取图书信息
+// 提取图书信息的函数
 function extractBookInfo() {
+  // 初始化图书信息对象
+  const bookInfo = {
+    title: '',
+    authors: [],
+    publisher: '',
+    publicationDate: '',
+    isbn: '',
+    asin: '',
+    language: '',
+    pages: '',
+    description: '',
+    price: '',
+    categories: [],
+    rating: '',
+    ratingCount: '',
+    imageUrl: '',
+    url: window.location.href
+  };
+  
   try {
-    // 初始化图书信息对象
-    const bookInfo = {
-      title: '',
-      author: '',
-      publisher: '',
-      publicationDate: '',
-      isbn: '',
-      coverImage: '',
-      description: '',
-      authorBio: '',
-      relatedBooks: []
-    };
-    
     // 提取标题
-    const titleElement = document.getElementById('productTitle');
+    const titleElement = document.querySelector('#productTitle');
     if (titleElement) {
       bookInfo.title = titleElement.textContent.trim();
     }
     
     // 提取作者
-    const authorElements = document.querySelectorAll('.author .contributorNameID, .author a:not(.contributorNameID)');
+    const authorElements = document.querySelectorAll('.author a, .contributorNameID');
     if (authorElements.length > 0) {
-      const authors = [];
       authorElements.forEach(element => {
-        const authorName = element.textContent.trim();
-        if (authorName && !authors.includes(authorName)) {
-          authors.push(authorName);
+        const author = element.textContent.trim();
+        if (author && !bookInfo.authors.includes(author)) {
+          bookInfo.authors.push(author);
         }
       });
-      bookInfo.author = authors.join(', ');
     }
     
-    // 提取出版商和出版日期
-    const detailsElements = document.querySelectorAll('#detailBullets_feature_div li, #detailBulletsWrapper_feature_div li, .detail-bullet-list li');
-    detailsElements.forEach(element => {
-      const text = element.textContent.trim();
+    // 提取出版信息
+    const detailBullets = document.querySelectorAll('#detailBullets_feature_div li, .detail-bullet-list li');
+    detailBullets.forEach(bullet => {
+      const text = bullet.textContent.trim();
       
+      // 出版社和出版日期
       if (text.includes('出版社') || text.includes('Publisher')) {
-        const publisherMatch = text.match(/出版社\s*:\s*([^;]+)/) || text.match(/Publisher\s*:\s*([^;]+)/);
-        if (publisherMatch && publisherMatch[1]) {
-          bookInfo.publisher = publisherMatch[1].trim();
+        const match = text.match(/:(.*?)(?:\(|$)/);
+        if (match) {
+          bookInfo.publisher = match[1].trim();
+          
+          // 提取出版日期
+          const dateMatch = text.match(/\((.*?)\)/);
+          if (dateMatch) {
+            bookInfo.publicationDate = dateMatch[1].trim();
+          }
         }
       }
       
-      if (text.includes('出版日期') || text.includes('Publication date')) {
-        const dateMatch = text.match(/出版日期\s*:\s*([^;]+)/) || text.match(/Publication date\s*:\s*([^;]+)/);
-        if (dateMatch && dateMatch[1]) {
-          bookInfo.publicationDate = dateMatch[1].trim();
+      // 语言
+      if (text.includes('语言') || text.includes('Language')) {
+        const match = text.match(/:(.*?)$/);
+        if (match) {
+          bookInfo.language = match[1].trim();
         }
       }
       
+      // 页数
+      if (text.includes('页数') || text.includes('Print length') || text.includes('pages')) {
+        const match = text.match(/:\s*(\d+)/);
+        if (match) {
+          bookInfo.pages = match[1].trim();
+        }
+      }
+      
+      // ISBN
       if (text.includes('ISBN-10') || text.includes('ISBN-13')) {
-        const isbnMatch = text.match(/ISBN-(?:10|13)\s*:\s*([0-9X-]+)/);
-        if (isbnMatch && isbnMatch[1]) {
-          bookInfo.isbn = isbnMatch[1].trim();
+        const match = text.match(/:\s*(\d[\d\-]+)/);
+        if (match) {
+          bookInfo.isbn = match[1].trim();
+        }
+      }
+      
+      // ASIN
+      if (text.includes('ASIN')) {
+        const match = text.match(/:\s*([A-Z0-9]+)/);
+        if (match) {
+          bookInfo.asin = match[1].trim();
         }
       }
     });
     
-    // 尝试从产品详情表格中提取信息
-    const productDetailsTable = document.getElementById('productDetailsTable');
-    if (productDetailsTable) {
-      const rows = productDetailsTable.querySelectorAll('tr');
-      rows.forEach(row => {
-        const text = row.textContent.trim();
-        
-        if (text.includes('出版商') || text.includes('Publisher')) {
-          const publisherMatch = text.match(/出版商\s*:\s*([^;]+)/) || text.match(/Publisher\s*:\s*([^;]+)/);
-          if (publisherMatch && publisherMatch[1] && !bookInfo.publisher) {
-            bookInfo.publisher = publisherMatch[1].trim();
-          }
-        }
-        
-        if (text.includes('出版日期') || text.includes('Publication date')) {
-          const dateMatch = text.match(/出版日期\s*:\s*([^;]+)/) || text.match(/Publication date\s*:\s*([^;]+)/);
-          if (dateMatch && dateMatch[1] && !bookInfo.publicationDate) {
-            bookInfo.publicationDate = dateMatch[1].trim();
-          }
-        }
-        
-        if ((text.includes('ISBN-10') || text.includes('ISBN-13')) && !bookInfo.isbn) {
-          const isbnMatch = text.match(/ISBN-(?:10|13)\s*:\s*([0-9X-]+)/);
-          if (isbnMatch && isbnMatch[1]) {
-            bookInfo.isbn = isbnMatch[1].trim();
-          }
-        }
-      });
-    }
-    
-    // 提取封面图片
-    const imageElement = document.getElementById('imgBlkFront') || document.getElementById('ebooksImgBlkFront');
-    if (imageElement) {
-      bookInfo.coverImage = imageElement.getAttribute('src');
-    } else {
-      const altImageElement = document.getElementById('main-image') || document.querySelector('#imageBlock img');
-      if (altImageElement) {
-        bookInfo.coverImage = altImageElement.getAttribute('src');
+    // 尝试从URL中提取ASIN（如果上面没有提取到）
+    if (!bookInfo.asin) {
+      const asinMatch = window.location.href.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/);
+      if (asinMatch) {
+        bookInfo.asin = asinMatch[1];
       }
     }
     
     // 提取描述
-    const descriptionElement = document.getElementById('bookDescription_feature_div') || document.querySelector('#productDescription .content');
+    const descriptionElement = document.querySelector('#bookDescription_feature_div .a-expander-content');
     if (descriptionElement) {
-      bookInfo.description = descriptionElement.textContent.trim();
+      bookInfo.description = descriptionElement.innerHTML.trim();
     }
     
-    // 提取作者简介
-    const authorBioElement = document.getElementById('authorBio_feature_div');
-    if (authorBioElement) {
-      bookInfo.authorBio = authorBioElement.textContent.trim()
-        .replace('作者简介', '')
-        .replace('About the Author', '')
-        .trim();
+    // 提取价格
+    const priceElement = document.querySelector('.a-price .a-offscreen');
+    if (priceElement) {
+      bookInfo.price = priceElement.textContent.trim();
     }
     
-    // 提取相关图书
-    const relatedBooksElements = document.querySelectorAll('#sims-consolidated-1_feature_div .a-carousel-card, #sims-consolidated-2_feature_div .a-carousel-card');
-    relatedBooksElements.forEach(element => {
-      const titleElement = element.querySelector('.a-size-base');
-      if (titleElement) {
-        const title = titleElement.textContent.trim();
-        const linkElement = element.querySelector('a');
-        const link = linkElement ? linkElement.getAttribute('href') : '';
-        
-        if (title) {
-          bookInfo.relatedBooks.push({
-            title: title,
-            link: link
-          });
+    // 提取分类
+    const breadcrumbs = document.querySelectorAll('#wayfinding-breadcrumbs_feature_div li a');
+    if (breadcrumbs.length > 0) {
+      breadcrumbs.forEach(element => {
+        const category = element.textContent.trim();
+        if (category && !bookInfo.categories.includes(category)) {
+          bookInfo.categories.push(category);
+        }
+      });
+    }
+    
+    // 提取评分
+    const ratingElement = document.querySelector('#acrPopover');
+    if (ratingElement) {
+      const ratingText = ratingElement.getAttribute('title');
+      const ratingMatch = ratingText ? ratingText.match(/([\d\.]+)/) : null;
+      if (ratingMatch) {
+        bookInfo.rating = ratingMatch[1];
+      }
+    }
+    
+    // 提取评分数量
+    const ratingCountElement = document.querySelector('#acrCustomerReviewText');
+    if (ratingCountElement) {
+      const countText = ratingCountElement.textContent.trim();
+      const countMatch = countText.match(/(\d[\d,]*)/);
+      if (countMatch) {
+        bookInfo.ratingCount = countMatch[1];
+      }
+    }
+    
+    // 提取图书封面图片URL
+    const imageElement = document.querySelector('#imgBlkFront, #ebooksImgBlkFront, #main-image, #landingImage');
+    if (imageElement) {
+      bookInfo.imageUrl = imageElement.getAttribute('src') || imageElement.getAttribute('data-a-dynamic-image');
+      
+      // 如果是data-a-dynamic-image属性，需要解析JSON
+      if (bookInfo.imageUrl && bookInfo.imageUrl.startsWith('{')) {
+        try {
+          const imageJson = JSON.parse(bookInfo.imageUrl);
+          const imageUrls = Object.keys(imageJson);
+          if (imageUrls.length > 0) {
+            // 选择最大的图片
+            let maxWidth = 0;
+            let bestUrl = '';
+            
+            for (const url of imageUrls) {
+              const dimensions = imageJson[url];
+              if (dimensions[0] > maxWidth) {
+                maxWidth = dimensions[0];
+                bestUrl = url;
+              }
+            }
+            
+            bookInfo.imageUrl = bestUrl || imageUrls[0];
+          }
+        } catch (e) {
+          console.error('解析图片URL时出错:', e);
         }
       }
-    });
-    
-    return bookInfo;
+    }
   } catch (error) {
     console.error('提取图书信息时发生错误:', error);
-    return null;
   }
+  
+  return bookInfo;
 }
+
+// 页面加载完成后通知background.js
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('内容脚本已加载，页面准备就绪');
+});
+
+// 初始化消息
+console.log('Amazon Book Info Extractor 内容脚本已注入');

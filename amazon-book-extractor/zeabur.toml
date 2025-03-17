@@ -2,7 +2,7 @@
 builder = "dockerfile"
 
 [deploy]
-startCommand = "./start.sh"
+startCommand = "python local_service.py"
 
 [volumes]
 "/app/data" = "amazon-book-data"

@@ -2,25 +2,19 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
+# 复制服务端代码
+COPY server/ .
 COPY requirements.txt .
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 安装chardet库（如果需要）
 RUN pip install chardet
 
-# 安装gunicorn
-RUN pip install gunicorn
-
 # 创建必要的目录
 RUN mkdir -p /app/data/html
 RUN mkdir -p /app/data/json
 RUN mkdir -p /app/data/markdown
-
-# 复制服务端代码
-COPY . .
-
-# 设置启动脚本权限
-RUN chmod +x start.sh
 
 # 设置环境变量
 ENV PORT=8080
@@ -34,4 +28,4 @@ VOLUME ["/app/data"]
 EXPOSE 8080
 
 # 启动服务
-CMD ["./start.sh"]
+CMD ["python", "local_service.py"]

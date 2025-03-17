@@ -191,107 +191,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 bookInfo: response.bookInfo
               });
               
-              // 检查本地服务是否可用
-              if (result.localService && result.localService.enabled && result.localService.status === 'connected') {
-                // 直接处理HTML内容，不下载
-                showStatus('本地服务已连接，正在处理HTML...', 'info');
-                processHtml(fileName, response.html, result.saveDirectory, response.bookInfo);
-              } else {
-                // 如果本地服务不可用，则下载HTML文件
-                showStatus('本地服务未连接，正在下载HTML文件...', 'warning');
-                downloadHtml(response.html, fileName, result.saveDirectory, response.bookInfo);
-              }
+              // 直接使用内存中的HTML内容，不进行下载
+              showStatus('正在处理HTML...', 'info');
+              
+              // 向后台发送直接处理请求
+              chrome.runtime.sendMessage({
+                action: 'directProcessHtml',
+                fileName: fileName,
+                htmlContent: response.html,
+                saveDirectory: result.saveDirectory,
+                bookInfo: response.bookInfo
+              }, function(response) {
+                console.log('处理HTML响应:', response);
+                
+                if (response && response.success) {
+                  showStatus(response.message || '处理成功！', 'success');
+                } else {
+                  showStatus(response && response.message ? response.message : '处理失败，请检查本地服务', 'error');
+                }
+                
+                extractBtn.disabled = false;
+              });
             }
           );
         });
       });
-    });
-  }
-  
-  // 下载HTML内容
-  function downloadHtml(html, fileName, saveDirectory, bookInfo) {
-    // 创建Blob对象
-    const blob = new Blob([html], {type: 'text/html'});
-    const url = URL.createObjectURL(blob);
-    
-    // 下载HTML文件
-    chrome.downloads.download({
-      url: url,
-      filename: `${fileName}.html`,
-      saveAs: false
-    }, function(downloadId) {
-      if (chrome.runtime.lastError) {
-        showStatus('下载HTML失败: ' + chrome.runtime.lastError.message, 'error');
-        extractBtn.disabled = false;
-        return;
-      }
-      
-      showStatus('HTML已下载，请手动处理或配置本地服务', 'success');
-      extractBtn.disabled = false;
-      
-      // 不再自动调用processHtml，而是提示用户手动处理
-      // 或者配置本地服务
-      const setupServiceDiv = document.createElement('div');
-      setupServiceDiv.className = 'setup-service';
-      setupServiceDiv.innerHTML = `
-        <p>要自动处理HTML文件，请配置本地服务：</p>
-        <button id="setupServiceBtn" class="btn btn-primary">配置本地服务</button>
-      `;
-      
-      resultsDiv.appendChild(setupServiceDiv);
-      
-      document.getElementById('setupServiceBtn').addEventListener('click', function() {
-        openSettings();
-      });
-    });
-  }
-  
-  // 处理HTML文件
-  function processHtml(fileName, htmlContent, saveDirectory, bookInfo) {
-    console.log('正在处理HTML文件:', fileName);
-    
-    // 发送消息到后台脚本，处理HTML文件
-    chrome.runtime.sendMessage({
-      action: 'processHtmlViaLocalService',
-      fileName: fileName + '.html',  // 确保文件名包含.html扩展名
-      saveDirectory: saveDirectory,
-      htmlContent: htmlContent,
-      bookInfo: bookInfo
-    }, function(response) {
-      if (chrome.runtime.lastError) {
-        showStatus('处理HTML失败: ' + chrome.runtime.lastError.message, 'error');
-        extractBtn.disabled = false;
-        return;
-      }
-      
-      if (response && response.success) {
-        showStatus(response.message, 'success');
-        
-        // 如果有生成的文件，显示链接
-        if (response.files) {
-          const filesDiv = document.createElement('div');
-          filesDiv.className = 'files-list';
-          
-          for (const [type, path] of Object.entries(response.files)) {
-            const link = document.createElement('a');
-            link.href = '#';
-            link.textContent = `查看${type === 'html' ? 'HTML' : type === 'json' ? 'JSON' : 'Markdown'}文件`;
-            link.addEventListener('click', function() {
-              chrome.tabs.create({url: `file://${path}`});
-            });
-            
-            const fileItem = document.createElement('div');
-            fileItem.appendChild(link);
-            filesDiv.appendChild(fileItem);
-          }
-          
-          bookInfoDiv.appendChild(filesDiv);
-        }
-      } else {
-        showStatus(response ? response.message : '处理失败，未知错误', 'error');
-      }
-      
-      extractBtn.disabled = false;
     });
   }
   

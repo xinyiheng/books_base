@@ -51,7 +51,38 @@ config = {
 @app.route('/')
 def index():
     """返回服务状态页面"""
-    return send_from_directory('.', 'service_status.html')
+    try:
+        return send_from_directory('.', 'service_status.html')
+    except:
+        # 如果文件不存在，返回简单的状态信息
+        html = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Amazon Book Extractor - 服务状态</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+                body {{ font-family: Arial, sans-serif; margin: 0; padding: 20px; }}
+                .container {{ max-width: 800px; margin: 0 auto; }}
+                .status {{ padding: 20px; background-color: #f0f8ff; border-radius: 5px; }}
+                .running {{ color: green; }}
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Amazon Book Extractor - 服务状态</h1>
+                <div class="status">
+                    <h2>状态: <span class="running">运行中</span></h2>
+                    <p>保存目录: {config["save_directory"]}</p>
+                    <p>飞书Webhook: {'已配置' if config["feishu_webhook"] else '未配置'}</p>
+                    <p>时间戳: {datetime.now().isoformat()}</p>
+                </div>
+            </div>
+        </body>
+        </html>
+        """
+        return html
 
 @app.route('/status', methods=['GET'])
 def status():

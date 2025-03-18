@@ -116,7 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const activeTab = tabs[0];
         
         // 检查是否在亚马逊图书页面
-        if (!activeTab.url.includes('amazon.com') && !activeTab.url.includes('amazon.cn')) {
+        if (!activeTab.url.includes('amazon.com') && !activeTab.url.includes('amazon.cn') && 
+            !activeTab.url.includes('amazon.co.uk') && !activeTab.url.includes('amazon.co.jp')) {
           showStatus('请在亚马逊图书页面使用此插件', 'error');
           extractBtn.disabled = false;
           return;

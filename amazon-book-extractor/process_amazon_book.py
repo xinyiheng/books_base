@@ -24,7 +24,7 @@ logger = logging.getLogger("AmazonBookProcessor")
 
 # 导入自定义模块
 try:
-    from amazon_feishu_extractor import extract_from_file
+    from amazon_feishu_extractor import extract_from_file, convert_to_feishu_format
     from feishu_webhook import send_to_feishu
     from json_to_markdown import convert_to_markdown
 except ImportError as e:
@@ -43,127 +43,132 @@ def ensure_directory_exists(directory):
             return False
     return True
 
-def process_book(html_file, output_dir, feishu_webhook_url=None):
-    """
-    处理亚马逊图书HTML文件
+def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", url=None):
+    """Process Amazon book HTML and generate output files."""
+    # 确保输出目录存在
+    os.makedirs(output_dir, exist_ok=True)
     
-    参数:
-        html_file (str): HTML文件路径
-        output_dir (str): 输出目录
-        feishu_webhook_url (str, optional): 飞书Webhook URL
+    # 创建子目录
+    json_dir = os.path.join(output_dir, "json")
+    markdown_dir = os.path.join(output_dir, "markdown")
+    html_dir = os.path.join(output_dir, "html")
     
-    返回:
-        bool: 处理是否成功
-    """
-    try:
-        # 确保输出目录存在
-        html_dir = os.path.join(output_dir, "html")
-        json_dir = os.path.join(output_dir, "json")
-        markdown_dir = os.path.join(output_dir, "markdown")
+    for directory in [json_dir, markdown_dir, html_dir]:
+        os.makedirs(directory, exist_ok=True)
+    
+    # 提取文件名（不含扩展名）作为书籍标识
+    book_identifier = os.path.splitext(os.path.basename(html_file))[0]
+    
+    # 解析HTML
+    logger.info(f"Reading HTML file: {html_file}")
+    with open(html_file, 'r', encoding='utf-8') as f:
+        html_content = f.read()
+    
+    # 提取数据
+    logger.info("Extracting book data...")
+    book_data = extract_from_file(html_file, region)
+    
+    if url and url.strip():
+        # 如果提供了原始URL，添加到数据中
+        book_data['url'] = url.strip()
+    
+    # 将数据保存为JSON
+    json_file = os.path.join(json_dir, f"{book_identifier}.json")
+    logger.info(f"Saving JSON data to: {json_file}")
+    
+    with open(json_file, 'w', encoding='utf-8') as f:
+        json.dump(book_data, f, ensure_ascii=False, indent=2)
+    
+    # 将JSON转换为Markdown
+    markdown_content = convert_to_markdown(book_data)
+    
+    # 为Markdown文件生成干净的文件名（只保留书名）
+    title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
+    if title:
+        # 清理书名用于文件名，移除不允许的字符
+        clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
+        clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
+        clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
         
-        for directory in [html_dir, json_dir, markdown_dir]:
-            if not ensure_directory_exists(directory):
-                return False
+        # 限制文件名长度
+        if len(clean_title) > 100:
+            clean_title = clean_title[:100]
         
-        # 获取文件名（不含扩展名）
-        file_basename = os.path.basename(html_file)
-        file_name = os.path.splitext(file_basename)[0]
-        
-        # 如果HTML文件不在html目录中，复制一份到html目录
-        if not html_file.startswith(html_dir):
-            import shutil
-            html_dest = os.path.join(html_dir, file_basename)
-            shutil.copy2(html_file, html_dest)
-            logger.info(f"复制HTML文件到: {html_dest}")
-            html_file = html_dest
-        
-        # 提取图书信息
-        logger.info(f"从HTML文件提取图书信息: {html_file}")
-        book_info = extract_from_file(html_file)
-        
-        if not book_info:
-            logger.error("提取图书信息失败")
-            return False
-        
-        # 从文件名中提取ASIN和书名（如果存在）
-        asin = None
-        book_title = None
-        
-        # 尝试从文件名中提取ASIN和书名
-        import re
-        asin_match = re.search(r'amazon_book_([A-Z0-9]{10})_', file_name)
-        if asin_match:
-            asin = asin_match.group(1)
+        markdown_file = os.path.join(markdown_dir, f"{clean_title}.md")
+    else:
+        # 如果找不到标题，则使用原始文件名
+        markdown_file = os.path.join(markdown_dir, f"{book_identifier}.md")
+    
+    logger.info(f"Saving Markdown to: {markdown_file}")
+    
+    with open(markdown_file, 'w', encoding='utf-8') as f:
+        f.write(markdown_content)
+    
+    # 如果提供了Feishu webhook URL，则发送数据到Feishu
+    if feishu_webhook_url:
+        logger.info("Preparing data for Feishu...")
+        try:
+            # 将数据转换为Feishu格式
+            feishu_data = convert_to_feishu_format(book_data)
             
-            # 尝试提取书名（如果文件名中包含）
-            title_match = re.search(r'amazon_book_[A-Z0-9]{10}_(.+?)(?:_\d{4}-\d{2}-\d{2}T|$)', file_name)
-            if title_match:
-                book_title = title_match.group(1)
-        
-        # 如果文件名中没有提取到书名，使用提取的图书信息中的标题
-        if not book_title and 'title' in book_info and book_info['title']:
-            book_title = book_info['title']
-        
-        # 清理书名，移除特殊字符，限制长度
-        if book_title:
-            book_title = book_title.replace('/', '_').replace('\\', '_').replace(':', '_').replace('*', '_').replace('?', '_').replace('"', '_').replace('<', '_').replace('>', '_').replace('|', '_')
-            if len(book_title) > 100:
-                book_title = book_title[:100]
-        
-        # 为JSON和Markdown文件创建更友好的文件名
-        json_filename = file_name  # 保持原始文件名（包含时间戳）
-        
-        # 为Markdown文件创建只包含书名的文件名
-        if book_title:
-            markdown_filename = book_title
-        elif asin:
-            # 如果没有书名但有ASIN，使用ASIN
-            markdown_filename = f"amazon_book_{asin}"
-        else:
-            # 如果无法提取ASIN和书名，使用原始文件名
-            markdown_filename = file_name
-        
-        # 保存JSON文件
-        json_file = os.path.join(json_dir, f"{json_filename}.json")
-        with open(json_file, 'w', encoding='utf-8') as f:
-            json.dump(book_info, f, ensure_ascii=False, indent=2)
-        logger.info(f"保存JSON文件: {json_file}")
-        
-        # 转换为Markdown并保存（使用只包含书名的文件名）
-        markdown_file = os.path.join(markdown_dir, f"{markdown_filename}.md")
-        markdown_content = convert_to_markdown(book_info)
-        with open(markdown_file, 'w', encoding='utf-8') as f:
-            f.write(markdown_content)
-        logger.info(f"保存Markdown文件: {markdown_file}")
-        
-        # 发送到飞书（如果提供了webhook URL）
-        if feishu_webhook_url:
-            logger.info("发送数据到飞书...")
-            success = send_to_feishu(feishu_webhook_url, book_info)
+            # 确保feishu_data是正确的格式
+            if not isinstance(feishu_data, dict):
+                logger.error(f"Invalid Feishu data format: expected dict, got {type(feishu_data)}")
+                logger.debug(f"Feishu data content: {feishu_data}")
+                return json_file, markdown_file
+            
+            # 检查必要的字段是否存在
+            expected_keys = ["书名", "书本页面", "作者", "内容简介"]
+            missing_keys = [k for k in expected_keys if k not in feishu_data or not feishu_data[k]]
+            
+            if missing_keys:
+                logger.warning(f"Missing important Feishu data fields: {', '.join(missing_keys)}")
+                logger.debug(f"Feishu data keys: {feishu_data.keys()}")
+            
+            # 打印feishu_data内容，用于调试
+            logger.debug(f"Feishu data: {json.dumps(feishu_data, ensure_ascii=False, indent=2)}")
+            
+            logger.info("Sending data to Feishu...")
+            success = send_to_feishu(feishu_data, feishu_webhook_url)
+            
             if success:
-                logger.info("成功发送数据到飞书")
+                logger.info("Successfully sent data to Feishu")
             else:
-                logger.warning("发送数据到飞书失败")
-        
-        logger.info("处理完成!")
-        return True
+                logger.error("Failed to send data to Feishu")
+        except Exception as e:
+            logger.error(f"Error sending data to Feishu: {str(e)}")
+            import traceback
+            logger.error(traceback.format_exc())
+    else:
+        logger.warning("No Feishu webhook URL provided, skipping sending data to Feishu")
     
-    except Exception as e:
-        logger.error(f"处理图书时发生错误: {str(e)}")
-        import traceback
-        logger.error(traceback.format_exc())
-        return False
+    return json_file, markdown_file
 
 def main():
     """主函数"""
+    # 清理pycache目录，防止干扰
+    import shutil
+    try:
+        shutil.rmtree('__pycache__', ignore_errors=True)
+    except:
+        pass
+    
     parser = argparse.ArgumentParser(description="处理亚马逊图书HTML文件")
     parser.add_argument("--html", required=True, help="HTML文件路径")
     parser.add_argument("--output-dir", required=True, help="输出目录")
     parser.add_argument("--feishu-webhook", help="飞书Webhook URL")
+    parser.add_argument("--region", default="us", help="亚马逊区域代码 (us, uk, jp)")
+    parser.add_argument("--url", help="原始URL")
     
     args = parser.parse_args()
     
-    success = process_book(args.html, args.output_dir, args.feishu_webhook)
+    success = process_book(
+        args.html, 
+        args.output_dir, 
+        args.feishu_webhook,
+        region=args.region,
+        url=args.url
+    )
     
     if success:
         print("处理成功!")

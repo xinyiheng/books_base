@@ -3,6 +3,18 @@
  * 在亚马逊图书页面上运行，提取图书信息和HTML内容
  */
 
+// 添加区域检测函数
+function detectRegion() {
+  const url = window.location.href;
+  if (url.includes('amazon.co.uk')) {
+    return 'uk';
+  } else if (url.includes('amazon.co.jp')) {
+    return 'jp';
+  } else {
+    return 'us';
+  }
+}
+
 // 监听来自popup.js的消息
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   console.log('内容脚本收到消息:', request);
@@ -24,13 +36,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       // 提取图书信息
       const bookInfo = extractBookInfo();
       
-      console.log('提取的图书信息:', bookInfo);
+      // 检测当前亚马逊站点区域
+      const region = detectRegion();
+      
+      console.log('提取的图书信息:', bookInfo, '区域:', region);
       
       // 发送提取的信息回background.js
       sendResponse({
         success: true,
         bookInfo: bookInfo,
-        html: html
+        html: html,
+        region: region,
+        url: window.location.href
       });
     } catch (error) {
       console.error('提取信息时发生错误:', error);

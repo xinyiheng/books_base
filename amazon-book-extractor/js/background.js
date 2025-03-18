@@ -48,10 +48,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // 运行Python脚本处理HTML文件
     if (localServiceConfig.enabled && localServiceConfig.status === 'connected') {
       // 使用本地服务处理HTML
-      processHtmlViaLocalService(request.fileName, request.htmlContent, request.saveDirectory, request.bookInfo, sendResponse);
+      processHtmlViaLocalService(request.fileName, request.htmlContent, request.saveDirectory, request.bookInfo, request.region, request.url, sendResponse);
     } else {
       // 使用旧方法（提示用户手动运行Python脚本）
-      runPythonScript(request.fileName, request.saveDirectory, request.bookInfo, sendResponse);
+      runPythonScript(request.fileName, request.saveDirectory, request.bookInfo, request.region, request.url, sendResponse);
     }
     return true; // 保持消息通道开放，以便异步响应
   }
@@ -59,16 +59,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // 直接使用本地服务处理HTML
     if (localServiceConfig.enabled && localServiceConfig.status === 'connected') {
       // 使用本地服务处理HTML
-      processHtmlViaLocalService(request.fileName, request.htmlContent, request.saveDirectory, request.bookInfo, sendResponse);
+      processHtmlViaLocalService(request.fileName, request.htmlContent, request.saveDirectory, request.bookInfo, request.region, request.url, sendResponse);
     } else {
       // 如果本地服务不可用，回退到旧方法
-      runPythonScript(request.fileName, request.saveDirectory, request.bookInfo, sendResponse);
+      runPythonScript(request.fileName, request.saveDirectory, request.bookInfo, request.region, request.url, sendResponse);
     }
     return true; // 保持消息通道开放，以便异步响应
   }
   else if (request.action === 'directProcessHtml') {
     // 直接处理HTML内容（不使用下载API）
-    directProcessHtml(request.fileName, request.htmlContent, request.saveDirectory, request.bookInfo, sendResponse);
+    directProcessHtml(request.fileName, request.htmlContent, request.saveDirectory, request.bookInfo, request.region, request.url, sendResponse);
     return true; // 保持消息通道开放，以便异步响应
   }
   else if (request.action === 'storeBookInfo') {
@@ -99,7 +99,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 // 加载本地服务配置
 function loadLocalServiceConfig() {
+  /**从文件加载配置*/
+  console.log('从storage加载本地服务配置...');
   chrome.storage.local.get(['localService'], function(result) {
+    console.log('原始配置:', result);
     if (result.localService) {
       localServiceConfig = result.localService;
       console.log('已加载本地服务配置:', localServiceConfig);
@@ -117,6 +120,26 @@ function loadLocalServiceConfig() {
           }
         });
       }
+    } else {
+      // 如果配置不存在，设置默认值并保存
+      console.log('本地服务配置不存在，使用默认配置');
+      localServiceConfig = {
+        enabled: true,  // 默认启用本地服务
+        url: 'http://localhost:5001',
+        cloudUrl: '',
+        useCloud: false,
+        status: 'unknown'
+      };
+      
+      // 保存默认配置
+      saveLocalServiceConfig();
+      
+      // 检查连接状态
+      checkLocalServiceConnection(function(status) {
+        console.log('使用默认配置检查本地服务连接状态:', status);
+        localServiceConfig.status = status;
+        saveLocalServiceConfig();
+      });
     }
   });
 }
@@ -227,15 +250,17 @@ function createDirectoriesViaLocalService(saveDirectory, callback) {
 }
 
 // 通过本地服务处理HTML
-function processHtmlViaLocalService(fileName, htmlContent, saveDirectory, bookInfo, callback) {
-  console.log('通过本地服务处理HTML:', fileName);
+function processHtmlViaLocalService(fileName, htmlContent, saveDirectory, bookInfo, region, url, callback) {
+  console.log('通过本地服务处理HTML:', fileName, '区域:', region);
   
   // 准备请求数据
   const requestData = {
     html: htmlContent,
     filename: fileName,
     saveDirectory: saveDirectory,
-    bookInfo: bookInfo
+    bookInfo: bookInfo,
+    region: region || 'us',
+    url: url || bookInfo.url || ""
   };
 
   // 获取飞书Webhook URL
@@ -368,7 +393,7 @@ function processHtmlViaLocalService(fileName, htmlContent, saveDirectory, bookIn
 }
 
 // 运行Python脚本处理HTML文件（旧方法）
-function runPythonScript(fileName, saveDirectory, bookInfo, callback) {
+function runPythonScript(fileName, saveDirectory, bookInfo, region, url, callback) {
   // 检查本地服务是否可用
   if (localServiceConfig.enabled && localServiceConfig.status === 'connected') {
     // 如果本地服务可用，尝试使用本地服务处理
@@ -380,7 +405,9 @@ function runPythonScript(fileName, saveDirectory, bookInfo, callback) {
       filename: `${fileName}.html`,
       saveDirectory: saveDirectory,
       bookInfo: bookInfo,
-      htmlFilePath: htmlFilePath
+      htmlFilePath: htmlFilePath,
+      region: region || 'us',
+      url: url || bookInfo.url || ""
     };
     
     // 获取飞书Webhook URL
@@ -416,17 +443,17 @@ function runPythonScript(fileName, saveDirectory, bookInfo, callback) {
       .catch(error => {
         console.error('通过本地服务处理HTML文件失败:', error);
         // 如果本地服务处理失败，回退到提示用户手动处理
-        fallbackToManualProcessing(fileName, saveDirectory, bookInfo, callback);
+        fallbackToManualProcessing(fileName, saveDirectory, bookInfo, region, url, callback);
       });
     });
   } else {
     // 如果本地服务不可用，提示用户手动处理
-    fallbackToManualProcessing(fileName, saveDirectory, bookInfo, callback);
+    fallbackToManualProcessing(fileName, saveDirectory, bookInfo, region, url, callback);
   }
 }
 
 // 回退到手动处理方法
-function fallbackToManualProcessing(fileName, saveDirectory, bookInfo, callback) {
+function fallbackToManualProcessing(fileName, saveDirectory, bookInfo, region, url, callback) {
   // 获取飞书Webhook URL
   chrome.storage.local.get(['feishuWebhook'], function(result) {
     const webhookUrl = result.feishuWebhook || '[YOUR_WEBHOOK_URL]';
@@ -435,7 +462,7 @@ function fallbackToManualProcessing(fileName, saveDirectory, bookInfo, callback)
     callback({ 
       success: true, 
       message: '请手动运行以下Python命令处理HTML文件:\n' +
-        `cd ${saveDirectory} && python process_amazon_book.py --html html/${fileName}.html --output-dir ${saveDirectory} --feishu-webhook ${webhookUrl}`
+        `cd ${saveDirectory} && python process_amazon_book.py --html html/${fileName}.html --output-dir ${saveDirectory} --feishu-webhook ${webhookUrl} --region ${region || 'us'} --url ${url || bookInfo.url || ''}`
     });
   });
 }
@@ -453,7 +480,7 @@ function createDirectories(saveDirectory, callback) {
 }
 
 // 直接处理HTML内容（不使用下载API）
-function directProcessHtml(fileName, htmlContent, saveDirectory, bookInfo, callback) {
+function directProcessHtml(fileName, htmlContent, saveDirectory, bookInfo, region, url, callback) {
   console.log('直接处理HTML内容:', fileName);
   
   // 获取本地服务配置
@@ -466,7 +493,9 @@ function directProcessHtml(fileName, htmlContent, saveDirectory, bookInfo, callb
       html: htmlContent,
       filename: fileName,
       saveDirectory: saveDirectory,
-      bookInfo: bookInfo
+      bookInfo: bookInfo,
+      region: region || 'us',
+      url: url || bookInfo.url || ""
     };
     
     if (feishuWebhook) {
@@ -604,10 +633,13 @@ function createSafeNotification(notificationId, options) {
   
   // 确保图标路径正确
   if (!options.iconUrl || !options.iconUrl.startsWith('chrome-extension://')) {
-    options.iconUrl = chrome.runtime.getURL('images/icons8-books-3d-fluency-96.png');
+    const defaultIconUrl = chrome.runtime.getURL('images/icons8-books-3d-fluency-96.png');
+    console.log('使用默认图标URL:', defaultIconUrl);
+    options.iconUrl = defaultIconUrl;
   }
   
   try {
+    console.log('尝试创建通知，ID:', notificationId, '选项:', JSON.stringify(options));
     chrome.notifications.create(notificationId, options, function(createdId) {
       if (chrome.runtime.lastError) {
         console.error('通知创建失败:', chrome.runtime.lastError.message);
@@ -619,8 +651,21 @@ function createSafeNotification(notificationId, options) {
           message: options.message || '操作完成',
           priority: 2
         };
+        console.log('使用简化选项重试:', JSON.stringify(simpleOptions));
         setTimeout(() => {
-          chrome.notifications.create(notificationId + '-retry', simpleOptions);
+          chrome.notifications.create(notificationId + '-retry', simpleOptions, function(retryId) {
+            if (chrome.runtime.lastError) {
+              console.error('简化通知创建也失败:', chrome.runtime.lastError.message);
+              // 尝试使用alert作为最后的备选方案
+              try {
+                alert(options.title + '\n\n' + options.message);
+              } catch (alertError) {
+                console.error('无法显示alert:', alertError);
+              }
+            } else {
+              console.log('简化通知成功创建:', retryId);
+            }
+          });
         }, 500);
       } else {
         console.log('通知已创建:', createdId);
@@ -628,6 +673,12 @@ function createSafeNotification(notificationId, options) {
     });
   } catch (error) {
     console.error('创建通知时发生异常:', error);
+    // 尝试使用alert作为备选方案
+    try {
+      alert(options.title + '\n\n' + options.message);
+    } catch (alertError) {
+      console.error('无法显示alert:', alertError);
+    }
   }
 }
 
@@ -667,17 +718,26 @@ function updateSafeNotification(notificationId, options) {
 
 // 初始化扩展
 function initExtension() {
+  console.log('************初始化扩展************');
   console.log('初始化扩展...');
   
   // 加载本地服务配置
+  console.log('开始加载本地服务配置');
   loadLocalServiceConfig();
   
+  // 检查存储的配置
+  chrome.storage.local.get(['localService', 'saveDirectory'], function(result) {
+    console.log('从storage.local加载的配置:', result);
+  });
+  
   // 检查本地服务连接状态
+  console.log('开始检查本地服务连接状态');
   checkLocalServiceConnection(function(result) {
     console.log('本地服务连接状态:', result);
   });
   
   // 添加上下文菜单
+  console.log('添加上下文菜单');
   chrome.contextMenus.create({
     id: 'extractBookInfo',
     title: '从这个页面提取图书信息',
@@ -686,7 +746,10 @@ function initExtension() {
   });
   
   // 检查通知权限
+  console.log('检查通知权限');
   checkNotificationPermission();
+  
+  console.log('************初始化完成************');
 }
 
 // 直接提取图书信息（不显示popup）
@@ -867,6 +930,8 @@ function extractBookInfoDirectly(tab) {
               response.html, 
               result.saveDirectory, 
               response.bookInfo, 
+              response.region, 
+              response.url, 
               function(processResult) {
                 // 显示处理结果提示
                 let title = processResult.success 
@@ -918,7 +983,10 @@ function extractBookInfoDirectly(tab) {
 
 // 监听工具栏图标点击
 chrome.action.onClicked.addListener(function(tab) {
+  console.log('************扩展图标被点击************');
   console.log('扩展图标被点击，当前标签页URL:', tab.url);
+  console.log('当前本地服务配置:', localServiceConfig);
+  console.log('******************************************');
   
   // 检查是否在亚马逊图书页面
   if (tab.url.includes('amazon.com') || tab.url.includes('amazon.cn') || 

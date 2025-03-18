@@ -111,6 +111,8 @@ def process_html():
         html_content = data['html']
         filename = data['filename']
         save_directory = data.get('saveDirectory') or config['save_directory']
+        region = data.get('region', 'us')  # 获取区域信息，默认为us
+        url = data.get('url', '')  # 获取原始URL
         
         # 确保文件名是安全的
         filename = os.path.basename(filename)
@@ -137,7 +139,9 @@ def process_html():
         success = process_book(
             html_file_path, 
             save_directory, 
-            feishu_webhook
+            feishu_webhook,
+            region=region,
+            url=url
         )
         
         if success:
@@ -230,19 +234,19 @@ def process_html():
 
 @app.route('/process_file', methods=['POST'])
 def process_html_file():
-    """处理已保存的HTML文件"""
+    """处理指定HTML文件"""
     try:
-        # 检查是否设置了保存目录
-        if not config['save_directory']:
-            return jsonify({"error": "未设置保存目录"}), 400
-        
         # 获取请求数据
-        data = request.json
-        if not data or 'filename' not in data:
-            return jsonify({"error": "请求数据不完整，需要提供filename字段"}), 400
+        data = request.get_json()
+        filename = data.get('filename')
         
-        filename = data['filename']
-        save_directory = data.get('saveDirectory') or config['save_directory']
+        if not filename:
+            return jsonify({"error": "未提供文件名"}), 400
+        
+        # 获取保存目录
+        save_directory = config.get('save_directory')
+        if not save_directory:
+            return jsonify({"error": "未设置保存目录"}), 400
         
         # 构建HTML文件路径
         html_file_path = os.path.join(save_directory, 'html', filename)
@@ -265,9 +269,8 @@ def process_html_file():
             # 构建结果文件路径
             file_name_without_ext = os.path.splitext(filename)[0]
             json_path = os.path.join(save_directory, 'json', f"{file_name_without_ext}.json")
-            md_path = os.path.join(save_directory, 'markdown', f"{file_name_without_ext}.md")
             
-            # 读取处理结果
+            # 读取JSON文件以获取书籍数据
             book_info = None
             if os.path.exists(json_path):
                 try:
@@ -275,6 +278,30 @@ def process_html_file():
                         book_info = json.load(f)
                 except Exception as e:
                     logger.error(f"读取JSON文件失败: {str(e)}")
+            
+            # 尝试查找对应的Markdown文件（可能使用书名而不是原始文件名）
+            md_path = None
+            if book_info:
+                title = book_info.get('标题') or book_info.get('书名') or book_info.get('title', '')
+                if title:
+                    # 清理标题用于文件名
+                    clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
+                    clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
+                    clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
+                    
+                    # 限制文件名长度
+                    if len(clean_title) > 100:
+                        clean_title = clean_title[:100]
+                    
+                    possible_md_path = os.path.join(save_directory, 'markdown', f"{clean_title}.md")
+                    if os.path.exists(possible_md_path):
+                        md_path = possible_md_path
+            
+            # 如果通过标题找不到Markdown文件，则回退到使用原始文件名
+            if not md_path:
+                fallback_md_path = os.path.join(save_directory, 'markdown', f"{file_name_without_ext}.md")
+                if os.path.exists(fallback_md_path):
+                    md_path = fallback_md_path
             
             return jsonify({
                 "success": True,

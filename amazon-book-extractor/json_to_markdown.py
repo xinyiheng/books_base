@@ -8,6 +8,7 @@ import os
 import argparse
 import sys
 import glob
+import re
 
 def json_to_markdown(json_file, output_file=None):
     """
@@ -25,133 +26,53 @@ def json_to_markdown(json_file, output_file=None):
         with open(json_file, 'r', encoding='utf-8') as f:
             book_data = json.load(f)
         
-        # 如果未指定输出文件，则基于JSON文件名生成
+        # 获取书名用于生成文件名
+        title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
+        
+        # 如果未指定输出文件，则基于书名生成，删除所有前缀和后缀
         if not output_file:
-            base_name = os.path.splitext(os.path.basename(json_file))[0]
-            output_file = os.path.join(os.path.dirname(json_file), f"{base_name}.md")
-        
-        # 生成Markdown内容
-        md_content = []
-        
-        # 书名作为标题
-        md_content.append(f"# {book_data.get('书名', '')}")
-        md_content.append("")
-        
-        # 添加封面图片（如果有）
-        if book_data.get('封面'):
-            md_content.append(f"![封面]({book_data.get('封面')})")
-            md_content.append("")
-        
-        # 基本信息表格
-        md_content.append("## 基本信息")
-        md_content.append("")
-        md_content.append("| 项目 | 内容 |")
-        md_content.append("| --- | --- |")
-        
-        # 添加作者信息（带链接）
-        author = book_data.get('作者', '')
-        author_url = book_data.get('作者页面', '')
-        if author and author_url:
-            md_content.append(f"| 作者 | [{author}]({author_url}) |")
-        else:
-            md_content.append(f"| 作者 | {author} |")
-        
-        # 添加书本页面链接
-        book_url = book_data.get('书本页面', '')
-        if book_url:
-            md_content.append(f"| 书本页面 | [Amazon链接]({book_url}) |")
-        
-        # 添加其他基本信息
-        for key in ['出版社', '出版时间', 'ISBN', '评分']:
-            if key in book_data and book_data[key]:
-                md_content.append(f"| {key} | {book_data[key]} |")
-        
-        md_content.append("")
-        
-        # 内容简介
-        if book_data.get('内容简介'):
-            md_content.append("## 内容简介")
-            md_content.append("")
-            md_content.append(book_data.get('内容简介', ''))
-            md_content.append("")
-        
-        # 作者简介
-        if book_data.get('作者简介'):
-            md_content.append("## 作者简介")
-            md_content.append("")
-            md_content.append(book_data.get('作者简介', ''))
-            md_content.append("")
-        
-        # 关联图书
-        if book_data.get('关联图书'):
-            md_content.append("## 关联图书")
-            md_content.append("")
+            # 使用JSON文件中的标题或书名
+            if title:
+                # 清理书名用于文件名，移除不允许的字符
+                clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
+                clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
+                clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
+            else:
+                # 尝试从JSON文件名提取书名
+                json_filename = os.path.basename(json_file)
+                if json_filename.endswith('.json'):
+                    json_filename = json_filename[:-5]  # 去掉.json扩展名
+                
+                # 移除常见的前缀模式
+                # 1. amazon_book_ISBN_ 模式
+                json_filename = re.sub(r'^amazon_book_[A-Z0-9]+_', '', json_filename)
+                # 2. 移除其他数字前缀
+                json_filename = re.sub(r'^[0-9_]+', '', json_filename)
+                
+                # 移除时间戳后缀 _YYYY-MM-DDThh-mm-ss-mmmZ
+                json_filename = re.sub(r'_\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$', '', json_filename)
+                
+                # 还原下划线为空格
+                clean_title = json_filename.replace('_', ' ').strip()
             
-            related_books = book_data.get('关联图书', [])
-            if isinstance(related_books, list):
-                for book in related_books:
-                    # 尝试从格式为"书名 - URL"的字符串中提取书名和URL
-                    if isinstance(book, str) and " - " in book:
-                        title, url = book.split(" - ", 1)
-                        # 确保URL格式正确
-                        url = url.strip()
-                        md_content.append(f"- [{title}]({url})")
-                    else:
-                        md_content.append(f"- {book}")
-            elif isinstance(related_books, str):
-                # 如果关联图书是字符串，按行分割
-                for line in related_books.split('\n'):
-                    if " - " in line:
-                        title, url = line.split(" - ", 1)
-                        # 确保URL格式正确
-                        url = url.strip()
-                        md_content.append(f"- [{title}]({url})")
-                    else:
-                        md_content.append(f"- {line}")
+            # 限制文件名长度
+            if len(clean_title) > 100:
+                clean_title = clean_title[:100]
             
-            md_content.append("")
+            output_dir = os.path.dirname(json_file).replace('json', 'markdown')
+            output_file = os.path.join(output_dir, f"{clean_title}.md")
         
-        # 读者评论
-        if book_data.get('读者评论'):
-            md_content.append("## 读者评论")
-            md_content.append("")
-            
-            reviews = book_data.get('读者评论', [])
-            if isinstance(reviews, list):
-                for i, review in enumerate(reviews, 1):
-                    md_content.append(f"### 评论 {i}")
-                    
-                    if isinstance(review, dict):
-                        reviewer = review.get('reviewer_name', '匿名')
-                        rating = review.get('rating', '')
-                        title = review.get('title', '')
-                        content = review.get('content', '')
-                        date = review.get('date', '')
-                        
-                        if reviewer and rating:
-                            md_content.append(f"**{reviewer}** ({rating}星)")
-                        elif reviewer:
-                            md_content.append(f"**{reviewer}**")
-                        
-                        if title:
-                            md_content.append(f"*{title}*")
-                        
-                        if content:
-                            md_content.append(f"{content}")
-                        
-                        if date:
-                            md_content.append(f"*{date}*")
-                    else:
-                        md_content.append(f"{review}")
-                    
-                    md_content.append("")
-            elif isinstance(reviews, str):
-                md_content.append(reviews)
-                md_content.append("")
+        # 使用共用的转换函数生成Markdown内容
+        md_content = convert_to_markdown(book_data)
+        
+        # 确保输出目录存在
+        output_dir = os.path.dirname(output_file)
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir, exist_ok=True)
         
         # 写入Markdown文件
         with open(output_file, 'w', encoding='utf-8') as f:
-            f.write('\n'.join(md_content))
+            f.write(md_content)
         
         print(f"成功将 {json_file} 转换为 Markdown 格式: {output_file}")
         return output_file
@@ -163,24 +84,26 @@ def json_to_markdown(json_file, output_file=None):
 # 为了兼容性，创建一个别名函数
 def convert_to_markdown(book_data):
     """
-    将书籍数据转换为Markdown格式
+    将书籍数据转换为Markdown格式，先显示封面，然后是基本信息
     
     Args:
-        book_data (dict): 书籍数据字典
+        book_data (dict): The book data dictionary
     
     Returns:
-        str: Markdown格式的内容
+        str: Markdown formatted content
     """
     # 生成Markdown内容
     md_content = []
     
     # 书名作为标题
-    md_content.append(f"# {book_data.get('书名', '')}")
+    title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
+    md_content.append(f"# {title}")
     md_content.append("")
     
-    # 添加封面图片（如果有）
-    if book_data.get('封面'):
-        md_content.append(f"![封面]({book_data.get('封面')})")
+    # 添加封面图片（如果有）- 直接使用图片链接，不添加前缀文字
+    cover_url = book_data.get('封面') or book_data.get('cover_image_url') or book_data.get('cover_image') or book_data.get('imageUrl', '')
+    if cover_url:
+        md_content.append(f"![]({cover_url})")
         md_content.append("")
     
     # 基本信息表格
@@ -189,102 +112,157 @@ def convert_to_markdown(book_data):
     md_content.append("| 项目 | 内容 |")
     md_content.append("| --- | --- |")
     
-    # 添加基本信息字段
-    for key, value in book_data.items():
-        if key != '封面' and key != '书名' and key != '详情' and key != 'URL' and key != '关联图书' and key != '读者评论':
-            md_content.append(f"| {key} | {value} |")
+    # 书本页面 - 尝试所有可能的字段名
+    book_url = book_data.get('URL') or book_data.get('书本页面') or book_data.get('book_url', '') or book_data.get('url', '')
+    if book_url:
+        md_content.append(f"| 书本页面 | {book_url} |")
     
-    # 添加URL（如果有）
-    if book_data.get('URL'):
-        md_content.append(f"| 链接 | [{book_data.get('URL')}]({book_data.get('URL')}) |")
+    # 作者信息 - 尝试所有可能的字段名
+    author = book_data.get('作者') or book_data.get('author', '')
+    if author:
+        md_content.append(f"| 作者 | {author} |")
     
-    # 添加详情（如果有）
-    if book_data.get('详情'):
-        md_content.append("")
-        md_content.append("## 详情")
-        md_content.append("")
-        md_content.append(book_data.get('详情'))
+    # 作者页面 - 尝试所有可能的字段名
+    author_url = book_data.get('作者页面') or book_data.get('author_url', '')
+    if author_url:
+        md_content.append(f"| 作者页面 | {author_url} |")
     
-    # 添加关联图书（如果有）
-    if book_data.get('关联图书'):
-        md_content.append("")
+    # 作者简介 - 尝试所有可能的字段名
+    author_bio = book_data.get('作者简介') or book_data.get('author_bio', '')
+    if author_bio:
+        md_content.append(f"| 作者简介 | {author_bio} |")
+    
+    # 内容简介 - 尝试所有可能的字段名
+    book_description = book_data.get('内容简介') or book_data.get('description', '')
+    if book_description:
+        md_content.append(f"| 内容简介 | {book_description} |")
+    
+    # 出版时间 - 尝试所有可能的字段名
+    pub_date = book_data.get('出版时间') or book_data.get('publication_date', '')
+    if not pub_date:
+        pub_date = book_data.get('publicationDate', '') or book_data.get('publishDate', '')
+    if pub_date:
+        md_content.append(f"| 出版时间 | {pub_date} |")
+    
+    # 出版社 - 尝试所有可能的字段名
+    publisher = book_data.get('出版社') or book_data.get('publisher', '')
+    if not publisher:
+        publisher = book_data.get('publisherName', '') or book_data.get('publish', '')
+    if publisher:
+        md_content.append(f"| 出版社 | {publisher} |")
+    
+    # ISBN - 尝试所有可能的字段名
+    isbn = book_data.get('ISBN') or book_data.get('isbn', '')
+    if not isbn and 'details' in book_data:
+        if isinstance(book_data['details'], dict):
+            isbn = book_data['details'].get('isbn', '')
+        elif isinstance(book_data['details'], list):
+            for detail in book_data['details']:
+                if isinstance(detail, dict) and 'name' in detail and detail['name'].lower() == 'isbn':
+                    isbn = detail.get('value', '')
+                    break
+    if isbn:
+        md_content.append(f"| ISBN | {isbn} |")
+    
+    # 评分 - 尝试所有可能的字段名
+    rating = book_data.get('评分') or book_data.get('rating', '') or book_data.get('amazon_rating', '')
+    if rating:
+        # 如果有amazon_rating_count，合并评分和评分数
+        rating_count = book_data.get('amazon_rating_count', '')
+        if rating_count:
+            rating = f"Amazon: {rating} ({rating_count})"
+        md_content.append(f"| 评分 | {rating} |")
+    
+    md_content.append("")
+    
+    # 关联图书
+    related_books = book_data.get('关联图书') or book_data.get('related_books', [])
+    if related_books:
         md_content.append("## 关联图书")
         md_content.append("")
         
-        related_books = book_data.get('关联图书')
         if isinstance(related_books, list):
             for book in related_books:
                 if isinstance(book, dict) and 'title' in book and 'url' in book:
+                    # 处理dict格式的书籍
                     md_content.append(f"- [{book['title']}]({book['url']})")
-                elif isinstance(book, str) and ' - ' in book:
-                    # 尝试从字符串中提取标题和URL
-                    parts = book.split(' - ', 1)
-                    if len(parts) == 2 and parts[1].startswith('http'):
+                elif isinstance(book, str):
+                    # 处理字符串格式的书籍
+                    if " - http" in book:
+                        # 匹配"书名 - URL"的格式
+                        parts = book.split(" - ", 1)
                         title = parts[0].strip()
                         url = parts[1].strip()
                         md_content.append(f"- [{title}]({url})")
                     else:
+                        # 直接添加
                         md_content.append(f"- {book}")
-                else:
-                    md_content.append(f"- {book}")
         elif isinstance(related_books, str):
-            # 如果是单个字符串，尝试拆分多行
-            books = related_books.split('\n')
-            for book in books:
-                book = book.strip()
-                if not book:
+            # 处理字符串格式的关联图书(按行分割)
+            for line in related_books.split('\n'):
+                line = line.strip()
+                if not line:
                     continue
-                    
-                if ' - ' in book and 'http' in book:
-                    # 尝试从字符串中提取标题和URL
-                    parts = book.split(' - ', 1)
-                    if len(parts) == 2 and parts[1].startswith('http'):
-                        title = parts[0].strip()
-                        url = parts[1].strip()
-                        md_content.append(f"- [{title}]({url})")
-                    else:
-                        md_content.append(f"- {book}")
+                
+                if " - http" in line:
+                    parts = line.split(" - ", 1)
+                    title = parts[0].strip()
+                    url = parts[1].strip()
+                    md_content.append(f"- [{title}]({url})")
                 else:
-                    md_content.append(f"- {book}")
-    
-    # 添加读者评论（如果有）
-    if book_data.get('读者评论'):
+                    md_content.append(f"- {line}")
+        
         md_content.append("")
+    
+    # 读者评论
+    reviews = book_data.get('读者评论') or book_data.get('reviews', [])
+    if reviews:
         md_content.append("## 读者评论")
         md_content.append("")
         
-        reviews = book_data.get('读者评论')
         if isinstance(reviews, list):
-            for i, review in enumerate(reviews):
+            for i, review in enumerate(reviews, 1):
+                md_content.append(f"### 评论 {i}")
+                md_content.append("")
+                
                 if isinstance(review, dict):
-                    md_content.append(f"### 评论 {i+1}")
-                    md_content.append("")
+                    # 评论者
+                    reviewer_name = review.get('reviewer_name', '')
+                    if reviewer_name:
+                        md_content.append(f"- **评论者**: {reviewer_name}")
                     
-                    if 'reviewer_name' in review:
-                        md_content.append(f"- **评论者**: {review['reviewer_name']}")
+                    # 评分
+                    rating = review.get('rating', '')
+                    if rating:
+                        md_content.append(f"- **评分**: {rating}")
                     
-                    if 'rating' in review:
-                        md_content.append(f"- **评分**: {review['rating']}")
+                    # 标题
+                    title = review.get('title', '')
+                    if title:
+                        md_content.append(f"- **标题**: {title}")
                     
-                    if 'title' in review:
-                        md_content.append(f"- **标题**: {review['title']}")
+                    # 日期
+                    date = review.get('date', '')
+                    if date:
+                        md_content.append(f"- **日期**: {date}")
                     
-                    if 'date' in review:
-                        md_content.append(f"- **日期**: {review['date']}")
+                    # 内容
+                    content = review.get('content', '')
+                    if content:
+                        md_content.append(f"- **内容**: {content}")
                     
-                    if 'content' in review:
-                        md_content.append(f"- **内容**: {review['content']}")
-                    
-                    if 'helpful_votes' in review:
-                        md_content.append(f"- **有用票数**: {review['helpful_votes']}")
+                    # 有用票数
+                    helpful_votes = review.get('helpful_votes', '')
+                    if helpful_votes:
+                        md_content.append(f"- **有用票数**: {helpful_votes}")
                     
                     md_content.append("")
                 else:
-                    md_content.append(f"- {review}")
+                    md_content.append(f"{review}")
                     md_content.append("")
         elif isinstance(reviews, str):
-            # 如果是单个字符串，直接添加
             md_content.append(reviews)
+            md_content.append("")
     
     return "\n".join(md_content)
 

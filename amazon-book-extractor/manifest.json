@@ -14,7 +14,8 @@
       "32": "images/icons8-books-3d-fluency-32.png",
       "96": "images/icons8-books-3d-fluency-96.png"
     },
-    "default_title": "Amazon Book Info Extractor"
+    "default_title": "Amazon Book Info Extractor",
+    "default_popup": "popup.html"
   },
   "options_ui": {
     "page": "settings.html",

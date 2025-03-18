@@ -12,6 +12,7 @@ import argparse
 import traceback
 import requests
 from bs4 import BeautifulSoup
+import urllib.parse
 
 # 检查并安装必要的依赖
 try:
@@ -44,12 +45,55 @@ HEADERS = {
     'Sec-Fetch-User': '?1',
 }
 
+# Amazon domain mapping for supported regions
+AMAZON_DOMAINS = {
+    "com": "https://www.amazon.com", # US
+    "co.uk": "https://www.amazon.co.uk", # UK
+    "co.jp": "https://www.amazon.co.jp", # Japan
+}
+
+def detect_amazon_domain(url):
+    """
+    Detect Amazon domain from URL
+    Returns the base URL for the detected domain
+    """
+    parsed_url = urllib.parse.urlparse(url)
+    domain = parsed_url.netloc
+    
+    # Extract the domain part (e.g., 'amazon.com', 'amazon.co.uk', etc.)
+    amazon_domain = None
+    for supported_domain in AMAZON_DOMAINS.keys():
+        if f"amazon.{supported_domain}" in domain:
+            amazon_domain = supported_domain
+            break
+    
+    if amazon_domain:
+        return AMAZON_DOMAINS[amazon_domain]
+    
+    # Default to US Amazon if domain not recognized
+    print(f"Warning: Unrecognized Amazon domain in URL: {url}")
+    print(f"Defaulting to Amazon US (amazon.com)")
+    return AMAZON_DOMAINS["com"]
+
 def extract_book_info_from_html(html_content, base_url="https://www.amazon.com"):
     """
     Extract book information from HTML content
     """
     # Parse the HTML content
     soup = BeautifulSoup(html_content, 'html.parser')
+    
+    # Detect language and region from base_url
+    region = "us"  # Default to US
+    language = "en"  # Default to English
+    
+    if "amazon.co.uk" in base_url:
+        region = "uk"
+        language = "en"
+    elif "amazon.co.jp" in base_url:
+        region = "jp"
+        language = "ja"
+    
+    print(f"Extracting book info for region: {region}, language: {language}")
     
     # First, extract all information in the original format
     original_book_info = {
@@ -68,7 +112,9 @@ def extract_book_info_from_html(html_content, base_url="https://www.amazon.com")
         "goodreads_rating_count": "",
         "reviews": [],
         "related_books": [],
-        "book_url": ""  # 添加书本页面URL字段
+        "book_url": "",  # 添加书本页面URL字段
+        "region": region,  # Store the detected region
+        "language": language  # Store the detected language
     }
     
     # Extract book title
@@ -79,22 +125,56 @@ def extract_book_info_from_html(html_content, base_url="https://www.amazon.com")
     else:
         print("Title not found")
     
-    # Extract author
-    author_element = soup.select_one('#bylineInfo .author .a-link-normal')
-    if author_element:
-        original_book_info["author"] = author_element.text.strip()
+    # Extract author - Add Japan-specific selectors
+    author_found = False
+    
+    # Region-specific author selectors
+    if region == "jp":
+        # Try Japan-specific selectors first
+        jp_author_selectors = [
+            '.author a',
+            '#bylineInfo .author-name',
+            '#bylineInfo a[data-asin]',
+            '#contributorLink',
+            '.a-profile-name',
+            '#byline a.contributorNameID'
+        ]
         
-        # Extract author URL
-        author_url = author_element.get('href')
-        if author_url:
-            if not author_url.startswith('http'):
-                author_url = base_url + author_url
-            original_book_info["author_url"] = author_url
-            print(f"Found author URL: {author_url}")
+        for selector in jp_author_selectors:
+            author_element = soup.select_one(selector)
+            if author_element and author_element.text.strip():
+                original_book_info["author"] = author_element.text.strip()
+                
+                # Extract author URL
+                author_url = author_element.get('href')
+                if author_url:
+                    if not author_url.startswith('http'):
+                        author_url = base_url + author_url
+                    original_book_info["author_url"] = author_url
+                
+                print(f"Found author (JP-specific): {original_book_info['author']}")
+                author_found = True
+                break
+    
+    # If author not found, try the standard approach
+    if not author_found:
+        author_element = soup.select_one('#bylineInfo .author .a-link-normal')
+        if author_element:
+            original_book_info["author"] = author_element.text.strip()
             
-        print(f"Found author: {original_book_info['author']}")
-    else:
-        # Try alternative selectors
+            # Extract author URL
+            author_url = author_element.get('href')
+            if author_url:
+                if not author_url.startswith('http'):
+                    author_url = base_url + author_url
+                original_book_info["author_url"] = author_url
+                print(f"Found author URL: {author_url}")
+                
+            print(f"Found author: {original_book_info['author']}")
+            author_found = True
+    
+    # If author still not found, try alternative selectors
+    if not author_found:
         alternative_selectors = [
             '#bylineInfo .contributorNameID',
             '.a-link-normal[href*="/e/"]',
@@ -119,20 +199,21 @@ def extract_book_info_from_html(html_content, base_url="https://www.amazon.com")
                             print(f"Found author URL from alternative selector: {author_url}")
                         
                         print(f"Found author from alternative selector: {original_book_info['author']}")
+                        author_found = True
                         break
-                if "author" in original_book_info:
+                if author_found:
                     break
-        
-        # If still not found, try to extract from filename
-        if "author" not in original_book_info:
-            filename = os.path.basename(sys.argv[1]) if len(sys.argv) > 1 else ""
-            author_match = re.search(r'_([^_]+)_\d+', filename)
-            if author_match:
-                original_book_info["author"] = author_match.group(1)
-                print(f"Found author from filename: {original_book_info['author']}")
-            else:
-                print("Author not found")
     
+    # If still not found, try to extract from filename
+    if not author_found:
+        filename = os.path.basename(sys.argv[1]) if len(sys.argv) > 1 else ""
+        author_match = re.search(r'_([^_]+)_\d+', filename)
+        if author_match:
+            original_book_info["author"] = author_match.group(1)
+            print(f"Found author from filename: {original_book_info['author']}")
+        else:
+            print("Author not found")
+
     # Extract book URL from canonical link or og:url meta tag
     canonical_link = soup.select_one('link[rel="canonical"]')
     if canonical_link and canonical_link.get('href'):
@@ -153,6 +234,92 @@ def extract_book_info_from_html(html_content, base_url="https://www.amazon.com")
             else:
                 print("Book URL not found")
     
+    # Extract ISBN information - add region-specific selectors for different Amazon sites
+    isbn_found = False
+    
+    # Try standard product details section first
+    product_details = soup.select('#detailBulletsWrapper_feature_div .a-unordered-list li .a-text-bold, #productDetailsTable .content li b, .detail-bullet-list span.a-text-bold')
+    for detail in product_details:
+        detail_text = detail.text.strip().lower()
+        if 'isbn' in detail_text or 'isbn-13' in detail_text or 'isbn-10' in detail_text:
+            # Get the text after the label
+            detail_value = detail.find_next_sibling(text=True)
+            if not detail_value:  # Try parent's text if sibling not found
+                detail_value = detail.parent.text
+            
+            if detail_value:
+                # Extract digits using regex
+                isbn_match = re.search(r'(\d[\d-]+\d)', detail_value)
+                if isbn_match:
+                    original_book_info["isbn"] = isbn_match.group(1).replace('-', '')
+                    print(f"Found ISBN: {original_book_info['isbn']}")
+                    isbn_found = True
+                    break
+    
+    # Region-specific ISBN extraction if not found yet
+    if not isbn_found:
+        if region == "jp":
+            # Japan-specific selectors for ISBN
+            jp_isbn_selectors = [
+                '#detail_bullets_id .content li:contains("ISBN")',
+                '.detail-bullet:contains("ISBN")',
+                '#productDetails tr:contains("ISBN")'
+            ]
+            
+            for selector in jp_isbn_selectors:
+                isbn_elements = soup.select(selector)
+                for element in isbn_elements:
+                    element_text = element.text.strip()
+                    isbn_match = re.search(r'(\d[\d-]+\d)', element_text)
+                    if isbn_match:
+                        original_book_info["isbn"] = isbn_match.group(1).replace('-', '')
+                        print(f"Found ISBN (JP-specific): {original_book_info['isbn']}")
+                        isbn_found = True
+                        break
+                if isbn_found:
+                    break
+    
+    # Extract publication date and publisher with region-specific handling
+    pub_date_found = False
+    publisher_found = False
+    
+    # Try to extract from standard product details
+    for detail in product_details:
+        detail_text = detail.text.strip().lower()
+        
+        # Check for publication date
+        if ('publication date' in detail_text or 'published' in detail_text or 
+            'release date' in detail_text or '出版日' in detail_text or 
+            'publisher' in detail_text or '出版社' in detail_text):
+            
+            # Get the text after the label
+            detail_value = detail.find_next_sibling(text=True)
+            if not detail_value:  # Try parent's text if sibling not found
+                detail_value = detail.parent.text
+            
+            if detail_value:
+                # Handle publication date
+                if ('publication date' in detail_text or 'published' in detail_text or 
+                    'release date' in detail_text or '出版日' in detail_text) and not pub_date_found:
+                    # Extract the date part
+                    date_match = re.search(r'(\d{1,2}\s+\w+\s+\d{4}|\w+\s+\d{1,2},\s+\d{4}|\d{4}/\d{1,2}/\d{1,2}|\d{4}年\d{1,2}月\d{1,2}日)', detail_value)
+                    if date_match:
+                        original_book_info["publication_date"] = date_match.group(1)
+                        print(f"Found publication date: {original_book_info['publication_date']}")
+                        pub_date_found = True
+                
+                # Handle publisher
+                if ('publisher' in detail_text or '出版社' in detail_text) and not publisher_found:
+                    # Try to extract publisher name
+                    publisher_text = detail_value.replace(detail.text, '').strip()
+                    if publisher_text:
+                        # Clean up the publisher text
+                        publisher_match = re.search(r'([^;:()]+)', publisher_text)
+                        if publisher_match:
+                            original_book_info["publisher"] = publisher_match.group(1).strip()
+                            print(f"Found publisher: {original_book_info['publisher']}")
+                            publisher_found = True
+
     # Extract cover image URL
     image_element = soup.select_one('#imgTagWrapperId img, #imgBlkFront, #ebooksImgBlkFront, #imageBlock img, #ebooks-img-canvas img')
     if image_element:
@@ -216,72 +383,6 @@ def extract_book_info_from_html(html_content, base_url="https://www.amazon.com")
         
         if "author_bio" not in original_book_info:
             print("Author bio not found")
-    
-    # Try to find publisher
-    publisher_elements = soup.select('#bylineInfo .a-link-normal[href*="field-author"]')
-    if publisher_elements:
-        publisher = publisher_elements[-1].get_text().strip()
-        original_book_info["publisher"] = publisher
-        print(f"Found publisher: {publisher}")
-    else:
-        # Try to find publisher from detail bullets
-        detail_bullets = soup.select('#detailBullets_feature_div .a-list-item')
-        for bullet in detail_bullets:
-            label = bullet.select_one('.a-text-bold')
-            value = bullet.select_one('span:nth-child(2)')
-            if label and value and 'Publisher' in label.get_text():
-                publisher_text = value.get_text().strip()
-                # Extract just the publisher name (before the date)
-                if '(' in publisher_text:
-                    publisher = publisher_text.split('(')[0].strip()
-                else:
-                    publisher = publisher_text
-                original_book_info["publisher"] = publisher
-                print(f"Found publisher from detail bullets: {publisher}")
-                break
-    
-    # Try to find publication date
-    date_elements = soup.select('#productDetailsTable .content li, #detailBullets_feature_div .a-list-item')
-    for element in date_elements:
-        text = element.get_text().strip()
-        if 'Publication date' in text or 'Publisher' in text:
-            date_match = re.search(r'(\w+\s+\d+,\s+\d{4}|\w+\s+\d{4}|\d{4})', text)
-            if date_match:
-                publication_date = date_match.group(1)
-                original_book_info["publication_date"] = publication_date
-                print(f"Found publication date: {publication_date}")
-                break
-    
-    # Try to find ISBN
-    isbn_elements = soup.select('#productDetailsTable .content li, #detailBullets_feature_div .a-list-item')
-    for element in isbn_elements:
-        text = element.get_text().strip()
-        if 'ISBN-13' in text:
-            isbn_match = re.search(r'(\d{3}-\d{10})', text)
-            if isbn_match:
-                isbn = isbn_match.group(1)
-                original_book_info["isbn"] = isbn
-                print(f"Found ISBN: {isbn}")
-                break
-        elif 'ISBN-10' in text and 'isbn' not in original_book_info:
-            isbn_match = re.search(r'(\d{10})', text)
-            if isbn_match:
-                isbn = isbn_match.group(1)
-                original_book_info["isbn"] = isbn
-                print(f"Found ISBN-10: {isbn}")
-                break
-    
-    # If ISBN not found, try to find from detail bullets
-    if 'isbn' not in original_book_info:
-        detail_bullets = soup.select('#detailBullets_feature_div .a-list-item')
-        for bullet in detail_bullets:
-            label = bullet.select_one('.a-text-bold')
-            value = bullet.select_one('span:nth-child(2)')
-            if label and value and ('ISBN-13' in label.get_text() or 'ISBN-10' in label.get_text()):
-                isbn = value.get_text().strip()
-                original_book_info["isbn"] = isbn
-                print(f"Found ISBN from detail bullets: {isbn}")
-                break
     
     # Try to find rating
     rating_element = soup.select_one('#acrPopover')
@@ -414,38 +515,22 @@ def extract_book_info_from_html(html_content, base_url="https://www.amazon.com")
     return original_book_info
 
 def convert_to_feishu_format(original_book_info):
-    """Convert the extracted book info to the format required by Feishu webhook."""
-    # 处理关联图书格式
-    # 飞书可能对复杂的格式支持有限，尝试几种不同的格式
-    
-    # 简化URL，移除查询参数
+    """
+    Convert the extracted book info to the format required by Feishu webhook.
+    """
+    # Handle related books
     related_books_simple = []
-    for book in original_book_info["related_books"]:
-        if "title" in book:
-            title = book['title']
-            url = ""
-            if "url" in book:
-                # 简化URL，只保留基本部分
-                full_url = book['url']
-                # 提取域名和路径部分，移除查询参数
-                url_parts = full_url.split('?')[0]
-                # 进一步简化，确保URL不超过一定长度
-                if len(url_parts) > 100:
-                    url_parts = url_parts[:100]
-                url = url_parts
-            
-            # 使用简单的格式
-            if url:
-                book_text = f"{title} - {url}"
-            else:
-                book_text = title
+    if original_book_info["related_books"]:
+        for book in original_book_info["related_books"]:
+            book_text = book["title"]
+            if book["author"]:
+                book_text += f" - {book['author']}"
             related_books_simple.append(book_text)
     
+    # Create the Feishu data structure
     feishu_data = {
-        "书名": original_book_info["title"],
-        "书本页面": original_book_info["book_url"],
+        "title": original_book_info["title"],
         "作者": original_book_info["author"],
-        "作者页面": original_book_info["author_url"],
         "作者简介": original_book_info["author_bio"],
         "内容简介": original_book_info["description"],
         "出版时间": original_book_info["publication_date"],
@@ -454,7 +539,9 @@ def convert_to_feishu_format(original_book_info):
         "封面": original_book_info["cover_image_url"],
         "关联图书": related_books_simple,  # 使用简单的文本列表
         "评分": "",
-        "读者评论": original_book_info["reviews"]
+        "读者评论": original_book_info["reviews"],
+        "地区": original_book_info["region"],  # Add region information
+        "语言": original_book_info["language"]  # Add language information
     }
     
     # Format ratings
@@ -464,7 +551,7 @@ def convert_to_feishu_format(original_book_info):
             rating_text += f" ({original_book_info['amazon_rating_count']})"
         feishu_data["评分"] = rating_text
     
-    # 打印关联图书信息，便于调试
+    # Print related books information for debugging
     print("\n关联图书信息:")
     for book in feishu_data["关联图书"]:
         print(book)
@@ -476,6 +563,10 @@ def extract_from_url(url):
     Extract book information from an Amazon product URL
     """
     try:
+        # Detect the Amazon domain
+        base_url = detect_amazon_domain(url)
+        print(f"Detected Amazon domain: {base_url}")
+        
         # Send a request to the URL with a delay to avoid being blocked
         print(f"Sending request to {url}...")
         time.sleep(random.uniform(1, 3))  # Add a random delay
@@ -492,7 +583,7 @@ def extract_from_url(url):
         print(f"Saved HTML content to amazon_page.html")
         
         # Extract book info from HTML content
-        return convert_to_feishu_format(extract_book_info_from_html(response.text, base_url=url))
+        return convert_to_feishu_format(extract_book_info_from_html(response.text, base_url=base_url))
     
     except Exception as e:
         print(f"Error extracting book info: {e}", file=sys.stderr)
@@ -513,49 +604,49 @@ def extract_from_file(file_path):
     try:
         print(f"Reading HTML file: {file_path}")
         
-        # 处理文件路径中的特殊字符问题
-        # 1. 移除可能的引号
+        # Handle file path special characters
+        # 1. Remove possible quotes
         clean_path = file_path.strip('"\'')
         
-        # 2. 检查文件是否存在，如果不存在，尝试使用glob查找匹配的文件
+        # 2. Check if file exists, if not, try to find file using glob
         if not os.path.exists(clean_path):
             print(f"File not found at path: {clean_path}")
             print("Trying to find file using pattern matching...")
             
-            # 获取目录和基本文件名
+            # Get directory and base file name
             dir_path = os.path.dirname(clean_path) or '.'
             base_name = os.path.basename(clean_path)
             
-            # 使用glob查找匹配的文件
+            # Use glob to find matching files
             import glob
             matching_files = glob.glob(os.path.join(dir_path, "*"))
             
-            # 查找最相似的文件名
+            # Find the most similar file name
             best_match = None
             best_similarity = 0
             
             for file in matching_files:
                 if os.path.isfile(file):
-                    # 使用简单的相似度匹配（可以替换为更复杂的算法）
+                    # Use simple similarity matching (can be replaced with a more complex algorithm)
                     file_base = os.path.basename(file)
-                    # 计算两个文件名中相同字符的百分比
+                    # Calculate the percentage of identical characters in the two file names
                     similarity = sum(c1 == c2 for c1, c2 in zip(file_base.lower(), base_name.lower())) / max(len(file_base), len(base_name))
                     
                     if similarity > best_similarity:
                         best_similarity = similarity
                         best_match = file
             
-            if best_match and best_similarity > 0.7:  # 设置一个相似度阈值
+            if best_match and best_similarity > 0.7:  # Set a similarity threshold
                 print(f"Found matching file: {best_match}")
                 clean_path = best_match
             else:
                 raise FileNotFoundError(f"Could not find a matching file for: {file_path}")
         
-        # 尝试从文件名中提取作者信息
+        # Try to extract author information from the file name
         author_from_filename = None
         filename = os.path.basename(clean_path)
         
-        # 使用正则表达式查找作者模式
+        # Use regular expression to find author pattern
         author_match = re.search(r'_\s*([A-Z][a-z]+),\s*([A-Z][a-z]+)_', filename)
         if author_match:
             last_name = author_match.group(1)
@@ -563,7 +654,7 @@ def extract_from_file(file_path):
             author_from_filename = f"{first_name} {last_name}"
             print(f"Extracted author from filename: {author_from_filename}")
         
-        # 读取HTML内容，尝试多种编码
+        # Read HTML content, try multiple encodings
         html_content = None
         encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
         
@@ -577,7 +668,7 @@ def extract_from_file(file_path):
                 continue
         
         if html_content is None:
-            # 如果所有编码都失败，使用二进制模式读取并尝试检测编码
+            # If all encodings fail, read in binary mode and try to detect encoding
             import chardet
             with open(clean_path, 'rb') as f:
                 raw_data = f.read()

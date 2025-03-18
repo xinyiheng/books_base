@@ -682,7 +682,7 @@ function initExtension() {
     id: 'extractBookInfo',
     title: '从这个页面提取图书信息',
     contexts: ['page'],
-    documentUrlPatterns: ['*://*.amazon.com/*', '*://*.amazon.cn/*']
+    documentUrlPatterns: ['*://*.amazon.com/*', '*://*.amazon.cn/*', '*://*.amazon.co.uk/*', '*://*.amazon.co.jp/*']
   });
   
   // 检查通知权限
@@ -921,7 +921,8 @@ chrome.action.onClicked.addListener(function(tab) {
   console.log('扩展图标被点击，当前标签页URL:', tab.url);
   
   // 检查是否在亚马逊图书页面
-  if (tab.url.includes('amazon.com') || tab.url.includes('amazon.cn')) {
+  if (tab.url.includes('amazon.com') || tab.url.includes('amazon.cn') || 
+      tab.url.includes('amazon.co.uk') || tab.url.includes('amazon.co.jp')) {
     console.log('当前页面是亚马逊网站');
     if (tab.url.includes('/dp/') || tab.url.includes('/gp/product/')) {
       console.log('当前页面是亚马逊产品页面，开始提取信息');

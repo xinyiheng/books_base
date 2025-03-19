@@ -70,15 +70,30 @@ h2 {
   cursor: pointer;
   font-size: 14px;
   margin: 15px 0;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .primary-btn:hover {
   background-color: #1a2530;
 }
 
+/* 按钮处理中状态 */
+.primary-btn.processing {
+  background-color: #607d8b;
+  cursor: wait;
+  position: relative;
+  transform: scale(0.98);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.primary-btn:disabled {
+  opacity: 0.7;
+}
+
 #status {
   margin: 10px 0;
   font-size: 14px;
+  min-height: 40px;
 }
 
 .error {
@@ -94,6 +109,10 @@ h2 {
 .success {
   color: #090;
   font-weight: bold;
+}
+
+.info {
+  color: #607d8b;
 }
 
 .hidden {
@@ -131,16 +150,15 @@ h2 {
 }
 
 .loading {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   border: 3px solid #f3f3f3;
   border-top: 3px solid #232f3e;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto;
   display: inline-block;
   vertical-align: middle;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 @keyframes spin {

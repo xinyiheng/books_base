@@ -114,6 +114,17 @@ def process_html():
         region = data.get('region', 'us')  # 获取区域信息，默认为us
         url = data.get('url', '')  # 获取原始URL
         
+        # 从URL中获取域名信息
+        domain = None
+        if url:
+            if "amazon.co.uk" in url:
+                domain = "amazon.co.uk"
+            elif "amazon.co.jp" in url:
+                domain = "amazon.co.jp"
+            elif "amazon.com" in url:
+                domain = "amazon.com"
+            logger.info(f"从URL检测到域名: {domain}")
+        
         # 确保文件名是安全的
         filename = os.path.basename(filename)
         if not filename.endswith('.html'):
@@ -141,7 +152,8 @@ def process_html():
             save_directory, 
             feishu_webhook,
             region=region,
-            url=url
+            url=url,
+            domain=domain
         )
         
         if success:
@@ -259,10 +271,33 @@ def process_html_file():
         
         # 处理HTML文件
         feishu_webhook = data.get('feishuWebhook') or config.get('feishu_webhook')
+        region = data.get('region', 'us')  # 获取区域信息，默认为us
+        url = data.get('url', '')  # 获取原始URL
+        
+        # 从URL或文件名检测域名
+        domain = None
+        if url:
+            if "amazon.co.uk" in url:
+                domain = "amazon.co.uk"
+            elif "amazon.co.jp" in url:
+                domain = "amazon.co.jp"
+            elif "amazon.com" in url:
+                domain = "amazon.com"
+            logger.info(f"从URL检测到域名: {domain}")
+        elif "co.uk" in html_file_path:
+            domain = "amazon.co.uk"
+            logger.info(f"从文件名检测到域名: {domain}")
+        elif "co.jp" in html_file_path:
+            domain = "amazon.co.jp"
+            logger.info(f"从文件名检测到域名: {domain}")
+        
         success = process_book(
             html_file_path, 
             save_directory, 
-            feishu_webhook
+            feishu_webhook,
+            region=region,
+            url=url,
+            domain=domain
         )
         
         if success:

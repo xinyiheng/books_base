@@ -38,3 +38,6 @@ local_extracted_info.json
 .venv
 venv/
 ENV/
+
+# 缓存目录
+cache/

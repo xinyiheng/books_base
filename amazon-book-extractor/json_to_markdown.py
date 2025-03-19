@@ -103,6 +103,10 @@ def convert_to_markdown(book_data):
     # 添加封面图片（如果有）- 直接使用图片链接，不添加前缀文字
     cover_url = book_data.get('封面') or book_data.get('cover_image_url') or book_data.get('cover_image') or book_data.get('imageUrl', '')
     if cover_url:
+        # 确保封面图片链接完整可访问
+        if cover_url and not cover_url.startswith(('http://', 'https://')):
+            if cover_url.startswith('//'):
+                cover_url = 'https:' + cover_url
         md_content.append(f"![]({cover_url})")
         md_content.append("")
     
@@ -113,7 +117,7 @@ def convert_to_markdown(book_data):
     md_content.append("| --- | --- |")
     
     # 书本页面 - 尝试所有可能的字段名
-    book_url = book_data.get('URL') or book_data.get('书本页面') or book_data.get('book_url', '') or book_data.get('url', '')
+    book_url = book_data.get('书本页面') or book_data.get('URL') or book_data.get('book_url', '') or book_data.get('url', '')
     if book_url:
         md_content.append(f"| 书本页面 | {book_url} |")
     
@@ -127,29 +131,19 @@ def convert_to_markdown(book_data):
     if author_url:
         md_content.append(f"| 作者页面 | {author_url} |")
     
-    # 作者简介 - 尝试所有可能的字段名
-    author_bio = book_data.get('作者简介') or book_data.get('author_bio', '')
-    if author_bio:
-        md_content.append(f"| 作者简介 | {author_bio} |")
-    
-    # 内容简介 - 尝试所有可能的字段名
-    book_description = book_data.get('内容简介') or book_data.get('description', '')
-    if book_description:
-        md_content.append(f"| 内容简介 | {book_description} |")
-    
-    # 出版时间 - 尝试所有可能的字段名
-    pub_date = book_data.get('出版时间') or book_data.get('publication_date', '')
-    if not pub_date:
-        pub_date = book_data.get('publicationDate', '') or book_data.get('publishDate', '')
-    if pub_date:
-        md_content.append(f"| 出版时间 | {pub_date} |")
-    
     # 出版社 - 尝试所有可能的字段名
     publisher = book_data.get('出版社') or book_data.get('publisher', '')
     if not publisher:
         publisher = book_data.get('publisherName', '') or book_data.get('publish', '')
     if publisher:
         md_content.append(f"| 出版社 | {publisher} |")
+        
+    # 出版时间 - 尝试所有可能的字段名
+    pub_date = book_data.get('出版时间') or book_data.get('publication_date', '')
+    if not pub_date:
+        pub_date = book_data.get('publicationDate', '') or book_data.get('publishDate', '')
+    if pub_date:
+        md_content.append(f"| 出版时间 | {pub_date} |")
     
     # ISBN - 尝试所有可能的字段名
     isbn = book_data.get('ISBN') or book_data.get('isbn', '')
@@ -163,20 +157,52 @@ def convert_to_markdown(book_data):
                     break
     if isbn:
         md_content.append(f"| ISBN | {isbn} |")
+        
+    # 作者简介 - 尝试所有可能的字段名
+    author_bio = book_data.get('作者简介') or book_data.get('author_bio', '')
+    if author_bio:
+        md_content.append(f"| 作者简介 | {author_bio} |")
+    
+    # 内容简介 - 尝试所有可能的字段名
+    book_description = book_data.get('内容简介') or book_data.get('description', '')
+    if book_description:
+        md_content.append(f"| 内容简介 | {book_description} |")
     
     # 评分 - 尝试所有可能的字段名
-    rating = book_data.get('评分') or book_data.get('rating', '') or book_data.get('amazon_rating', '')
-    if rating:
-        # 如果有amazon_rating_count，合并评分和评分数
-        rating_count = book_data.get('amazon_rating_count', '')
-        if rating_count:
-            rating = f"Amazon: {rating} ({rating_count})"
-        md_content.append(f"| 评分 | {rating} |")
+    rating_text = ""
+    
+    # 检查是否有Amazon评分信息
+    amazon_rating = book_data.get('评分') or book_data.get('rating', '') or book_data.get('amazon_rating', '')
+    amazon_count = book_data.get('amazon_rating_count', '')
+    
+    # 检查是否有Goodreads评分信息
+    goodreads_rating = book_data.get('goodreads_rating', '')
+    goodreads_count = book_data.get('goodreads_rating_count', '')
+    
+    # 合并评分信息
+    if amazon_rating:
+        rating_text = amazon_rating
+        if amazon_count:
+            rating_text += f" ({amazon_count})"
+            
+        # 如果有Goodreads评分，直接附加
+        if goodreads_rating:
+            rating_text += f", Goodreads: {goodreads_rating}"
+            if goodreads_count:
+                rating_text += f" ({goodreads_count})"
+    elif goodreads_rating:
+        # 只有Goodreads评分的情况
+        rating_text = f"Goodreads: {goodreads_rating}"
+        if goodreads_count:
+            rating_text += f" ({goodreads_count})"
+    
+    if rating_text:
+        md_content.append(f"| 评分 | {rating_text} |")
     
     md_content.append("")
     
     # 关联图书
-    related_books = book_data.get('关联图书') or book_data.get('related_books', [])
+    related_books = book_data.get('相关图书') or book_data.get('关联图书') or book_data.get('related_books', [])
     if related_books:
         md_content.append("## 关联图书")
         md_content.append("")
@@ -215,7 +241,7 @@ def convert_to_markdown(book_data):
         md_content.append("")
     
     # 读者评论
-    reviews = book_data.get('读者评论') or book_data.get('reviews', [])
+    reviews = book_data.get('评论') or book_data.get('读者评论') or book_data.get('reviews', [])
     if reviews:
         md_content.append("## 读者评论")
         md_content.append("")
@@ -250,21 +276,20 @@ def convert_to_markdown(book_data):
                     content = review.get('content', '')
                     if content:
                         md_content.append(f"- **内容**: {content}")
-                    
-                    # 有用票数
-                    helpful_votes = review.get('helpful_votes', '')
-                    if helpful_votes:
-                        md_content.append(f"- **有用票数**: {helpful_votes}")
-                    
-                    md_content.append("")
-                else:
-                    md_content.append(f"{review}")
-                    md_content.append("")
+                elif isinstance(review, str):
+                    md_content.append(review)
+                
+                md_content.append("")
         elif isinstance(reviews, str):
-            md_content.append(reviews)
-            md_content.append("")
+            # 按段落分割评论
+            paragraphs = reviews.split('\n\n')
+            for paragraph in paragraphs:
+                if paragraph.strip():
+                    md_content.append(paragraph.strip())
+                    md_content.append("")
     
-    return "\n".join(md_content)
+    # 返回Markdown内容
+    return '\n'.join(md_content)
 
 def process_multiple_files(input_pattern, output_dir=None):
     """

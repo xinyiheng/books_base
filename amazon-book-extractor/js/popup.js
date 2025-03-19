@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const extractBtn = document.getElementById('extractBtn');
   const settingsBtn = document.getElementById('settingsBtn');
   const statusDiv = document.getElementById('status');
-  const resultsDiv = document.getElementById('results');
   const directoryPathSpan = document.getElementById('directoryPath');
   
   // 加载保存目录和本地服务状态
@@ -101,13 +100,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // 提取图书信息
   function extractBookInfo() {
     showStatus('正在提取图书信息...', 'info');
+    
+    // 显示按钮点击反馈
     extractBtn.disabled = true;
+    extractBtn.classList.add('processing');
+    extractBtn.textContent = '提取中...';
     
     // 获取保存目录
     chrome.storage.local.get(['saveDirectory', 'localService'], function(result) {
       if (!result.saveDirectory) {
         showStatus('请先在设置中设置保存目录', 'error');
-        extractBtn.disabled = false;
+        resetExtractButton();
         return;
       }
       
@@ -119,13 +122,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!activeTab.url.includes('amazon.com') && !activeTab.url.includes('amazon.cn') && 
             !activeTab.url.includes('amazon.co.uk') && !activeTab.url.includes('amazon.co.jp')) {
           showStatus('请在亚马逊图书页面使用此插件', 'error');
-          extractBtn.disabled = false;
+          resetExtractButton();
           return;
         }
         
         if (!activeTab.url.includes('/dp/') && !activeTab.url.includes('/gp/product/')) {
           showStatus('请在亚马逊图书详情页面使用此插件', 'error');
-          extractBtn.disabled = false;
+          resetExtractButton();
           return;
         }
         
@@ -144,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (chrome.runtime.lastError) {
             console.error('注入内容脚本失败:', chrome.runtime.lastError.message);
             showStatus('注入内容脚本失败: ' + chrome.runtime.lastError.message, 'error');
-            extractBtn.disabled = false;
+            resetExtractButton();
             return;
           }
           
@@ -158,13 +161,13 @@ document.addEventListener('DOMContentLoaded', function() {
               if (chrome.runtime.lastError) {
                 console.error('提取失败:', chrome.runtime.lastError.message);
                 showStatus('提取失败: ' + chrome.runtime.lastError.message, 'error');
-                extractBtn.disabled = false;
+                resetExtractButton();
                 return;
               }
               
               if (!response || !response.bookInfo) {
                 showStatus('无法从页面提取图书信息', 'error');
-                extractBtn.disabled = false;
+                resetExtractButton();
                 return;
               }
               
@@ -182,9 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
               const fileName = bookTitle 
                 ? `amazon_book_${asin}_${bookTitle}_${timestamp}`
                 : `amazon_book_${asin}_${timestamp}`;
-              
-              // 显示提取的信息
-              displayBookInfo(response.bookInfo);
               
               // 存储图书信息，以便在其他地方使用
               chrome.runtime.sendMessage({
@@ -206,12 +206,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('处理HTML响应:', response);
                 
                 if (response && response.success) {
-                  showStatus(response.message || '处理成功！', 'success');
+                  showStatus(response.message || '提取成功！', 'success');
+                  
+                  // 成功后延迟关闭popup（给用户时间看到成功消息）
+                  setTimeout(function() {
+                    window.close();
+                  }, 1500);
                 } else {
                   showStatus(response && response.message ? response.message : '处理失败，请检查本地服务', 'error');
+                  resetExtractButton();
                 }
-                
-                extractBtn.disabled = false;
               });
             }
           );
@@ -220,63 +224,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 显示图书信息
-  function displayBookInfo(bookInfo) {
-    document.getElementById('bookTitle').textContent = bookInfo.title || '未知';
-    document.getElementById('author').textContent = bookInfo.author || '未知';
-    document.getElementById('publisher').textContent = bookInfo.publisher || '未知';
-    document.getElementById('pubDate').textContent = bookInfo.publicationDate || '未知';
-    document.getElementById('isbn').textContent = bookInfo.isbn || '未知';
-    
-    // 显示封面图片
-    const coverImageDiv = document.getElementById('coverImage');
-    if (bookInfo.coverImage) {
-      coverImageDiv.innerHTML = `<img src="${bookInfo.coverImage}" alt="封面图片">`;
-    } else {
-      coverImageDiv.textContent = '无封面图片';
-    }
-    
-    // 显示描述
-    const descriptionDiv = document.getElementById('description');
-    if (bookInfo.description) {
-      descriptionDiv.textContent = bookInfo.description;
-    } else {
-      descriptionDiv.textContent = '无描述';
-    }
-    
-    // 显示作者简介
-    const authorBioDiv = document.getElementById('authorBio');
-    if (bookInfo.authorBio) {
-      authorBioDiv.textContent = bookInfo.authorBio;
-    } else {
-      authorBioDiv.textContent = '无作者简介';
-    }
-    
-    // 显示相关图书
-    const relatedBooksDiv = document.getElementById('relatedBooks');
-    if (bookInfo.relatedBooks && bookInfo.relatedBooks.length > 0) {
-      const relatedList = bookInfo.relatedBooks.map(book => book.title).join(', ');
-      relatedBooksDiv.textContent = relatedList;
-    } else {
-      relatedBooksDiv.textContent = '无相关图书';
-    }
-    
-    // 显示结果区域
-    resultsDiv.classList.remove('hidden');
+  // 重置提取按钮状态
+  function resetExtractButton() {
+    extractBtn.disabled = false;
+    extractBtn.classList.remove('processing');
+    extractBtn.textContent = '提取信息';
   }
   
   // 显示状态消息
   function showStatus(message, type) {
-    statusDiv.textContent = message;
-    statusDiv.className = 'status';
-    statusDiv.classList.add(type);
-    statusDiv.style.display = 'block';
-    
-    // 如果是成功消息，3秒后自动隐藏
-    if (type === 'success') {
-      setTimeout(() => {
-        statusDiv.style.display = 'none';
-      }, 3000);
-    }
+    statusDiv.innerHTML = type === 'info' && message.includes('正在')
+      ? `<p><span class="loading"></span> ${message}</p>`
+      : `<p class="${type}">${message}</p>`;
   }
 });

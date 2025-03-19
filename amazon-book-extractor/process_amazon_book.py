@@ -43,7 +43,7 @@ def ensure_directory_exists(directory):
             return False
     return True
 
-def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", url=None):
+def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", url=None, domain=None):
     """Process Amazon book HTML and generate output files."""
     # 确保输出目录存在
     os.makedirs(output_dir, exist_ok=True)
@@ -64,9 +64,31 @@ def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", ur
     with open(html_file, 'r', encoding='utf-8') as f:
         html_content = f.read()
     
-    # 提取数据
+    # 从域名判断区域，传递domain参数
+    if domain:
+        logger.info(f"Using domain from frontend: {domain}")
+    else:
+        # 尝试从URL或文件名判断区域
+        if url and "amazon.co.uk" in url:
+            domain = "amazon.co.uk"
+        elif url and "amazon.co.jp" in url:
+            domain = "amazon.co.jp"
+        elif "co.uk" in html_file:
+            domain = "amazon.co.uk"
+        elif "co.jp" in html_file:
+            domain = "amazon.co.jp"
+        
+        if domain:
+            logger.info(f"Detected domain from file/URL: {domain}")
+    
+    # 提取数据，传递domain参数
     logger.info("Extracting book data...")
-    book_data = extract_from_file(html_file, region)
+    book_data = extract_from_file(html_file, region=region, domain=domain)
+    
+    # 确保book_data不为None
+    if book_data is None:
+        logger.error("Failed to extract book data from file")
+        return False
     
     if url and url.strip():
         # 如果提供了原始URL，添加到数据中
@@ -159,6 +181,7 @@ def main():
     parser.add_argument("--feishu-webhook", help="飞书Webhook URL")
     parser.add_argument("--region", default="us", help="亚马逊区域代码 (us, uk, jp)")
     parser.add_argument("--url", help="原始URL")
+    parser.add_argument("--domain", help="亚马逊域名 (amazon.com, amazon.co.uk, amazon.co.jp)")
     
     args = parser.parse_args()
     
@@ -167,7 +190,8 @@ def main():
         args.output_dir, 
         args.feishu_webhook,
         region=args.region,
-        url=args.url
+        url=args.url,
+        domain=args.domain
     )
     
     if success:

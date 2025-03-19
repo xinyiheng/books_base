@@ -97,51 +97,111 @@ def send_to_feishu(data, webhook_url):
             "内容简介": data.get('内容简介', data.get('description', '')),
             "出版时间": data.get('出版时间', data.get('publication_date', '')),
             "出版社": data.get('出版社', data.get('publisher', '')),
-            "ISBN": data.get('ISBN', data.get('isbn', '')),
-            "封面": data.get('封面', data.get('cover_image', data.get('imageUrl', ''))),
+            "ISBN": data.get('ISBN', data.get('isbn', data.get('isbn10', data.get('isbn13', '')))),
+            "封面": data.get('封面', data.get('cover_image_url', data.get('cover_image', data.get('imageUrl', '')))),
             "评分": data.get('评分', '')
         }
         
-        # 处理关联图书，确保它是字符串
-        related_books = data.get('关联图书', [])
-        if isinstance(related_books, list):
-            # 将列表转换为字符串
-            related_books_text = []
-            for book in related_books:
-                if isinstance(book, dict) and 'title' in book and 'url' in book:
-                    related_books_text.append(f"{book['title']} - {book['url']}")
-                elif isinstance(book, str):
-                    related_books_text.append(book)
+        # 如果评分字段为空，尝试从其他评分字段构建
+        if not feishu_data["评分"]:
+            amazon_rating = data.get('amazon_rating', '')
+            amazon_rating_count = data.get('amazon_rating_count', '')
+            goodreads_rating = data.get('goodreads_rating', '')
+            goodreads_rating_count = data.get('goodreads_rating_count', '')
             
-            feishu_data['关联图书'] = "\n".join(related_books_text)
-        else:
-            feishu_data['关联图书'] = str(related_books)
-        
-        # 处理读者评论，确保它是字符串
-        reviews = data.get('读者评论', [])
-        if isinstance(reviews, list):
-            reviews_text = []
-            for review in reviews:
-                if isinstance(review, dict):
-                    reviewer = review.get('reviewer_name', '匿名')
-                    rating = review.get('rating', '')
-                    title = review.get('title', '')
-                    content = review.get('content', '')
-                    date = review.get('date', '')
-                    
-                    review_text = f"{reviewer} ({rating}星): {title}\n{content}\n{date}"
-                    reviews_text.append(review_text)
+            ratings = []
+            if amazon_rating:
+                if amazon_rating_count:
+                    ratings.append(f"Amazon: {amazon_rating} ({amazon_rating_count})")
                 else:
-                    reviews_text.append(str(review))
+                    ratings.append(f"Amazon: {amazon_rating}")
             
-            feishu_data['读者评论'] = "\n\n".join(reviews_text)
+            if goodreads_rating:
+                if goodreads_rating_count:
+                    ratings.append(f"Goodreads: {goodreads_rating} ({goodreads_rating_count})")
+                else:
+                    ratings.append(f"Goodreads: {goodreads_rating}")
+            
+            feishu_data["评分"] = " | ".join(ratings) if ratings else ""
+        
+        # 处理关联图书/相关图书，统一字段名称并确保它是字符串格式
+        # 尝试各种可能的字段名
+        related_books = None
+        for field in ['关联图书', '相关图书', 'related_books']:
+            if field in data and data[field]:
+                related_books = data[field]
+                break
+        
+        if related_books is not None:
+            # 将关联图书转换为字符串格式
+            if isinstance(related_books, list):
+                related_books_text = []
+                for book in related_books:
+                    if isinstance(book, dict):
+                        if 'title' in book and 'url' in book:
+                            related_books_text.append(f"{book['title']} - {book['url']}")
+                        elif 'title' in book:
+                            related_books_text.append(book['title'])
+                    elif isinstance(book, str):
+                        related_books_text.append(book)
+                
+                feishu_data['关联图书'] = "\n".join(related_books_text)
+            else:
+                # 如果已经是字符串，直接使用
+                feishu_data['关联图书'] = str(related_books)
         else:
-            feishu_data['读者评论'] = str(reviews)
+            feishu_data['关联图书'] = ""
+        
+        # 处理读者评论，统一字段名称并确保它是字符串格式
+        # 尝试各种可能的字段名
+        reviews = None
+        for field in ['读者评论', '评论', 'reviews']:
+            if field in data and data[field]:
+                reviews = data[field]
+                break
+        
+        if reviews is not None:
+            # 将读者评论转换为字符串格式
+            if isinstance(reviews, list):
+                reviews_text = []
+                for review in reviews:
+                    if isinstance(review, dict):
+                        reviewer = review.get('reviewer_name', review.get('reviewer', '匿名'))
+                        rating = review.get('rating', '')
+                        title = review.get('title', '')
+                        content = review.get('content', '')
+                        date = review.get('date', '')
+                        
+                        rating_str = f"({rating}星)" if rating else ""
+                        review_text = f"{reviewer} {rating_str}: {title}\n{content}"
+                        if date:
+                            review_text += f"\n{date}"
+                        
+                        reviews_text.append(review_text)
+                    elif isinstance(review, str):
+                        reviews_text.append(review)
+                
+                feishu_data['读者评论'] = "\n\n".join(reviews_text)
+            else:
+                # 如果已经是字符串，直接使用
+                feishu_data['读者评论'] = str(reviews)
+        else:
+            feishu_data['读者评论'] = ""
+        
+        # 确保所有值都是字符串类型
+        for key in feishu_data:
+            if not isinstance(feishu_data[key], str):
+                feishu_data[key] = str(feishu_data[key])
+        
+        # 打印发送的数据内容，方便调试
+        print("\n正在发送数据到飞书webhook:")
+        print(f"Webhook URL: {webhook_url}")
+        print("数据内容预览:")
+        for key, value in feishu_data.items():
+            preview = value[:100] + "..." if len(value) > 100 else value
+            print(f"  {key}: {preview}")
         
         # 发送数据到飞书webhook
-        print(f"\n正在发送数据到飞书webhook: {webhook_url}")
-        print(f"数据内容: {json.dumps(feishu_data, ensure_ascii=False, indent=2)}")
-        
         headers = {'Content-Type': 'application/json'}
         response = requests.post(webhook_url, json=feishu_data, headers=headers, timeout=10)
         

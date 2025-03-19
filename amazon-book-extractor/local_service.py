@@ -6,6 +6,11 @@ Amazon Book Extractor - 本地服务
 
 import os
 import sys
+
+# 禁用Python字节码缓存，防止生成__pycache__目录
+sys.dont_write_bytecode = True
+os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
+
 import json
 import logging
 import tempfile

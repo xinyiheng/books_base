@@ -1,43 +1,18 @@
-# Python
+# 忽略所有 Python 缓存文件
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
 *.so
 .Python
+
+# 忽略虚拟环境
 env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Logs
-*.log
-local_service.log
-amazon_book_processor.log
-
-# Mac
-.DS_Store
-
-# 数据文件
-amazonbooks/html/
-amazonbooks/json/
-local_extracted_info.json
-
-# 环境
-.env
-.venv
 venv/
 ENV/
 
-# 缓存目录
+# 忽略日志文件
+*.log
+
+# 忽略缓存目录
 cache/

@@ -10,6 +10,7 @@ import json
 import argparse
 import logging
 from datetime import datetime
+import re
 
 # 设置日志
 logging.basicConfig(
@@ -93,6 +94,7 @@ def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", ur
     if url and url.strip():
         # 如果提供了原始URL，添加到数据中
         book_data['url'] = url.strip()
+        book_data['书本页面'] = url.strip()
     
     # 将数据保存为JSON
     json_file = os.path.join(json_dir, f"{book_identifier}.json")
@@ -104,22 +106,66 @@ def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", ur
     # 将JSON转换为Markdown
     markdown_content = convert_to_markdown(book_data)
     
-    # 为Markdown文件生成干净的文件名（只保留书名）
-    title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
-    if title:
-        # 清理书名用于文件名，移除不允许的字符
-        clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
-        clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
-        clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
+    # 为Markdown文件生成文件名
+    # 对于日本站点，使用产品ID而不是书名作为文件名
+    is_jp_domain = domain == "amazon.co.jp" if domain else "co.jp" in html_file or (url and "amazon.co.jp" in url)
+    
+    if is_jp_domain:
+        # 尝试从URL或文件名提取产品ID
+        product_id = None
+        if url:
+            # 从URL中提取产品ID (例如: https://www.amazon.co.jp/dp/4799323628)
+            url_match = re.search(r'amazon\.co\.jp/(?:dp|gp/product)/([A-Z0-9]+)', url)
+            if url_match:
+                product_id = url_match.group(1)
         
-        # 限制文件名长度
-        if len(clean_title) > 100:
-            clean_title = clean_title[:100]
+        if not product_id and html_file:
+            # 从HTML文件名中提取产品ID
+            file_match = re.search(r'([A-Z0-9]{10})', os.path.basename(html_file))
+            if file_match:
+                product_id = file_match.group(1)
         
-        markdown_file = os.path.join(markdown_dir, f"{clean_title}.md")
+        # 如果找不到产品ID，尝试使用ISBN
+        if not product_id:
+            product_id = book_data.get('ISBN', book_data.get('isbn', ''))
+        
+        if product_id:
+            markdown_file = os.path.join(markdown_dir, f"{product_id}.md")
+            logger.info(f"Using product ID as filename for Japanese book: {product_id}")
+        else:
+            # 如果找不到产品ID，回退到使用标题
+            title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
+            if title:
+                # 清理书名用于文件名
+                clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
+                clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
+                clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
+                
+                # 限制文件名长度
+                if len(clean_title) > 100:
+                    clean_title = clean_title[:100]
+                
+                markdown_file = os.path.join(markdown_dir, f"{clean_title}.md")
+            else:
+                # 如果找不到标题，则使用原始文件名
+                markdown_file = os.path.join(markdown_dir, f"{book_identifier}.md")
     else:
-        # 如果找不到标题，则使用原始文件名
-        markdown_file = os.path.join(markdown_dir, f"{book_identifier}.md")
+        # 非日本站点，使用书名作为文件名
+        title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
+        if title:
+            # 清理书名用于文件名
+            clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
+            clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
+            clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
+            
+            # 限制文件名长度
+            if len(clean_title) > 100:
+                clean_title = clean_title[:100]
+            
+            markdown_file = os.path.join(markdown_dir, f"{clean_title}.md")
+        else:
+            # 如果找不到标题，则使用原始文件名
+            markdown_file = os.path.join(markdown_dir, f"{book_identifier}.md")
     
     logger.info(f"Saving Markdown to: {markdown_file}")
     
@@ -151,6 +197,7 @@ def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", ur
             logger.debug(f"Feishu data: {json.dumps(feishu_data, ensure_ascii=False, indent=2)}")
             
             logger.info("Sending data to Feishu...")
+            # 直接使用import的send_to_feishu函数
             success = send_to_feishu(feishu_data, feishu_webhook_url)
             
             if success:

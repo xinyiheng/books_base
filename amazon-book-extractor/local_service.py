@@ -288,29 +288,62 @@ def create_directories():
         if not config['save_directory']:
             return jsonify({"error": "未设置保存目录"}), 400
         
+        # 是否为iCloud路径
+        is_icloud = "Mobile Documents" in config['save_directory'] or "com~apple~CloudDocs" in config['save_directory']
+        if is_icloud:
+            logger.info(f"创建目录时检测到iCloud路径: {config['save_directory']}")
+        
         # 创建目录
         html_dir = os.path.join(config['save_directory'], "html")
         json_dir = os.path.join(config['save_directory'], "json")
         markdown_dir = os.path.join(config['save_directory'], "markdown")
         
+        created_dirs = []
+        failed_dirs = []
+        
         for directory in [config['save_directory'], html_dir, json_dir, markdown_dir]:
             if not os.path.exists(directory):
-                os.makedirs(directory)
-                logger.info(f"创建目录: {directory}")
+                try:
+                    os.makedirs(directory, exist_ok=True)
+                    logger.info(f"创建目录: {directory}")
+                    created_dirs.append(directory)
+                    
+                    # 为iCloud路径验证写入权限
+                    if is_icloud:
+                        try:
+                            test_file = os.path.join(directory, ".test_write_permission")
+                            with open(test_file, 'w') as f:
+                                f.write("test")
+                            os.remove(test_file)
+                            logger.info(f"已验证目录权限: {directory}")
+                        except Exception as e:
+                            logger.error(f"目录权限验证失败: {directory}: {str(e)}")
+                            failed_dirs.append(f"{directory} (权限错误: {str(e)})")
+                except Exception as e:
+                    logger.error(f"创建目录失败: {directory}: {str(e)}")
+                    failed_dirs.append(f"{directory} (创建失败: {str(e)})")
         
-        return jsonify({
-            "success": True,
-            "message": "目录已创建",
+        response = {
+            "success": len(failed_dirs) == 0,
+            "message": "目录已创建" if len(failed_dirs) == 0 else f"部分目录创建失败: {', '.join(failed_dirs)}",
             "directories": {
                 "root": config['save_directory'],
                 "html": html_dir,
                 "json": json_dir,
                 "markdown": markdown_dir
-            }
-        })
+            },
+            "created": created_dirs
+        }
+        
+        if len(failed_dirs) > 0:
+            response["failed"] = failed_dirs
+            
+        return jsonify(response)
     
     except Exception as e:
         logger.error(f"创建目录时发生错误: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
         return jsonify({"error": str(e)}), 500
 
 @app.route('/sync-data', methods=['POST'])
@@ -629,6 +662,36 @@ def main():
         
     if args.no_browser:
         config["auto_open_browser"] = False
+    
+    # 特殊处理iCloud路径
+    if config["save_directory"]:
+        # 对于包含空格和特殊字符的路径，特别是iCloud路径
+        if "Mobile Documents" in config["save_directory"] or "com~apple~CloudDocs" in config["save_directory"]:
+            logger.info(f"检测到iCloud路径: {config['save_directory']}")
+            # 1. 确保路径格式正确
+            config["save_directory"] = config["save_directory"].replace("\\", "/")
+            
+            # 2. 验证路径是否存在，如果不存在则尝试创建
+            if not os.path.exists(config["save_directory"]):
+                try:
+                    os.makedirs(config["save_directory"], exist_ok=True)
+                    logger.info(f"已创建iCloud目录: {config['save_directory']}")
+                except Exception as e:
+                    logger.error(f"创建iCloud目录失败: {str(e)}")
+                    print(f"错误: 无法创建iCloud目录 {config['save_directory']}: {str(e)}")
+                    # 不立即退出，继续尝试
+            
+            # 3. 验证目录权限
+            try:
+                test_file = os.path.join(config["save_directory"], ".test_write_permission")
+                with open(test_file, 'w') as f:
+                    f.write("test")
+                os.remove(test_file)
+                logger.info(f"已验证iCloud目录权限: {config['save_directory']}")
+            except Exception as e:
+                logger.error(f"iCloud目录权限验证失败: {str(e)}")
+                print(f"警告: iCloud目录可能没有足够权限: {str(e)}")
+                # 不立即退出，继续尝试
     
     # 保存配置
     save_config()

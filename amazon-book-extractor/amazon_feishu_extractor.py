@@ -174,7 +174,7 @@ def convert_to_feishu_format(original_book_info):
     related_books = original_book_info.get('related_books', original_book_info.get('关联图书', []))
     if related_books:
         feishu_data["关联图书"] = related_books
-    else:
+            else:
         feishu_data["关联图书"] = []
     
     # 保留评论的原始数据结构，让feishu_webhook.py处理格式转换
@@ -182,7 +182,7 @@ def convert_to_feishu_format(original_book_info):
     reviews = original_book_info.get('reviews', original_book_info.get('读者评论', []))
     if reviews:
         feishu_data["读者评论"] = reviews
-    else:
+        else:
         feishu_data["读者评论"] = []
     
     # 添加亚马逊评分和Goodreads评分
@@ -195,13 +195,13 @@ def convert_to_feishu_format(original_book_info):
     if amazon_rating:
         if amazon_rating_count:
             ratings.append(f"Amazon: {amazon_rating} ({amazon_rating_count})")
-        else:
+    else:
             ratings.append(f"Amazon: {amazon_rating}")
     
     if goodreads_rating:
         if goodreads_rating_count:
             ratings.append(f"Goodreads: {goodreads_rating} ({goodreads_rating_count})")
-        else:
+    else:
             ratings.append(f"Goodreads: {goodreads_rating}")
     
     feishu_data["评分"] = " | ".join(ratings) if ratings else ""
@@ -213,8 +213,8 @@ def convert_to_feishu_format(original_book_info):
             if isbn_field in original_book_info and original_book_info[isbn_field]:
                 feishu_data['ISBN'] = original_book_info[isbn_field]
                 print(f"从字段 '{isbn_field}' 提取到ISBN: {feishu_data['ISBN']}")
-                break
-    
+                        break
+        
     # 检查转换后数据的完整性
     empty_fields = [key for key, value in feishu_data.items() 
                    if key not in ["关联图书", "读者评论"] and not value]
@@ -227,7 +227,7 @@ def convert_to_feishu_format(original_book_info):
     for key in feishu_data:
         if key in ["关联图书", "读者评论"]:
             print(f"{key}: 包含 {len(feishu_data[key])} 项")
-        else:
+                else:
             value_preview = str(feishu_data[key])[:50] + "..." if len(str(feishu_data[key])) > 50 else str(feishu_data[key])
             print(f"{key}: {value_preview}")
     
@@ -250,7 +250,7 @@ def extract_from_url(url, domain=None):
                 base_url = "https://www.amazon.com"
         else:
             # 如果没有提供domain，从URL检测
-            base_url = detect_amazon_domain(url)
+        base_url = detect_amazon_domain(url)
         
         print(f"使用base_url: {base_url}")
         
@@ -306,7 +306,7 @@ def extract_uk_book_info(html_content, file_name=None, base_url=None):
                     isbn13 = isbn13_match.group(1)
                     # Note: ISBN-10 is not just the last 10 digits of ISBN-13
                     # For now, we'll use the ISBN-13 value directly
-                    url_isbn_override = isbn13
+                        url_isbn_override = isbn13
     
     # Extract book title
     title_element = soup.select_one('#productTitle')
@@ -365,7 +365,7 @@ def extract_uk_book_info(html_content, file_name=None, base_url=None):
         # Validate ISBN-10 format (10 digits or 9 digits + X)
         if re.match(r'^[0-9]{9}[0-9X]$', isbn10_text):
             isbn10 = isbn10_text
-            book_info['ISBN'] = isbn10_element.text.strip()
+        book_info['ISBN'] = isbn10_element.text.strip()
     
     # Then try ISBN-13 if ISBN-10 was not found
     if not isbn10:
@@ -375,7 +375,7 @@ def extract_uk_book_info(html_content, file_name=None, base_url=None):
             # Validate ISBN-13 format (always 13 digits)
             if re.match(r'^[0-9]{13}$', isbn13_text):
                 isbn13 = isbn13_text
-                if 'ISBN' not in book_info:
+    if 'ISBN' not in book_info:
                     book_info['ISBN'] = isbn13_element.text.strip()
     
     # Try to find ISBN from alternative locations if not found above
@@ -386,7 +386,7 @@ def extract_uk_book_info(html_content, file_name=None, base_url=None):
             detail_text = detail.text.lower()
             if 'isbn-10' in detail_text:
                 isbn_match = re.search(r'isbn-10\s*:?\s*([0-9]{9}[0-9X])', detail_text, re.IGNORECASE)
-                if isbn_match:
+            if isbn_match:
                     isbn10 = isbn_match.group(1)
                     if 'ISBN' not in book_info:
                         book_info['ISBN'] = isbn10
@@ -468,7 +468,7 @@ def extract_uk_book_info(html_content, file_name=None, base_url=None):
                 if publisher_text:
                     book_info['出版社'] = publisher_text
                     print(f"Found publisher from {selector_type}: {book_info['出版社']}")
-                    publisher_found = True
+            publisher_found = True
                     break
     
     # Publication date extraction - keep existing code
@@ -483,7 +483,7 @@ def extract_uk_book_info(html_content, file_name=None, base_url=None):
     for selector, selector_type in pub_date_selectors:
         pub_date_element = soup.select_one(selector)
         if pub_date_element and pub_date_element.text.strip():
-            book_info['出版时间'] = pub_date_element.text.strip()
+        book_info['出版时间'] = pub_date_element.text.strip()
             print(f"Found publication date from {selector_type}: {book_info['出版时间']}")
             pub_date_found = True
             break
@@ -557,7 +557,7 @@ def extract_uk_book_info(html_content, file_name=None, base_url=None):
                     "url": url,
                     "image_url": image_element.get('src', '')
                 }
-                related_books.append(related_book)
+                                related_books.append(related_book)
                 print(f"Found related book: {related_book['title']}")
     
     # If no related books found, try alternative selectors
@@ -716,21 +716,21 @@ def extract_jp_book_info(html_content, file_name=None, base_url=None):
     
     # 如果没找到作者，使用传统选择器
     if not author_found:
-        author_element = soup.select_one('#bylineInfo .author a, #bylineInfo .contributorNameID')
-        if author_element:
-            book_info['作者'] = author_element.text.strip()
+    author_element = soup.select_one('#bylineInfo .author a, #bylineInfo .contributorNameID')
+    if author_element:
+        book_info['作者'] = author_element.text.strip()
             
-            author_href = author_element.get('href')
-            if author_href:
-                if author_href.startswith('http'):
+        author_href = author_element.get('href')
+        if author_href:
+            if author_href.startswith('http'):
                     # 确保链接使用正确的域名
                     if 'amazon.com' in author_href and not 'amazon.co.jp' in author_href:
                         author_href = author_href.replace('amazon.com', 'amazon.co.jp')
-                    book_info['作者页面'] = author_href
-                else:
-                    book_info['作者页面'] = "https://www.amazon.co.jp" + author_href
+                book_info['作者页面'] = author_href
             else:
-                book_info['作者页面'] = ""
+                book_info['作者页面'] = "https://www.amazon.co.jp" + author_href
+        else:
+            book_info['作者页面'] = ""
             
             print(f"Found author using traditional selector: {book_info['作者']}")
             author_found = True
@@ -839,7 +839,7 @@ def extract_jp_book_info(html_content, file_name=None, base_url=None):
     # 如果上面的选择器都没有找到，使用旧方法的后备选项
     if not publisher_found:
         publisher_element = soup.select_one('#rpi-attribute-book_details-publisher .rpi-attribute-value')
-        if publisher_element:
+    if publisher_element:
             # 清理日期信息
             publisher_text = publisher_element.text.strip()
             publisher_text = re.sub(r'(\d{1,2}\s+\w+\s+\d{4}|\w+\s+\d{1,2},?\s+\d{4}|\d{2}/\d{2}/\d{4})', '', publisher_text)
@@ -865,7 +865,7 @@ def extract_jp_book_info(html_content, file_name=None, base_url=None):
     for selector, selector_type in pub_date_selectors:
         pub_date_element = soup.select_one(selector)
         if pub_date_element and pub_date_element.text.strip():
-            book_info['出版时间'] = pub_date_element.text.strip()
+        book_info['出版时间'] = pub_date_element.text.strip()
             print(f"Found publication date from {selector_type}: {book_info['出版时间']}")
             pub_date_found = True
             break
@@ -933,7 +933,7 @@ def extract_jp_book_info(html_content, file_name=None, base_url=None):
             if len(related_books) >= max_related_books:
                 break
                 
-            book = {}
+                            book = {}
             
             # 提取书名从图片alt属性
             img = item.select_one('img')
@@ -947,17 +947,17 @@ def extract_jp_book_info(html_content, file_name=None, base_url=None):
                     book['title'] = title_element.text.strip()
             
             # 提取链接
-            link_element = item.select_one('a')
-            if link_element and link_element.get('href'):
-                href = link_element.get('href')
+                            link_element = item.select_one('a')
+                            if link_element and link_element.get('href'):
+                                href = link_element.get('href')
                 # 确保链接是完整的URL
-                if href.startswith('/'):
-                    book['url'] = f"https://www.amazon.co.jp{href}"
-                elif href.startswith('http'):
-                    book['url'] = href
-            
+                                    if href.startswith('/'):
+                                        book['url'] = f"https://www.amazon.co.jp{href}"
+                                    elif href.startswith('http'):
+                                        book['url'] = href
+                            
             # 只添加有标题和链接的书籍
-            if book.get('title') and book.get('url'):
+                            if book.get('title') and book.get('url'):
                 # 检查是否为重复书籍
                 is_duplicate = False
                 for existing_book in related_books:
@@ -966,8 +966,8 @@ def extract_jp_book_info(html_content, file_name=None, base_url=None):
                         break
                 
                 if not is_duplicate:
-                    related_books.append(book)
-        
+                                related_books.append(book)
+    
         if len(related_books) >= max_related_books:
             break
     
@@ -1606,10 +1606,10 @@ def extract_from_file(file_path, region=None, domain=None):
             # Try with a different encoding
             with open(file_path, 'r', encoding='latin-1') as f:
                 html_content = f.read()
-        except Exception as e:
+    except Exception as e:
             print(f"Error reading file {file_path}: {e}")
-            return None
-    
+        return None
+
     # Detect domain if not provided
     if not domain:
         url_match = re.search(r'https://www\.amazon\.(com|co\.uk|co\.jp)', html_content)
@@ -1673,8 +1673,8 @@ def main():
         book_info = extract_from_file(args.html_file, domain=args.domain)
     
     # Save to JSON file
-    with open(args.output, 'w', encoding='utf-8') as f:
-        json.dump(book_info, f, ensure_ascii=False, indent=2)
+        with open(args.output, 'w', encoding='utf-8') as f:
+            json.dump(book_info, f, ensure_ascii=False, indent=2)
     print(f"书籍信息已保存到 {args.output}")
     
     # 如果提供了webhook URL，提示用户如何使用feishu_webhook.py发送

@@ -7439,3 +7439,209 @@ TypeError: 'NoneType' object does not support item assignment
 2025-03-20 11:01:30,779 - AmazonBookProcessor - INFO - Sending data to Feishu...
 2025-03-20 11:01:30,969 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
 2025-03-20 11:01:30,970 - LocalService - INFO - 后台处理完成: amazon_book_4166614746_22世紀の資本主義 やがてお金は絶滅する (文春新書 1474)_2025-03-20T03-01-25-670Z.html
+2025-03-20 20:19:58,148 - LocalService - INFO - 已加载配置
+2025-03-20 20:19:58,148 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-20 20:19:58,148 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-20 20:19:58,149 - LocalService - INFO - 已保存配置
+2025-03-20 20:19:58,149 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-20 20:19:58,149 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-20 20:19:58,199 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-20 20:19:58,199 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-20 20:20:22,549 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:20:22] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:20:22,552 - LocalService - INFO - 已保存配置
+2025-03-20 20:20:22,552 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:20:22] "POST /config HTTP/1.1" 200 -
+2025-03-20 20:20:48,481 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:20:48] "POST /create_directories HTTP/1.1" 200 -
+2025-03-20 20:20:52,176 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:20:52] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:21:19,971 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:21:19] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:21:19,973 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:21:19] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:21:20,061 - LocalService - INFO - 收到处理HTML请求: amazon_book_B0DZP7NNF1_Careless People_ A story of where I used to work_2025-03-20T12-21-19-975Z
+2025-03-20 20:21:20,061 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-20 20:21:20,065 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_B0DZP7NNF1_Careless People_ A story of where I used to work_2025-03-20T12-21-19-975Z.html
+2025-03-20 20:21:20,065 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 20:21:20,065 - LocalService - INFO - 已启动后台处理线程: amazon_book_B0DZP7NNF1_Careless People_ A story of where I used to work_2025-03-20T12-21-19-975Z.html
+2025-03-20 20:21:20,066 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:21:20] "POST /process HTTP/1.1" 200 -
+2025-03-20 20:21:20,066 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_B0DZP7NNF1_Careless People_ A story of where I used to work_2025-03-20T12-21-19-975Z.html
+2025-03-20 20:21:20,068 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-20 20:21:20,068 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 20:21:20,687 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_B0DZP7NNF1_Careless People_ A story of where I used to work_2025-03-20T12-21-19-975Z.json
+2025-03-20 20:21:20,687 - AmazonBookProcessor - INFO - Using book title as filename: Careless People_ A story of where I used to work
+2025-03-20 20:21:20,687 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/Careless People_ A story of where I used to work.md
+2025-03-20 20:21:20,687 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 20:21:20,687 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 20:21:21,013 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 20:21:21,013 - LocalService - INFO - 后台处理完成: amazon_book_B0DZP7NNF1_Careless People_ A story of where I used to work_2025-03-20T12-21-19-975Z.html
+2025-03-20 20:21:37,300 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:21:37] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:21:37,304 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:21:37] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:21:37,838 - LocalService - INFO - 收到处理HTML请求: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-21-37-314Z
+2025-03-20 20:21:37,839 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-20 20:21:37,856 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-21-37-314Z.html
+2025-03-20 20:21:37,856 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 20:21:37,857 - LocalService - INFO - 已启动后台处理线程: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-21-37-314Z.html
+2025-03-20 20:21:37,862 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:21:37] "POST /process HTTP/1.1" 200 -
+2025-03-20 20:21:37,867 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-21-37-314Z.html
+2025-03-20 20:21:37,883 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-20 20:21:37,883 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 20:21:39,094 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-21-37-314Z.json
+2025-03-20 20:21:39,095 - AmazonBookProcessor - INFO - Using book title as filename: Careless People_ The explosive memoir that Meta doesn't want you to read
+2025-03-20 20:21:39,095 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/Careless People_ The explosive memoir that Meta doesn't want you to read.md
+2025-03-20 20:21:39,095 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 20:21:39,097 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 20:21:39,393 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 20:21:39,393 - LocalService - INFO - 后台处理完成: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-21-37-314Z.html
+2025-03-20 20:21:55,115 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:21:55] "POST /create_directories HTTP/1.1" 200 -
+2025-03-20 20:21:57,511 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:21:57] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:22:01,612 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:01] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:22:01,614 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:01] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:22:01,718 - LocalService - INFO - 收到处理HTML请求: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-01-648Z
+2025-03-20 20:22:01,718 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-20 20:22:01,722 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-01-648Z.html
+2025-03-20 20:22:01,722 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 20:22:01,723 - LocalService - INFO - 已启动后台处理线程: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-01-648Z.html
+2025-03-20 20:22:01,723 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:01] "POST /process HTTP/1.1" 200 -
+2025-03-20 20:22:01,724 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-01-648Z.html
+2025-03-20 20:22:01,726 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-20 20:22:01,726 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 20:22:01,936 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-01-648Z.json
+2025-03-20 20:22:01,937 - AmazonBookProcessor - INFO - Using book title as filename: Careless People_ The explosive memoir that Meta doesn't want you to read
+2025-03-20 20:22:01,937 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/Careless People_ The explosive memoir that Meta doesn't want you to read.md
+2025-03-20 20:22:01,938 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 20:22:01,938 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 20:22:02,303 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 20:22:02,304 - LocalService - INFO - 后台处理完成: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-01-648Z.html
+2025-03-20 20:22:11,715 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:11] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:22:11,734 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:11] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:22:11,801 - LocalService - INFO - 收到处理HTML请求: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-11-735Z
+2025-03-20 20:22:11,801 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-20 20:22:11,804 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-11-735Z.html
+2025-03-20 20:22:11,804 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 20:22:11,804 - LocalService - INFO - 已启动后台处理线程: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-11-735Z.html
+2025-03-20 20:22:11,805 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:11] "POST /process HTTP/1.1" 200 -
+2025-03-20 20:22:11,805 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-11-735Z.html
+2025-03-20 20:22:11,806 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-20 20:22:11,806 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 20:22:12,031 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-11-735Z.json
+2025-03-20 20:22:12,031 - AmazonBookProcessor - INFO - Using book title as filename: Careless People_ The explosive memoir that Meta doesn't want you to read
+2025-03-20 20:22:12,031 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/Careless People_ The explosive memoir that Meta doesn't want you to read.md
+2025-03-20 20:22:12,031 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 20:22:12,032 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 20:22:12,165 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 20:22:12,165 - LocalService - INFO - 后台处理完成: amazon_book_1035065924_Careless People_ The explosive memoir that Meta do_2025-03-20T12-22-11-735Z.html
+2025-03-20 20:22:26,814 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:26] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:22:26,817 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:26] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:22:26,944 - LocalService - INFO - 收到处理HTML请求: amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-22-26-835Z
+2025-03-20 20:22:26,945 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-20 20:22:26,951 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-22-26-835Z.html
+2025-03-20 20:22:26,952 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 20:22:26,953 - LocalService - INFO - 已启动后台处理线程: amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-22-26-835Z.html
+2025-03-20 20:22:26,955 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:22:26] "POST /process HTTP/1.1" 200 -
+2025-03-20 20:22:26,955 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-22-26-835Z.html
+2025-03-20 20:22:26,958 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-20 20:22:26,958 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 20:22:28,492 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-22-26-835Z.json
+2025-03-20 20:22:28,495 - AmazonBookProcessor - INFO - Using book title as filename: Ultra-Processed People_ The Definitive #1 Bestseller You Need to Understand Ultra-Processed Food
+2025-03-20 20:22:28,495 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/Ultra-Processed People_ The Definitive #1 Bestseller You Need to Understand Ultra-Processed Food.md
+2025-03-20 20:22:28,496 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 20:22:28,497 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 20:22:28,705 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 20:22:28,705 - LocalService - INFO - 后台处理完成: amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-22-26-835Z.html
+2025-03-20 20:23:21,392 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:23:21] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:23:21,396 - LocalService - INFO - 已保存配置
+2025-03-20 20:23:21,396 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:23:21] "POST /config HTTP/1.1" 200 -
+2025-03-20 20:23:46,679 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:23:46] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:23:49,479 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:23:49] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:23:49,488 - LocalService - INFO - 已保存配置
+2025-03-20 20:23:49,489 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:23:49] "POST /config HTTP/1.1" 200 -
+2025-03-20 20:23:53,200 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:23:53] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:23:53,203 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:23:53] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:23:53,320 - LocalService - INFO - 收到处理HTML请求: amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-23-53-207Z
+2025-03-20 20:23:53,321 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-20 20:23:53,326 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-23-53-207Z.html
+2025-03-20 20:23:53,326 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 20:23:53,326 - LocalService - INFO - 已启动后台处理线程: amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-23-53-207Z.html
+2025-03-20 20:23:53,330 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:23:53] "POST /process HTTP/1.1" 200 -
+2025-03-20 20:23:53,331 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-23-53-207Z.html
+2025-03-20 20:23:53,333 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-20 20:23:53,334 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 20:23:53,639 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-23-53-207Z.json
+2025-03-20 20:23:53,639 - AmazonBookProcessor - INFO - Using book title as filename: Ultra-Processed People_ The Definitive #1 Bestseller You Need to Understand Ultra-Processed Food
+2025-03-20 20:23:53,639 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/Ultra-Processed People_ The Definitive #1 Bestseller You Need to Understand Ultra-Processed Food.md
+2025-03-20 20:23:53,640 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 20:23:53,640 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 20:23:53,817 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 20:23:53,817 - LocalService - INFO - 后台处理完成: amazon_book_1529160227_Ultra-Processed People_ The Definitive #1 Bestsell_2025-03-20T12-23-53-207Z.html
+2025-03-20 20:24:23,243 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:24:23] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:24:23,253 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:24:23] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:24:23,343 - LocalService - INFO - 收到处理HTML请求: amazon_book_4166614789_世界秩序が変わるとき 新自由主義からのゲームチェンジ (文春新書 1478)_2025-03-20T12-24-23-255Z
+2025-03-20 20:24:23,343 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 20:24:23,349 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_book_4166614789_世界秩序が変わるとき 新自由主義からのゲームチェンジ (文春新書 1478)_2025-03-20T12-24-23-255Z.html
+2025-03-20 20:24:23,349 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 20:24:23,349 - LocalService - INFO - 已启动后台处理线程: amazon_book_4166614789_世界秩序が変わるとき 新自由主義からのゲームチェンジ (文春新書 1478)_2025-03-20T12-24-23-255Z.html
+2025-03-20 20:24:23,350 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:24:23] "POST /process HTTP/1.1" 200 -
+2025-03-20 20:24:23,351 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_book_4166614789_世界秩序が変わるとき 新自由主義からのゲームチェンジ (文春新書 1478)_2025-03-20T12-24-23-255Z.html
+2025-03-20 20:24:23,356 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 20:24:23,356 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 20:24:26,135 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_book_4166614789_世界秩序が変わるとき 新自由主義からのゲームチェンジ (文春新書 1478)_2025-03-20T12-24-23-255Z.json
+2025-03-20 20:24:26,136 - AmazonBookProcessor - INFO - Using book title as filename: 世界秩序が変わるとき 新自由主義からのゲームチェンジ (文春新書 1478)
+2025-03-20 20:24:26,137 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/世界秩序が変わるとき 新自由主義からのゲームチェンジ (文春新書 1478).md
+2025-03-20 20:24:26,138 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 20:24:26,141 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 20:24:26,308 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 20:24:26,309 - LocalService - INFO - 后台处理完成: amazon_book_4166614789_世界秩序が変わるとき 新自由主義からのゲームチェンジ (文春新書 1478)_2025-03-20T12-24-23-255Z.html
+2025-03-20 20:25:00,268 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:25:00] "GET /status HTTP/1.1" 200 -
+2025-03-20 20:25:00,291 - LocalService - INFO - 已保存配置
+2025-03-20 20:25:00,292 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:25:00] "POST /config HTTP/1.1" 200 -
+2025-03-20 20:25:00,352 - LocalService - INFO - 收到处理HTML请求: amazon_book_0593798694_The Technological Republic_ Hard Power, Soft Belie_2025-03-20T12-25-00-245Z
+2025-03-20 20:25:00,352 - LocalService - INFO - 从URL检测到域名: amazon.com
+2025-03-20 20:25:00,356 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_book_0593798694_The Technological Republic_ Hard Power, Soft Belie_2025-03-20T12-25-00-245Z.html
+2025-03-20 20:25:00,356 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 20:25:00,357 - LocalService - INFO - 已启动后台处理线程: amazon_book_0593798694_The Technological Republic_ Hard Power, Soft Belie_2025-03-20T12-25-00-245Z.html
+2025-03-20 20:25:00,358 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 20:25:00] "POST /process HTTP/1.1" 200 -
+2025-03-20 20:25:00,359 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_book_0593798694_The Technological Republic_ Hard Power, Soft Belie_2025-03-20T12-25-00-245Z.html
+2025-03-20 20:25:00,361 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.com
+2025-03-20 20:25:00,361 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 20:25:04,356 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_book_0593798694_The Technological Republic_ Hard Power, Soft Belie_2025-03-20T12-25-00-245Z.json
+2025-03-20 20:25:04,358 - AmazonBookProcessor - INFO - Using book title as filename: The Technological Republic_ Hard Power, Soft Belief, and the Future of the West
+2025-03-20 20:25:04,358 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/The Technological Republic_ Hard Power, Soft Belief, and the Future of the West.md
+2025-03-20 20:25:04,359 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 20:25:04,360 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 20:25:04,687 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 20:25:04,689 - LocalService - INFO - 后台处理完成: amazon_book_0593798694_The Technological Republic_ Hard Power, Soft Belie_2025-03-20T12-25-00-245Z.html
+2025-03-20 22:19:09,837 - LocalService - INFO - 已加载配置
+2025-03-20 22:19:09,837 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-20 22:19:09,838 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-20 22:19:09,838 - LocalService - INFO - 已保存配置
+2025-03-20 22:19:09,840 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-20 22:19:09,840 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-20 22:19:09,872 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-20 22:19:09,872 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-20 22:19:42,078 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 22:19:42] "OPTIONS /save-jd-data HTTP/1.1" 200 -
+2025-03-20 22:19:42,082 - LocalService - INFO - 收到JD图书数据: 【无穷小亮推荐】世界上不可思议的果实种子图鉴（赠种子水晶吊坠） 蛇年礼物.json
+2025-03-20 22:19:42,083 - LocalService - INFO - 使用书名作为文件名: 无穷小亮推荐世界上不可思议的果实种子图鉴赠种子水晶吊坠 蛇年礼物_2025-03-20T22-19-42-083Z.json
+2025-03-20 22:19:42,084 - LocalService - INFO - 已保存JD图书数据: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/无穷小亮推荐世界上不可思议的果实种子图鉴赠种子水晶吊坠 蛇年礼物_2025-03-20T22-19-42-083Z.json
+2025-03-20 22:19:42,085 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 22:19:42] "POST /save-jd-data HTTP/1.1" 200 -
+2025-03-20 22:48:58,367 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 22:48:58] "OPTIONS /save-jd-data HTTP/1.1" 200 -
+2025-03-20 22:48:58,384 - LocalService - INFO - 收到JD图书数据: 你可以有情绪，但别往心里去【破解情绪内耗的疗愈指南】赠情绪记录卡.json
+2025-03-20 22:48:58,384 - LocalService - INFO - 使用书名作为文件名: 你可以有情绪但别往心里去破解情绪内耗的疗愈指南赠情绪记录卡_2025-03-20T22-48-58-384Z.json
+2025-03-20 22:48:58,385 - LocalService - INFO - 已保存JD图书数据: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/你可以有情绪但别往心里去破解情绪内耗的疗愈指南赠情绪记录卡_2025-03-20T22-48-58-384Z.json
+2025-03-20 22:48:58,386 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 22:48:58] "POST /save-jd-data HTTP/1.1" 200 -
+2025-03-20 23:06:19,002 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 23:06:19] "OPTIONS /save-jd-data HTTP/1.1" 200 -
+2025-03-20 23:06:19,009 - LocalService - INFO - 收到JD图书数据: 走出黑森林：自我转变的旅程（高人气心理学家陈海贤全新力作，给你一套走出低谷期，实现人生转变的系统手册！）.json
+2025-03-20 23:06:19,010 - LocalService - INFO - 使用书名作为文件名: 走出黑森林自我转变的旅程高人气心理学家陈海贤全新力作给你一套走出低谷期实现人生转变的系统手册_2025-03-20T23-06-19-010Z.json
+2025-03-20 23:06:19,012 - LocalService - INFO - 已保存JD图书数据: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/走出黑森林自我转变的旅程高人气心理学家陈海贤全新力作给你一套走出低谷期实现人生转变的系统手册_2025-03-20T23-06-19-010Z.json
+2025-03-20 23:06:19,013 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 23:06:19] "POST /save-jd-data HTTP/1.1" 200 -
+2025-03-20 23:08:25,452 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 23:08:25] "OPTIONS /save-jd-data HTTP/1.1" 200 -
+2025-03-20 23:08:25,459 - LocalService - INFO - 收到JD图书数据: 手腕.json
+2025-03-20 23:08:25,459 - LocalService - INFO - 使用书名作为文件名: 手腕_2025-03-20T23-08-25-459Z.json
+2025-03-20 23:08:25,461 - LocalService - INFO - 已保存JD图书数据: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/手腕_2025-03-20T23-08-25-459Z.json
+2025-03-20 23:08:25,462 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 23:08:25] "POST /save-jd-data HTTP/1.1" 200 -
+2025-03-20 23:11:03,456 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 23:11:03] "OPTIONS /save-jd-data HTTP/1.1" 200 -
+2025-03-20 23:11:03,467 - LocalService - INFO - 收到JD图书数据: 无意义的意义.json
+2025-03-20 23:11:03,468 - LocalService - INFO - 使用书名作为文件名: 无意义的意义_2025-03-20T23-11-03-468Z.json
+2025-03-20 23:11:03,469 - LocalService - INFO - 已保存JD图书数据: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/无意义的意义_2025-03-20T23-11-03-468Z.json
+2025-03-20 23:11:03,469 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 23:11:03] "POST /save-jd-data HTTP/1.1" 200 -

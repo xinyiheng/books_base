@@ -625,6 +625,80 @@ def open_browser():
     threading.Timer(1.5, lambda: webbrowser.open(url)).start()
     logger.info(f"正在浏览器中打开服务状态页面: {url}")
 
+@app.route('/save-jd-data', methods=['POST'])
+def save_jd_data():
+    """处理并保存从JD提取的图书数据"""
+    try:
+        # 检查是否设置了保存目录
+        if not config['save_directory']:
+            return jsonify({"error": "未设置保存目录"}), 400
+        
+        # 获取请求数据
+        data = request.json
+        if not data or 'filename' not in data or 'data' not in data:
+            return jsonify({"error": "请求数据不完整，需要提供filename和data字段"}), 400
+        
+        logger.info(f"收到JD图书数据: {data.get('filename')}")
+        
+        # 提取数据
+        filename = data['filename']
+        json_data = data['data']
+        url = data.get('url', '')
+        timestamp = data.get('timestamp', datetime.now().isoformat())
+        
+        # 解析JSON数据，获取书名和ISBN
+        try:
+            book_data = json.loads(json_data)
+            book_title = book_data.get('书名', '')
+            book_isbn = book_data.get('ISBN', '')
+            
+            if book_title:
+                # 以书名命名文件，添加时间戳
+                safe_title = ''.join(c for c in book_title if c.isalnum() or c in ' -_.')[:100]  # 限制长度并保证安全
+                timestamp_str = datetime.now().strftime('%Y-%m-%dT%H-%M-%S-%f')[:-3] + 'Z'
+                filename = f"{safe_title}_{timestamp_str}.json"
+                logger.info(f"使用书名作为文件名: {filename}")
+            elif book_isbn:
+                # 如果没有书名但有ISBN，使用ISBN作为文件名
+                timestamp_str = datetime.now().strftime('%Y-%m-%dT%H-%M-%S-%f')[:-3] + 'Z'
+                filename = f"jd_book_{book_isbn}_{timestamp_str}.json"
+        except Exception as e:
+            logger.warning(f"无法解析JSON数据获取书名或ISBN: {str(e)}")
+        
+        # 确保文件名是安全的
+        filename = os.path.basename(filename)
+        if not filename.endswith('.json'):
+            filename += '.json'
+        
+        # 确保json目录存在
+        json_dir = os.path.join(config['save_directory'], 'json')
+        if not os.path.exists(json_dir):
+            os.makedirs(json_dir, exist_ok=True)
+            logger.info(f"创建目录: {json_dir}")
+        
+        # 保存JSON文件
+        json_file_path = os.path.join(json_dir, filename)
+        with open(json_file_path, 'w', encoding='utf-8') as f:
+            f.write(json_data)
+        
+        logger.info(f"已保存JD图书数据: {json_file_path}")
+        
+        # 返回成功响应
+        return jsonify({
+            "success": True,
+            "message": f"数据已保存: {filename}",
+            "file_path": json_file_path
+        })
+    
+    except Exception as e:
+        logger.error(f"保存JD图书数据时发生错误: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
+        return jsonify({
+            "success": False,
+            "message": f"保存数据时发生错误: {str(e)}"
+        }), 500
+
 def main():
     """主函数"""
     parser = argparse.ArgumentParser(description="Amazon Book Extractor - 本地服务")

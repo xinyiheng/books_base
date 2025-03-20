@@ -148,97 +148,42 @@ def process_html():
         
         logger.info(f"已保存HTML文件: {html_file_path}")
         
-        # 处理HTML文件
+        # 获取飞书webhook
         feishu_webhook = data.get('feishuWebhook') or config.get('feishu_webhook')
         logger.info(f"使用飞书Webhook: {feishu_webhook}")
         
-        success = process_book(
-            html_file_path, 
-            save_directory, 
-            feishu_webhook,
-            region=region,
-            url=url,
-            domain=domain
-        )
+        # 将处理任务放入后台线程执行，不阻塞主线程
+        def process_in_background():
+            try:
+                process_book(
+                    html_file_path, 
+                    save_directory, 
+                    feishu_webhook,
+                    region=region,
+                    url=url,
+                    domain=domain
+                )
+                logger.info(f"后台处理完成: {filename}")
+            except Exception as e:
+                logger.error(f"后台处理出错: {str(e)}")
         
-        if success:
-            # 构建结果文件路径
-            file_name_without_ext = os.path.splitext(filename)[0]
-            
-            # 提取ASIN和书名（如果存在）
-            import re
-            asin_match = re.search(r'amazon_book_([A-Z0-9]{10})_', file_name_without_ext)
-            asin = asin_match.group(1) if asin_match else None
-            
-            # 尝试从文件名中提取书名
-            book_title = None
-            title_match = re.search(r'amazon_book_[A-Z0-9]{10}_(.+?)(?:_\d{4}-\d{2}-\d{2}T|$)', file_name_without_ext)
-            if title_match:
-                book_title = title_match.group(1)
-            
-            # 查找JSON文件路径（保持原始文件名，包含时间戳）
-            json_path = os.path.join(save_directory, 'json', f"{file_name_without_ext}.json")
-            
-            # 查找Markdown文件路径（只包含书名）
-            md_path = None
-            markdown_dir = os.path.join(save_directory, 'markdown')
-            
-            # 尝试读取JSON文件以获取书名
-            book_info = None
-            if os.path.exists(json_path):
-                try:
-                    with open(json_path, 'r', encoding='utf-8') as f:
-                        book_info = json.load(f)
-                except Exception as e:
-                    logger.error(f"读取JSON文件失败: {str(e)}")
-            
-            # 如果有JSON数据，尝试获取书名
-            if book_info and 'title' in book_info and book_info['title']:
-                # 清理书名，移除特殊字符
-                clean_title = book_info['title'].replace('/', '_').replace('\\', '_').replace(':', '_').replace('*', '_').replace('?', '_').replace('"', '_').replace('<', '_').replace('>', '_').replace('|', '_')
-                
-                # 查找匹配的Markdown文件
-                if os.path.exists(markdown_dir):
-                    potential_md_path = os.path.join(markdown_dir, f"{clean_title}.md")
-                    if os.path.exists(potential_md_path):
-                        md_path = potential_md_path
-            
-            # 如果没有找到匹配的Markdown文件，尝试使用从文件名中提取的书名
-            if not md_path and book_title and os.path.exists(markdown_dir):
-                potential_md_path = os.path.join(markdown_dir, f"{book_title}.md")
-                if os.path.exists(potential_md_path):
-                    md_path = potential_md_path
-            
-            # 如果仍然没有找到，尝试查找以ASIN开头的文件
-            if not md_path and asin and os.path.exists(markdown_dir):
-                for file in os.listdir(markdown_dir):
-                    if file.endswith('.md'):
-                        # 检查是否是以ASIN开头的文件
-                        if file.startswith(f"amazon_book_{asin}"):
-                            md_path = os.path.join(markdown_dir, file)
-                            break
-            
-            # 最后的回退：使用原始文件名
-            if not md_path and os.path.exists(markdown_dir):
-                fallback_md_path = os.path.join(markdown_dir, f"{file_name_without_ext}.md")
-                if os.path.exists(fallback_md_path):
-                    md_path = fallback_md_path
-            
-            return jsonify({
-                "success": True,
-                "message": "HTML处理成功",
-                "files": {
-                    "html": html_file_path,
-                    "json": json_path if os.path.exists(json_path) else None,
-                    "markdown": md_path if md_path and os.path.exists(md_path) else None
-                },
-                "bookInfo": book_info
-            })
-        else:
-            return jsonify({
-                "success": False,
-                "message": "处理HTML失败，请查看日志获取详细信息"
-            })
+        # 启动后台线程
+        threading.Thread(target=process_in_background).start()
+        logger.info(f"已启动后台处理线程: {filename}")
+        
+        # 构建结果文件路径 - 只返回HTML路径，因为其他文件还在处理中
+        file_name_without_ext = os.path.splitext(filename)[0]
+        json_path = os.path.join(save_directory, 'json', f"{file_name_without_ext}.json")
+        
+        # 立即返回成功响应
+        return jsonify({
+            "success": True,
+            "message": "已启动处理，将在后台继续执行",
+            "files": {
+                "html": html_file_path,
+            },
+            "in_progress": True
+        })
     
     except Exception as e:
         logger.error(f"处理HTML时发生错误: {str(e)}")
@@ -274,7 +219,7 @@ def process_html_file():
         
         logger.info(f"处理HTML文件: {html_file_path}")
         
-        # 处理HTML文件
+        # 获取参数
         feishu_webhook = data.get('feishuWebhook') or config.get('feishu_webhook')
         region = data.get('region', 'us')  # 获取区域信息，默认为us
         url = data.get('url', '')  # 获取原始URL
@@ -296,68 +241,38 @@ def process_html_file():
             domain = "amazon.co.jp"
             logger.info(f"从文件名检测到域名: {domain}")
         
-        success = process_book(
-            html_file_path, 
-            save_directory, 
-            feishu_webhook,
-            region=region,
-            url=url,
-            domain=domain
-        )
+        # 将处理任务放入后台线程执行
+        def process_in_background():
+            try:
+                process_book(
+                    html_file_path, 
+                    save_directory, 
+                    feishu_webhook,
+                    region=region,
+                    url=url,
+                    domain=domain
+                )
+                logger.info(f"后台处理完成: {filename}")
+            except Exception as e:
+                logger.error(f"后台处理出错: {str(e)}")
         
-        if success:
-            # 构建结果文件路径
-            file_name_without_ext = os.path.splitext(filename)[0]
-            json_path = os.path.join(save_directory, 'json', f"{file_name_without_ext}.json")
-            
-            # 读取JSON文件以获取书籍数据
-            book_info = None
-            if os.path.exists(json_path):
-                try:
-                    with open(json_path, 'r', encoding='utf-8') as f:
-                        book_info = json.load(f)
-                except Exception as e:
-                    logger.error(f"读取JSON文件失败: {str(e)}")
-            
-            # 尝试查找对应的Markdown文件（可能使用书名而不是原始文件名）
-            md_path = None
-            if book_info:
-                title = book_info.get('标题') or book_info.get('书名') or book_info.get('title', '')
-                if title:
-                    # 清理标题用于文件名
-                    clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
-                    clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
-                    clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
-                    
-                    # 限制文件名长度
-                    if len(clean_title) > 100:
-                        clean_title = clean_title[:100]
-                    
-                    possible_md_path = os.path.join(save_directory, 'markdown', f"{clean_title}.md")
-                    if os.path.exists(possible_md_path):
-                        md_path = possible_md_path
-            
-            # 如果通过标题找不到Markdown文件，则回退到使用原始文件名
-            if not md_path:
-                fallback_md_path = os.path.join(save_directory, 'markdown', f"{file_name_without_ext}.md")
-                if os.path.exists(fallback_md_path):
-                    md_path = fallback_md_path
-            
-            return jsonify({
-                "success": True,
-                "message": "处理成功",
-                "files": {
-                    "html": html_file_path,
-                    "json": json_path,
-                    "markdown": md_path
-                },
-                "book_info": book_info
-            })
-        else:
-            return jsonify({
-                "success": False,
-                "message": "处理失败，请查看服务日志获取详细信息"
-            }), 500
+        # 启动后台线程
+        threading.Thread(target=process_in_background).start()
+        logger.info(f"已启动后台处理线程: {filename}")
+        
+        # 构建预期的结果文件路径
+        file_name_without_ext = os.path.splitext(filename)[0]
+        json_path = os.path.join(save_directory, 'json', f"{file_name_without_ext}.json")
+        
+        # 立即返回成功响应
+        return jsonify({
+            "success": True,
+            "message": "已启动处理，将在后台继续执行",
+            "files": {
+                "html": html_file_path
+            },
+            "in_progress": True
+        })
     
     except Exception as e:
         logger.error(f"处理HTML文件时发生错误: {str(e)}")

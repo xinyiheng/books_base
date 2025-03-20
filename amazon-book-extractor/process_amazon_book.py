@@ -106,66 +106,30 @@ def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", ur
     # 将JSON转换为Markdown
     markdown_content = convert_to_markdown(book_data)
     
-    # 为Markdown文件生成文件名
-    # 对于日本站点，使用产品ID而不是书名作为文件名
-    is_jp_domain = domain == "amazon.co.jp" if domain else "co.jp" in html_file or (url and "amazon.co.jp" in url)
-    
-    if is_jp_domain:
-        # 尝试从URL或文件名提取产品ID
-        product_id = None
-        if url:
-            # 从URL中提取产品ID (例如: https://www.amazon.co.jp/dp/4799323628)
-            url_match = re.search(r'amazon\.co\.jp/(?:dp|gp/product)/([A-Z0-9]+)', url)
-            if url_match:
-                product_id = url_match.group(1)
+    # 为Markdown文件生成文件名 - 统一所有区域的命名逻辑，不再特殊处理日本区域
+    title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
+    if title:
+        # 清理书名用于文件名
+        clean_title = title
+        for char in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']:
+            clean_title = clean_title.replace(char, '_')
         
-        if not product_id and html_file:
-            # 从HTML文件名中提取产品ID
-            file_match = re.search(r'([A-Z0-9]{10})', os.path.basename(html_file))
-            if file_match:
-                product_id = file_match.group(1)
+        # 限制文件名长度
+        if len(clean_title) > 100:
+            clean_title = clean_title[:100]
         
-        # 如果找不到产品ID，尝试使用ISBN
-        if not product_id:
-            product_id = book_data.get('ISBN', book_data.get('isbn', ''))
-        
-        if product_id:
-            markdown_file = os.path.join(markdown_dir, f"{product_id}.md")
-            logger.info(f"Using product ID as filename for Japanese book: {product_id}")
-        else:
-            # 如果找不到产品ID，回退到使用标题
-            title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
-            if title:
-                # 清理书名用于文件名
-                clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
-                clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
-                clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
-                
-                # 限制文件名长度
-                if len(clean_title) > 100:
-                    clean_title = clean_title[:100]
-                
-                markdown_file = os.path.join(markdown_dir, f"{clean_title}.md")
-            else:
-                # 如果找不到标题，则使用原始文件名
-                markdown_file = os.path.join(markdown_dir, f"{book_identifier}.md")
+        markdown_file = os.path.join(markdown_dir, f"{clean_title}.md")
+        logger.info(f"Using book title as filename: {clean_title}")
     else:
-        # 非日本站点，使用书名作为文件名
-        title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
-        if title:
-            # 清理书名用于文件名
-            clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
-            clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
-            clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
-            
-            # 限制文件名长度
-            if len(clean_title) > 100:
-                clean_title = clean_title[:100]
-            
-            markdown_file = os.path.join(markdown_dir, f"{clean_title}.md")
+        # 如果找不到标题，尝试使用ISBN
+        isbn = book_data.get('ISBN', book_data.get('isbn', ''))
+        if isbn:
+            markdown_file = os.path.join(markdown_dir, f"{isbn}.md")
+            logger.info(f"No title found, using ISBN as filename: {isbn}")
         else:
-            # 如果找不到标题，则使用原始文件名
+            # 如果没有标题和ISBN，使用原始文件名
             markdown_file = os.path.join(markdown_dir, f"{book_identifier}.md")
+            logger.info(f"No title or ISBN found, using original filename: {book_identifier}")
     
     logger.info(f"Saving Markdown to: {markdown_file}")
     

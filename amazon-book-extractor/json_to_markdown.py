@@ -31,29 +31,29 @@ def json_to_markdown(json_file, output_file=None):
         
         # 如果未指定输出文件，则基于书名生成，删除所有前缀和后缀
         if not output_file:
-            # 使用JSON文件中的标题或书名
+            # 直接使用JSON文件中的标题或书名
             if title:
-                # 清理书名用于文件名，移除不允许的字符
-                clean_title = title.replace('/', '_').replace('\\', '_').replace(':', '_')
-                clean_title = clean_title.replace('*', '_').replace('?', '_').replace('"', '_')
-                clean_title = clean_title.replace('<', '_').replace('>', '_').replace('|', '_')
+                # 仅替换文件系统不允许的字符
+                clean_title = title
+                for char in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']:
+                    clean_title = clean_title.replace(char, '_')
+                
+                print(f"使用书名作为文件名: {clean_title}")
             else:
-                # 尝试从JSON文件名提取书名
+                # 如果没有提取到标题，尝试从ISBN或文件名生成
                 json_filename = os.path.basename(json_file)
                 if json_filename.endswith('.json'):
                     json_filename = json_filename[:-5]  # 去掉.json扩展名
                 
-                # 移除常见的前缀模式
-                # 1. amazon_book_ISBN_ 模式
-                json_filename = re.sub(r'^amazon_book_[A-Z0-9]+_', '', json_filename)
-                # 2. 移除其他数字前缀
-                json_filename = re.sub(r'^[0-9_]+', '', json_filename)
-                
-                # 移除时间戳后缀 _YYYY-MM-DDThh-mm-ss-mmmZ
-                json_filename = re.sub(r'_\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$', '', json_filename)
-                
-                # 还原下划线为空格
-                clean_title = json_filename.replace('_', ' ').strip()
+                # 检查是否有ISBN可用
+                isbn = book_data.get('ISBN', book_data.get('isbn', ''))
+                if isbn:
+                    clean_title = isbn
+                    print(f"没有找到标题，使用ISBN作为文件名: {isbn}")
+                else:
+                    # 使用文件名
+                    clean_title = json_filename
+                    print(f"没有找到标题或ISBN，使用原文件名: {json_filename}")
             
             # 限制文件名长度
             if len(clean_title) > 100:

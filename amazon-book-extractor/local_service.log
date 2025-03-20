@@ -6513,3 +6513,504 @@ TypeError: 'NoneType' object does not support item assignment
 2025-03-19 23:29:43,609 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 23:29:43] "GET /status HTTP/1.1" 200 -
 2025-03-19 23:29:43,634 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 23:29:43] "GET /status HTTP/1.1" 200 -
 2025-03-19 23:29:43,648 - werkzeug - INFO - 127.0.0.1 - - [19/Mar/2025 23:29:43] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:03:27,738 - LocalService - INFO - 已加载配置
+2025-03-20 09:03:27,738 - LocalService - INFO - 已保存配置
+2025-03-20 09:03:27,738 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-20 09:03:27,738 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-20 09:03:27,738 - LocalService - INFO - 正在浏览器中打开服务状态页面: http://localhost:5001/
+2025-03-20 09:03:27,755 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.131:5001
+2025-03-20 09:03:27,756 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-20 09:03:29,940 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:03:29] "GET / HTTP/1.1" 200 -
+2025-03-20 09:03:32,150 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:03:32] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:03:32,253 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:03:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-20 09:03:34,488 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:03:34] "[36mGET / HTTP/1.1[0m" 304 -
+2025-03-20 09:03:36,437 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:03:36] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:04:02,788 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:04:02] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:04:32,805 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:04:32] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:04:44,170 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:04:44] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:04:46,226 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:04:46] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:04:46,255 - LocalService - INFO - 已保存配置
+2025-03-20 09:04:46,263 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:04:46] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:05:02,790 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:05:02] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:05:32,837 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:05:32] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:06:19,179 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:06:19] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:06:19,189 - LocalService - INFO - 已保存配置
+2025-03-20 09:06:19,190 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:06:19] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:06:19,257 - LocalService - INFO - 收到处理HTML请求: amazon_book_1668068656_How to Win at Travel_2025-03-20T01-06-19-176Z
+2025-03-20 09:06:19,257 - LocalService - INFO - 从URL检测到域名: amazon.com
+2025-03-20 09:06:19,260 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1668068656_How to Win at Travel_2025-03-20T01-06-19-176Z.html
+2025-03-20 09:06:19,260 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:06:19,260 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1668068656_How to Win at Travel_2025-03-20T01-06-19-176Z.html
+2025-03-20 09:06:19,262 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.com
+2025-03-20 09:06:19,262 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:06:19,717 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_1668068656_How to Win at Travel_2025-03-20T01-06-19-176Z.json
+2025-03-20 09:06:19,718 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/How to Win at Travel.md
+2025-03-20 09:06:19,719 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:06:19,719 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:06:20,820 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:06:20,825 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:06:20] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:06:35,784 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:06:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:07:35,787 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:07:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:07:56,416 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:07:56] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:07:56,421 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:07:56] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:07:56,425 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:07:56] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:07:56,425 - LocalService - INFO - 已保存配置
+2025-03-20 09:07:56,426 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:07:56] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:07:56,787 - LocalService - INFO - 收到处理HTML请求: amazon_book_4478120781_「良い質問」を40年磨き続けた対話のプロがたどり着いた 「なぜ」と聞かない質問術_2025-03-20T01-07-56-428Z
+2025-03-20 09:07:56,792 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:07:56,796 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4478120781_「良い質問」を40年磨き続けた対話のプロがたどり着いた 「なぜ」と聞かない質問術_2025-03-20T01-07-56-428Z.html
+2025-03-20 09:07:56,796 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:07:56,798 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4478120781_「良い質問」を40年磨き続けた対話のプロがたどり着いた 「なぜ」と聞かない質問術_2025-03-20T01-07-56-428Z.html
+2025-03-20 09:07:56,874 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:07:56,874 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:08:00,608 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4478120781_「良い質問」を40年磨き続けた対話のプロがたどり着いた 「なぜ」と聞かない質問術_2025-03-20T01-07-56-428Z.json
+2025-03-20 09:08:00,609 - AmazonBookProcessor - INFO - Using product ID as filename for Japanese book: 4478120781
+2025-03-20 09:08:00,609 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/4478120781.md
+2025-03-20 09:08:00,610 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:08:00,610 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:08:01,835 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:08:01,837 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:08:01] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:08:35,785 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:08:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:09:35,786 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:09:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:10:35,786 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:10:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:11:35,785 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:11:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:12:35,788 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:12:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:14:07,404 - LocalService - INFO - 已加载配置
+2025-03-20 09:14:07,405 - LocalService - INFO - 已保存配置
+2025-03-20 09:14:07,405 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-20 09:14:07,405 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-20 09:14:07,405 - LocalService - INFO - 正在浏览器中打开服务状态页面: http://localhost:5001/
+2025-03-20 09:14:07,420 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.131:5001
+2025-03-20 09:14:07,420 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-20 09:14:10,972 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:10] "GET / HTTP/1.1" 200 -
+2025-03-20 09:14:12,769 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:12] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:14:15,237 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:15] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:14:15,243 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:15] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:14:15,248 - LocalService - INFO - 已保存配置
+2025-03-20 09:14:15,249 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:15] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:14:18,630 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:18] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:14:18,638 - LocalService - INFO - 已保存配置
+2025-03-20 09:14:18,638 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:18] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:14:20,098 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:20] "POST /create_directories HTTP/1.1" 200 -
+2025-03-20 09:14:29,681 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:29] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:14:29,688 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:29] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:14:30,350 - LocalService - INFO - 收到处理HTML请求: amazon_book_4296002228_だけどチームがワークしない　――“集団心理”から読み解く 残念な職場から一流のチームまで_2025-03-20T01-14-29-700Z
+2025-03-20 09:14:30,350 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:14:30,387 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4296002228_だけどチームがワークしない　――“集団心理”から読み解く 残念な職場から一流のチームまで_2025-03-20T01-14-29-700Z.html
+2025-03-20 09:14:30,388 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:14:30,389 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4296002228_だけどチームがワークしない　――“集団心理”から読み解く 残念な職場から一流のチームまで_2025-03-20T01-14-29-700Z.html
+2025-03-20 09:14:30,395 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:14:30,396 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:14:34,647 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4296002228_だけどチームがワークしない　――“集団心理”から読み解く 残念な職場から一流のチームまで_2025-03-20T01-14-29-700Z.json
+2025-03-20 09:14:34,649 - AmazonBookProcessor - INFO - Using product ID as filename for Japanese book: 4296002228
+2025-03-20 09:14:34,649 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/4296002228.md
+2025-03-20 09:14:34,650 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:14:34,650 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:14:35,761 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:14:35,768 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:35] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:14:35,788 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:14:42,781 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:14:42] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:15:12,786 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:15:12] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:15:35,786 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:15:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:15:42,783 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:15:42] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:16:12,783 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:16:12] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:16:35,786 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:16:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:17:35,789 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:17:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:17:35,794 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:17:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:18:35,772 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:18:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:18:35,775 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:18:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:19:35,743 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:19:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:19:35,746 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:19:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:20:03,187 - LocalService - INFO - 已加载配置
+2025-03-20 09:20:03,187 - LocalService - INFO - 已保存配置
+2025-03-20 09:20:03,187 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-20 09:20:03,187 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-20 09:20:03,187 - LocalService - INFO - 正在浏览器中打开服务状态页面: http://localhost:5001/
+2025-03-20 09:20:03,203 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.131:5001
+2025-03-20 09:20:03,203 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-20 09:20:06,075 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:06] "GET / HTTP/1.1" 200 -
+2025-03-20 09:20:07,928 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:07] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:20:10,974 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:10] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:20:10,982 - LocalService - INFO - 已保存配置
+2025-03-20 09:20:10,983 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:10] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:20:30,077 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:30] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:20:30,082 - LocalService - INFO - 已保存配置
+2025-03-20 09:20:30,082 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:30] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:20:34,127 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:34] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:20:35,740 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:20:37,932 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:37] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:20:48,546 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:20:48] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:21:02,737 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:21:02] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:21:08,740 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:21:08] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:21:13,706 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:21:13] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:21:13,721 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:21:13] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:21:13,929 - LocalService - INFO - 收到处理HTML请求: amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-21-13-726Z
+2025-03-20 09:21:13,930 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:21:13,934 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-21-13-726Z.html
+2025-03-20 09:21:13,934 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:21:13,935 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-21-13-726Z.html
+2025-03-20 09:21:13,944 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:21:13,945 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:21:15,711 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-21-13-726Z.json
+2025-03-20 09:21:15,712 - AmazonBookProcessor - INFO - Using product ID as filename for Japanese book: 4862763367
+2025-03-20 09:21:15,712 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/4862763367.md
+2025-03-20 09:21:15,712 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:21:15,712 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:21:16,789 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:21:16,794 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:21:16] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:21:32,740 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:21:32] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:21:38,734 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:21:38] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:22:08,733 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:22:08] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:22:35,744 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:22:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:23:06,079 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:23:06] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:23:06,091 - LocalService - INFO - 已保存配置
+2025-03-20 09:23:06,091 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:23:06] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:23:08,130 - LocalService - INFO - 收到处理HTML请求: amazon_book_059372318X_The 5 Types of Wealth_ A Transformative Guide to D_2025-03-20T01-23-06-064Z
+2025-03-20 09:23:08,130 - LocalService - INFO - 从URL检测到域名: amazon.com
+2025-03-20 09:23:08,139 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_059372318X_The 5 Types of Wealth_ A Transformative Guide to D_2025-03-20T01-23-06-064Z.html
+2025-03-20 09:23:08,139 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:23:08,140 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_059372318X_The 5 Types of Wealth_ A Transformative Guide to D_2025-03-20T01-23-06-064Z.html
+2025-03-20 09:23:08,163 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.com
+2025-03-20 09:23:08,167 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:23:15,401 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_059372318X_The 5 Types of Wealth_ A Transformative Guide to D_2025-03-20T01-23-06-064Z.json
+2025-03-20 09:23:15,403 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/The 5 Types of Wealth_ A Transformative Guide to Design Your Dream Life.md
+2025-03-20 09:23:15,403 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:23:15,405 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:23:16,594 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:23:16,599 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:23:16] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:23:35,742 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:23:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:23:35,763 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:23:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:24:35,746 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:24:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:24:35,749 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:24:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:25:30,842 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:25:30] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:25:35,742 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:25:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:25:35,747 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:25:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:25:56,079 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:25:56] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:25:57,913 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:25:57] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:25:57,920 - LocalService - INFO - 已保存配置
+2025-03-20 09:25:57,921 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:25:57] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:26:17,564 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:26:17] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:26:17,568 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:26:17] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:26:17,722 - LocalService - INFO - 收到处理HTML请求: amazon_book_4344948327_小さな会社は地域貢献で業績を伸ばす　やってみよう！ はじめてのCSR活動_2025-03-20T01-26-17-571Z
+2025-03-20 09:26:17,723 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:26:17,754 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4344948327_小さな会社は地域貢献で業績を伸ばす　やってみよう！ はじめてのCSR活動_2025-03-20T01-26-17-571Z.html
+2025-03-20 09:26:17,755 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:26:17,757 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4344948327_小さな会社は地域貢献で業績を伸ばす　やってみよう！ はじめてのCSR活動_2025-03-20T01-26-17-571Z.html
+2025-03-20 09:26:17,766 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:26:17,766 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:26:19,472 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4344948327_小さな会社は地域貢献で業績を伸ばす　やってみよう！ はじめてのCSR活動_2025-03-20T01-26-17-571Z.json
+2025-03-20 09:26:19,474 - AmazonBookProcessor - INFO - Using product ID as filename for Japanese book: 4344948327
+2025-03-20 09:26:19,475 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/4344948327.md
+2025-03-20 09:26:19,500 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:26:19,501 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:26:20,508 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:26:20,516 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:26:20] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:26:35,774 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:26:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:26:35,785 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:26:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:27:35,769 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:27:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:27:35,782 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:27:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:27:45,700 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:27:45] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:27:45,702 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:27:45] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:27:45,704 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:27:45] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:27:45,707 - LocalService - INFO - 已保存配置
+2025-03-20 09:27:45,708 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:27:45] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:27:45,765 - LocalService - INFO - 收到处理HTML请求: amazon_book_4344948327_小さな会社は地域貢献で業績を伸ばす　やってみよう！ はじめてのCSR活動_2025-03-20T01-27-45-706Z
+2025-03-20 09:27:45,765 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:27:45,766 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4344948327_小さな会社は地域貢献で業績を伸ばす　やってみよう！ はじめてのCSR活動_2025-03-20T01-27-45-706Z.html
+2025-03-20 09:27:45,766 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:27:45,767 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4344948327_小さな会社は地域貢献で業績を伸ばす　やってみよう！ はじめてのCSR活動_2025-03-20T01-27-45-706Z.html
+2025-03-20 09:27:45,769 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:27:45,769 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:27:46,154 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4344948327_小さな会社は地域貢献で業績を伸ばす　やってみよう！ はじめてのCSR活動_2025-03-20T01-27-45-706Z.json
+2025-03-20 09:27:46,155 - AmazonBookProcessor - INFO - Using product ID as filename for Japanese book: 4344948327
+2025-03-20 09:27:46,155 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/4344948327.md
+2025-03-20 09:27:46,155 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:27:46,155 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:27:46,511 - AmazonBookProcessor - ERROR - Failed to send data to Feishu
+2025-03-20 09:27:46,513 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:27:46] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:28:35,741 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:28:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:28:35,747 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:28:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:28:40,871 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:28:40] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:29:08,737 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:29:08] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:29:14,281 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:29:14] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:29:14,303 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:29:14] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:29:14,378 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:29:14] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:29:14,392 - LocalService - INFO - 已保存配置
+2025-03-20 09:29:14,490 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:29:14] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:29:15,169 - LocalService - INFO - 收到处理HTML请求: amazon_book_B0DHZ2ZXPM_Who Is Government__ The Untold Story of Public Ser_2025-03-20T01-29-14-424Z
+2025-03-20 09:29:15,169 - LocalService - INFO - 从URL检测到域名: amazon.com
+2025-03-20 09:29:15,174 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_B0DHZ2ZXPM_Who Is Government__ The Untold Story of Public Ser_2025-03-20T01-29-14-424Z.html
+2025-03-20 09:29:15,174 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:29:15,175 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_B0DHZ2ZXPM_Who Is Government__ The Untold Story of Public Ser_2025-03-20T01-29-14-424Z.html
+2025-03-20 09:29:15,187 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.com
+2025-03-20 09:29:15,190 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:29:19,833 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_B0DHZ2ZXPM_Who Is Government__ The Untold Story of Public Ser_2025-03-20T01-29-14-424Z.json
+2025-03-20 09:29:19,836 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/Who Is Government__ The Untold Story of Public Service.md
+2025-03-20 09:29:19,837 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:29:19,838 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:29:20,873 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:29:20,877 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:29:20] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:29:35,736 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:29:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:29:38,732 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:29:38] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:30:35,735 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:30:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:30:35,738 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:30:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:31:35,737 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:31:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:31:35,740 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:31:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:32:35,731 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:32:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:32:35,733 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:32:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:33:35,738 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:33:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:33:35,743 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:33:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:34:35,730 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:34:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:34:35,733 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:34:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:35:35,730 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:35:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:35:35,735 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:35:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:36:35,735 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:36:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:36:35,739 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:36:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:37:45,483 - LocalService - INFO - 已加载配置
+2025-03-20 09:37:45,484 - LocalService - INFO - 已保存配置
+2025-03-20 09:37:45,484 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-20 09:37:45,484 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-20 09:37:45,484 - LocalService - INFO - 正在浏览器中打开服务状态页面: http://localhost:5001/
+2025-03-20 09:37:45,497 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.131:5001
+2025-03-20 09:37:45,497 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-20 09:37:47,676 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:37:47] "GET / HTTP/1.1" 200 -
+2025-03-20 09:37:49,680 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:37:49] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:03,054 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:03] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:03,071 - LocalService - INFO - 已保存配置
+2025-03-20 09:38:03,072 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:03] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:38:09,677 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:09] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:11,411 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:11] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:24,340 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:24] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:26,037 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:26] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:26,046 - LocalService - INFO - 已保存配置
+2025-03-20 09:38:26,046 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:26] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:38:37,635 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:37] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:37,656 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:37] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:39,044 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:39] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:38:39,178 - LocalService - INFO - 收到处理HTML请求: amazon_book_4344946782_人生100 年時代の地方高齢者の住まい_2025-03-20T01-38-37-660Z
+2025-03-20 09:38:39,212 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:38:39,219 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4344946782_人生100 年時代の地方高齢者の住まい_2025-03-20T01-38-37-660Z.html
+2025-03-20 09:38:39,220 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:38:39,220 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4344946782_人生100 年時代の地方高齢者の住まい_2025-03-20T01-38-37-660Z.html
+2025-03-20 09:38:39,261 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:38:39,261 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:38:44,596 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4344946782_人生100 年時代の地方高齢者の住まい_2025-03-20T01-38-37-660Z.json
+2025-03-20 09:38:44,597 - AmazonBookProcessor - INFO - Using book title as filename: 人生100 年時代の地方高齢者の住まい
+2025-03-20 09:38:44,598 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/人生100 年時代の地方高齢者の住まい.md
+2025-03-20 09:38:44,598 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:38:44,599 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:38:45,835 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:38:45,840 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:38:45] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:39:08,732 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:39:08] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:39:19,620 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:39:19] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:39:19,654 - LocalService - INFO - 已保存配置
+2025-03-20 09:39:19,660 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:39:19] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:39:19,982 - LocalService - INFO - 收到处理HTML请求: amazon_book_0600638820_Love Gluten Free_ Easy, delicious recipes to enjoy_2025-03-20T01-39-19-537Z
+2025-03-20 09:39:19,982 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-20 09:39:19,987 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_0600638820_Love Gluten Free_ Easy, delicious recipes to enjoy_2025-03-20T01-39-19-537Z.html
+2025-03-20 09:39:19,987 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:39:19,989 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_0600638820_Love Gluten Free_ Easy, delicious recipes to enjoy_2025-03-20T01-39-19-537Z.html
+2025-03-20 09:39:19,994 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-20 09:39:19,995 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:39:25,873 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_0600638820_Love Gluten Free_ Easy, delicious recipes to enjoy_2025-03-20T01-39-19-537Z.json
+2025-03-20 09:39:25,875 - AmazonBookProcessor - INFO - Using book title as filename: Love Gluten Free_ Easy, delicious recipes to enjoy together
+2025-03-20 09:39:25,875 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/Love Gluten Free_ Easy, delicious recipes to enjoy together.md
+2025-03-20 09:39:25,875 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:39:25,876 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:39:26,897 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:39:26,926 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:39:26] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:40:31,291 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:40:31] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:40:31,298 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:40:31] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:40:31,320 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:40:31] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:40:31,340 - LocalService - INFO - 已保存配置
+2025-03-20 09:40:31,384 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:40:31] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:40:34,120 - LocalService - INFO - 收到处理HTML请求: amazon_book_1668023482_Abundance_2025-03-20T01-40-31-367Z
+2025-03-20 09:40:34,121 - LocalService - INFO - 从URL检测到域名: amazon.com
+2025-03-20 09:40:34,125 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1668023482_Abundance_2025-03-20T01-40-31-367Z.html
+2025-03-20 09:40:34,125 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:40:34,125 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_1668023482_Abundance_2025-03-20T01-40-31-367Z.html
+2025-03-20 09:40:34,129 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.com
+2025-03-20 09:40:34,129 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:40:35,989 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:40:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:40:40,377 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_1668023482_Abundance_2025-03-20T01-40-31-367Z.json
+2025-03-20 09:40:40,381 - AmazonBookProcessor - INFO - Using book title as filename: Abundance
+2025-03-20 09:40:40,382 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/Abundance.md
+2025-03-20 09:40:40,383 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:40:40,406 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:40:40,549 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:40:40,574 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:40:40] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:41:07,862 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:41:07] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:41:07,869 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:41:07] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:41:09,960 - LocalService - INFO - 收到处理HTML请求: amazon_book_0593653114_The Sirens' Call_ How Attention Became the World's_2025-03-20T01-41-07-899Z
+2025-03-20 09:41:09,961 - LocalService - INFO - 从URL检测到域名: amazon.com
+2025-03-20 09:41:09,979 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_0593653114_The Sirens' Call_ How Attention Became the World's_2025-03-20T01-41-07-899Z.html
+2025-03-20 09:41:09,990 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:41:09,996 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_0593653114_The Sirens' Call_ How Attention Became the World's_2025-03-20T01-41-07-899Z.html
+2025-03-20 09:41:10,014 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.com
+2025-03-20 09:41:10,015 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:41:20,798 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_0593653114_The Sirens' Call_ How Attention Became the World's_2025-03-20T01-41-07-899Z.json
+2025-03-20 09:41:20,809 - AmazonBookProcessor - INFO - Using book title as filename: The Sirens' Call_ How Attention Became the World's Most Endangered Resource
+2025-03-20 09:41:20,810 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/The Sirens' Call_ How Attention Became the World's Most Endangered Resource.md
+2025-03-20 09:41:20,811 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:41:20,812 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:41:21,876 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:41:21,955 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:41:21] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:41:35,788 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:41:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:42:35,752 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:42:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:43:35,795 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:43:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:44:35,749 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:44:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:45:35,830 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:45:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:46:35,734 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:46:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:47:27,998 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:47:27] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:47:28,188 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:47:28] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:47:28,244 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:47:28] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:47:28,343 - LocalService - INFO - 已保存配置
+2025-03-20 09:47:28,345 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:47:28] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:47:28,437 - LocalService - INFO - 收到处理HTML请求: amazon_book_4297144573_EXジャーニー　～良い人材を惹きつける従業員体験のつくりかた～_2025-03-20T01-47-28-267Z
+2025-03-20 09:47:28,437 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:47:28,441 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4297144573_EXジャーニー　～良い人材を惹きつける従業員体験のつくりかた～_2025-03-20T01-47-28-267Z.html
+2025-03-20 09:47:28,442 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:47:28,444 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4297144573_EXジャーニー　～良い人材を惹きつける従業員体験のつくりかた～_2025-03-20T01-47-28-267Z.html
+2025-03-20 09:47:28,449 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:47:28,450 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:47:30,313 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4297144573_EXジャーニー　～良い人材を惹きつける従業員体験のつくりかた～_2025-03-20T01-47-28-267Z.json
+2025-03-20 09:47:30,314 - AmazonBookProcessor - INFO - Using book title as filename: EXジャーニー　～良い人材を惹きつける従業員体験のつくりかた～
+2025-03-20 09:47:30,314 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/EXジャーニー　～良い人材を惹きつける従業員体験のつくりかた～.md
+2025-03-20 09:47:30,315 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:47:30,315 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:47:31,370 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:47:31,373 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:47:31] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:47:35,751 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:47:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:48:35,733 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:48:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:49:29,783 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:49:29] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:49:29,856 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:49:29] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:49:29,915 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:49:29] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:49:29,917 - LocalService - INFO - 已保存配置
+2025-03-20 09:49:29,932 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:49:29] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:49:32,380 - LocalService - INFO - 收到处理HTML请求: amazon_book_4344947398_成果を出す企業に変わる　組織能力開発_2025-03-20T01-49-29-933Z
+2025-03-20 09:49:32,380 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:49:32,464 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4344947398_成果を出す企業に変わる　組織能力開発_2025-03-20T01-49-29-933Z.html
+2025-03-20 09:49:32,465 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:49:32,465 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4344947398_成果を出す企業に変わる　組織能力開発_2025-03-20T01-49-29-933Z.html
+2025-03-20 09:49:32,474 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:49:32,475 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:49:40,676 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:49:40] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:49:42,566 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4344947398_成果を出す企業に変わる　組織能力開発_2025-03-20T01-49-29-933Z.json
+2025-03-20 09:49:42,570 - AmazonBookProcessor - INFO - Using book title as filename: 成果を出す企業に変わる　組織能力開発
+2025-03-20 09:49:42,570 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/成果を出す企業に変わる　組織能力開発.md
+2025-03-20 09:49:42,572 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:49:42,573 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:49:43,801 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:49:43,806 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:49:43] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:50:35,730 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:50:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:51:35,749 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:51:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:52:23,268 - LocalService - INFO - 已加载配置
+2025-03-20 09:52:23,269 - LocalService - INFO - 已保存配置
+2025-03-20 09:52:23,269 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-20 09:52:23,269 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-20 09:52:23,269 - LocalService - INFO - 正在浏览器中打开服务状态页面: http://localhost:5001/
+2025-03-20 09:52:23,284 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.131:5001
+2025-03-20 09:52:23,285 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-20 09:52:25,746 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:52:25] "GET / HTTP/1.1" 200 -
+2025-03-20 09:52:27,882 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:52:27] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:52:35,756 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:52:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:52:41,468 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:52:41] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:52:41,475 - LocalService - INFO - 已保存配置
+2025-03-20 09:52:41,476 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:52:41] "POST /config HTTP/1.1" 200 -
+2025-03-20 09:52:53,289 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:52:53] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:52:58,729 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:52:58] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:09,189 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:09] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:14,165 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:14] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:14,260 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:14] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:14,557 - LocalService - INFO - 收到处理HTML请求: amazon_book_4833440709_「わかる」から「動ける」まで 言葉の解像度を上げる_2025-03-20T01-53-14-277Z
+2025-03-20 09:53:14,557 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:53:14,563 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4833440709_「わかる」から「動ける」まで 言葉の解像度を上げる_2025-03-20T01-53-14-277Z.html
+2025-03-20 09:53:14,563 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:53:14,567 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4833440709_「わかる」から「動ける」まで 言葉の解像度を上げる_2025-03-20T01-53-14-277Z.html
+2025-03-20 09:53:14,568 - LocalService - INFO - 已启动后台处理线程: amazon_book_4833440709_「わかる」から「動ける」まで 言葉の解像度を上げる_2025-03-20T01-53-14-277Z.html
+2025-03-20 09:53:14,568 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:14] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:53:14,611 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:53:14,611 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:53:16,780 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4833440709_「わかる」から「動ける」まで 言葉の解像度を上げる_2025-03-20T01-53-14-277Z.json
+2025-03-20 09:53:16,781 - AmazonBookProcessor - INFO - Using book title as filename: 「わかる」から「動ける」まで 言葉の解像度を上げる
+2025-03-20 09:53:16,781 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/「わかる」から「動ける」まで 言葉の解像度を上げる.md
+2025-03-20 09:53:16,782 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:53:16,782 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:53:18,105 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:53:18,106 - LocalService - INFO - 后台处理完成: amazon_book_4833440709_「わかる」から「動ける」まで 言葉の解像度を上げる_2025-03-20T01-53-14-277Z.html
+2025-03-20 09:53:28,756 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:28] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:31,205 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:31] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:31,211 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:31] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:31,356 - LocalService - INFO - 收到处理HTML请求: amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-53-31-232Z
+2025-03-20 09:53:31,356 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:53:31,373 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-53-31-232Z.html
+2025-03-20 09:53:31,374 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:53:31,377 - LocalService - INFO - 已启动后台处理线程: amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-53-31-232Z.html
+2025-03-20 09:53:31,378 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-53-31-232Z.html
+2025-03-20 09:53:31,379 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:31] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:53:31,410 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:53:31,412 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:53:33,385 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-53-31-232Z.json
+2025-03-20 09:53:33,386 - AmazonBookProcessor - INFO - Using book title as filename: 組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法
+2025-03-20 09:53:33,386 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法.md
+2025-03-20 09:53:33,386 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:53:33,387 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:53:33,513 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:53:33,516 - LocalService - INFO - 后台处理完成: amazon_book_4862763367_組織の未来は「従業員体験」で変わる――人手不足の時代にエンゲージメントを高める方法_2025-03-20T01-53-31-232Z.html
+2025-03-20 09:53:35,747 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:43,634 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:43] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:43,644 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:43] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:45,247 - LocalService - INFO - 收到处理HTML请求: amazon_book_4295410705_セールスマネジメントモデル_2025-03-20T01-53-43-648Z
+2025-03-20 09:53:45,248 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:53:45,253 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4295410705_セールスマネジメントモデル_2025-03-20T01-53-43-648Z.html
+2025-03-20 09:53:45,254 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:53:45,255 - LocalService - INFO - 已启动后台处理线程: amazon_book_4295410705_セールスマネジメントモデル_2025-03-20T01-53-43-648Z.html
+2025-03-20 09:53:45,255 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4295410705_セールスマネジメントモデル_2025-03-20T01-53-43-648Z.html
+2025-03-20 09:53:45,278 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:45] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:53:45,287 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:53:45,287 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:53:58,765 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:53:58] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:53:58,782 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4295410705_セールスマネジメントモデル_2025-03-20T01-53-43-648Z.json
+2025-03-20 09:53:58,785 - AmazonBookProcessor - INFO - Using book title as filename: セールスマネジメントモデル
+2025-03-20 09:53:58,785 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/セールスマネジメントモデル.md
+2025-03-20 09:53:58,786 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:53:58,787 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:53:59,021 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:53:59,022 - LocalService - INFO - 后台处理完成: amazon_book_4295410705_セールスマネジメントモデル_2025-03-20T01-53-43-648Z.html
+2025-03-20 09:54:13,104 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:54:13] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:54:13,125 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:54:13] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:54:14,123 - LocalService - INFO - 收到处理HTML请求: amazon_book_4295410683_データ経営大全――中小企業経営の切り札_2025-03-20T01-54-13-131Z
+2025-03-20 09:54:14,126 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-20 09:54:14,569 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4295410683_データ経営大全――中小企業経営の切り札_2025-03-20T01-54-13-131Z.html
+2025-03-20 09:54:14,792 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-20 09:54:14,793 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/html/amazon_book_4295410683_データ経営大全――中小企業経営の切り札_2025-03-20T01-54-13-131Z.html
+2025-03-20 09:54:14,836 - LocalService - INFO - 已启动后台处理线程: amazon_book_4295410683_データ経営大全――中小企業経営の切り札_2025-03-20T01-54-13-131Z.html
+2025-03-20 09:54:14,860 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:54:14] "POST /process HTTP/1.1" 200 -
+2025-03-20 09:54:15,237 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-20 09:54:15,237 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-20 09:54:25,545 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/json/amazon_book_4295410683_データ経営大全――中小企業経営の切り札_2025-03-20T01-54-13-131Z.json
+2025-03-20 09:54:25,550 - AmazonBookProcessor - INFO - Using book title as filename: データ経営大全――中小企業経営の切り札
+2025-03-20 09:54:25,550 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/amazonbooks/markdown/データ経営大全――中小企業経営の切り札.md
+2025-03-20 09:54:25,551 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-20 09:54:25,553 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-20 09:54:25,687 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-20 09:54:25,688 - LocalService - INFO - 后台处理完成: amazon_book_4295410683_データ経営大全――中小企業経営の切り札_2025-03-20T01-54-13-131Z.html
+2025-03-20 09:54:28,728 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:54:28] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:54:35,741 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:54:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:55:35,751 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:55:35] "GET /status HTTP/1.1" 200 -
+2025-03-20 09:55:35,756 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 09:55:35] "GET /status HTTP/1.1" 200 -

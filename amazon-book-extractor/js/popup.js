@@ -17,6 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
   extractBtn.addEventListener('click', extractBookInfo);
   settingsBtn.addEventListener('click', openSettings);
   
+  // 检测网站类型
+  function detectWebsiteType(url) {
+    if (url.includes('jd.com')) return 'jd';
+    if (url.includes('dangdang.com')) return 'dangdang';
+    if (url.includes('douban.com/subject/')) return 'douban';
+    if (url.includes('amazon')) return 'amazon';
+    return 'unknown';
+  }
+  
   // 自动提取图书信息
   chrome.storage.local.get(['autoExtract'], function(result) {
     // 默认启用自动提取
@@ -107,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     extractBtn.textContent = '提取中...';
     
     // 获取保存目录
-    chrome.storage.local.get(['saveDirectory', 'localService'], function(result) {
+    chrome.storage.local.get(['saveDirectory'], function(result) {
       if (!result.saveDirectory) {
         showStatus('请先在设置中设置保存目录', 'error');
         resetExtractButton();
@@ -117,121 +126,178 @@ document.addEventListener('DOMContentLoaded', function() {
       // 获取当前标签页
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         const activeTab = tabs[0];
+        const url = activeTab.url;
+        const siteType = detectWebsiteType(url);
         
-        // 检查是否在亚马逊图书页面
-        if (!activeTab.url.includes('amazon.com') && !activeTab.url.includes('amazon.cn') && 
-            !activeTab.url.includes('amazon.co.uk') && !activeTab.url.includes('amazon.co.jp')) {
-          showStatus('请在亚马逊图书页面使用此插件', 'error');
+        if (siteType === 'unknown') {
+          showStatus('请在支持的图书页面使用此插件', 'error');
           resetExtractButton();
           return;
         }
         
-        if (!activeTab.url.includes('/dp/') && !activeTab.url.includes('/gp/product/')) {
-          showStatus('请在亚马逊图书详情页面使用此插件', 'error');
-          resetExtractButton();
-          return;
-        }
-        
-        // 从URL中提取ASIN
-        const asinMatch = activeTab.url.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/);
-        const asin = asinMatch ? asinMatch[1] : 'unknown';
-        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-        
-        console.log('正在提取图书信息，ASIN:', asin, '标签页ID:', activeTab.id);
-        
-        // 尝试注入内容脚本
-        chrome.scripting.executeScript({
-          target: { tabId: activeTab.id },
-          files: ['js/content.js']
-        }, function() {
-          if (chrome.runtime.lastError) {
-            console.error('注入内容脚本失败:', chrome.runtime.lastError.message);
-            showStatus('注入内容脚本失败: ' + chrome.runtime.lastError.message, 'error');
-            resetExtractButton();
-            return;
-          }
+        // Amazon网站使用原有流程
+        if (siteType === 'amazon') {
+          // 提取亚马逊图书信息
+          chrome.scripting.executeScript({
+            target: { tabId: activeTab.id },
+            function: function() {
+              return document.documentElement.outerHTML;
+            }
+          }, function(results) {
+            if (chrome.runtime.lastError) {
+              showStatus('获取页面内容失败: ' + chrome.runtime.lastError.message, 'error');
+              resetExtractButton();
+              return;
+            }
+            
+            if (!results || !results[0] || !results[0].result) {
+              showStatus('无法获取页面内容', 'error');
+              resetExtractButton();
+              return;
+            }
+            
+            // 获取HTML内容
+            const htmlContent = results[0].result;
+            
+            // 根据URL确定区域
+            let region = 'us'; // 默认为美国区域
+            if (url.includes('amazon.co.uk')) {
+              region = 'uk';
+            } else if (url.includes('amazon.co.jp')) {
+              region = 'jp';
+            }
+            
+            // 生成文件名
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+            const fileName = `amazon_${region}_${timestamp}.html`;
+            
+            // 保存HTML内容并通知处理结果
+            showStatus('正在处理HTML内容...', 'info');
+            
+            chrome.runtime.sendMessage({
+              action: 'runPythonScript',
+              fileName: fileName,
+              htmlContent: htmlContent,
+              saveDirectory: result.saveDirectory,
+              region: region,
+              url: url
+            }, function(response) {
+              if (response.success) {
+                showStatus('提取成功! 已保存到: ' + response.outputFile, 'success');
+                
+                // 延迟关闭popup
+                setTimeout(function() {
+                  window.close();
+                }, 2000);
+              } else {
+                showStatus(response.message || '提取失败', 'error');
+                resetExtractButton();
+              }
+            });
+          });
+        } 
+        // 中文网站使用新流程
+        else {
+          console.log(`准备注入${siteType}提取脚本`);
           
-          console.log('内容脚本注入成功，发送提取消息');
-          
-          // 向内容脚本发送消息，提取图书信息和HTML内容
+          // 先检查脚本是否已注入
           chrome.tabs.sendMessage(
             activeTab.id, 
-            {action: 'extractInfo'}, 
-            function(response) {
-              if (chrome.runtime.lastError) {
-                console.error('提取失败:', chrome.runtime.lastError.message);
-                showStatus('提取失败: ' + chrome.runtime.lastError.message, 'error');
-                resetExtractButton();
-                return;
-              }
-              
-              if (!response || !response.bookInfo) {
-                showStatus('无法从页面提取图书信息', 'error');
-                resetExtractButton();
-                return;
-              }
-              
-              console.log('成功提取图书信息:', response.bookInfo);
-              
-              // 生成文件名（包含书籍标题）
-              let bookTitle = response.bookInfo.title || '';
-              // 清理标题，移除特殊字符，限制长度
-              bookTitle = bookTitle.replace(/[\\/:*?"<>|]/g, '_').trim();
-              if (bookTitle.length > 50) {
-                bookTitle = bookTitle.substring(0, 50);
-              }
-              
-              // 生成文件名（格式：ASIN_标题_时间戳）
-              const fileName = bookTitle 
-                ? `amazon_book_${asin}_${bookTitle}_${timestamp}`
-                : `amazon_book_${asin}_${timestamp}`;
-              
-              // 存储图书信息，以便在其他地方使用
-              chrome.runtime.sendMessage({
-                action: 'storeBookInfo',
-                bookInfo: response.bookInfo
-              });
-              
-              // 直接使用内存中的HTML内容，不进行下载
-              showStatus('正在处理HTML...', 'info');
-              
-              // 向后台发送直接处理请求
-              chrome.runtime.sendMessage({
-                action: 'directProcessHtml',
-                fileName: fileName,
-                htmlContent: response.html,
-                saveDirectory: result.saveDirectory,
-                bookInfo: response.bookInfo
-              }, function(response) {
-                console.log('处理HTML响应:', response);
+            {action: 'ping'}, 
+            function(pingResponse) {
+              // 如果有错误，可能是脚本未注入
+              if (chrome.runtime.lastError || !pingResponse) {
+                console.log(`${siteType}提取脚本未注入，开始注入`);
                 
-                if (response && response.success) {
-                  showStatus(response.message || '提取成功！', 'success');
+                // 注入中文网站提取脚本
+                chrome.scripting.executeScript({
+                  target: { tabId: activeTab.id },
+                  files: [`js/${siteType}_extraction.js`]
+                }, function() {
+                  if (chrome.runtime.lastError) {
+                    console.error('注入脚本失败:', chrome.runtime.lastError.message);
+                    showStatus('注入脚本失败: ' + chrome.runtime.lastError.message, 'error');
+                    resetExtractButton();
+                    return;
+                  }
                   
-                  // 成功后延迟关闭popup（给用户时间看到成功消息）
-                  setTimeout(function() {
-                    window.close();
-                  }, 1500);
-                } else {
-                  showStatus(response && response.message ? response.message : '处理失败，请检查本地服务', 'error');
-                  resetExtractButton();
-                }
-              });
+                  console.log(`${siteType}提取脚本注入成功，开始提取信息`);
+                  
+                  // 执行提取函数 - 给脚本一点加载时间
+                  setTimeout(() => {
+                    executeExtraction();
+                  }, 500);
+                });
+              } else {
+                console.log(`${siteType}提取脚本已存在，直接执行提取`);
+                executeExtraction();
+              }
             }
           );
-        });
+          
+          // 执行提取函数
+          function executeExtraction() {
+            chrome.tabs.sendMessage(
+              activeTab.id, 
+              {action: 'extractInfo', site: siteType}, 
+              function(response) {
+                if (chrome.runtime.lastError) {
+                  console.error('提取失败:', chrome.runtime.lastError.message);
+                  showStatus('提取失败: ' + chrome.runtime.lastError.message, 'error');
+                  resetExtractButton();
+                  return;
+                }
+                
+                if (!response) {
+                  showStatus('页面未返回任何数据', 'error');
+                  resetExtractButton();
+                  return;
+                }
+                
+                if (!response.success || !response.bookInfo) {
+                  const errorMsg = response.error || '无法从页面提取图书信息';
+                  showStatus(errorMsg, 'error');
+                  resetExtractButton();
+                  return;
+                }
+                
+                console.log('成功提取图书信息:', response.bookInfo);
+                
+                // 发送数据到background.js处理
+                chrome.runtime.sendMessage({
+                  action: 'processChinesesSiteData',
+                  data: response.bookInfo,
+                  siteType: siteType,
+                  url: activeTab.url
+                }, function(response) {
+                  if (response && response.success) {
+                    showStatus(response.message || '提取成功！', 'success');
+                    
+                    // 成功后延迟关闭popup
+                    setTimeout(function() {
+                      window.close();
+                    }, 1500);
+                  } else {
+                    showStatus(response && response.message ? response.message : '处理失败', 'error');
+                    resetExtractButton();
+                  }
+                });
+              }
+            );
+          }
+        }
       });
     });
   }
   
-  // 重置提取按钮状态
+  // 重置提取按钮
   function resetExtractButton() {
     extractBtn.disabled = false;
     extractBtn.classList.remove('processing');
-    extractBtn.textContent = '提取信息';
+    extractBtn.textContent = '提取图书信息';
   }
   
-  // 显示状态消息
+  // 显示状态信息
   function showStatus(message, type) {
     statusDiv.innerHTML = type === 'info' && message.includes('正在')
       ? `<p><span class="loading"></span> ${message}</p>`

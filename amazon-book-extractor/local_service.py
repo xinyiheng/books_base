@@ -36,6 +36,8 @@ logger = logging.getLogger("LocalService")
 # 导入自定义模块
 try:
     from process_amazon_book import process_book
+    from json_to_markdown import convert_to_markdown
+    from feishu_webhook import send_to_feishu
 except ImportError as e:
     logger.error(f"导入模块失败: {str(e)}")
     logger.error("请确保所有必要的Python脚本都在同一目录下")
@@ -55,8 +57,8 @@ config = {
 
 @app.route('/')
 def index():
-    """返回服务状态页面"""
-    return send_from_directory('.', 'service_status.html')
+    """首页 - 显示服务状态页面"""
+    return send_from_directory('.', 'status.html')
 
 @app.route('/status', methods=['GET'])
 def status():
@@ -698,6 +700,81 @@ def save_jd_data():
             "success": False,
             "message": f"保存数据时发生错误: {str(e)}"
         }), 500
+
+# 添加处理中文网站数据的API端点
+@app.route('/process_chinese_site', methods=['POST'])
+def process_chinese_site():
+    """处理从中文网站(京东、当当、豆瓣)提取的图书数据"""
+    try:
+        data = request.json
+        json_data = data.get('json_data')
+        filename = data.get('filename')
+        save_directory = data.get('saveDirectory')
+        site_type = data.get('site_type')
+        feishu_webhook = data.get('feishuWebhook')
+        
+        if not save_directory:
+            save_directory = config["save_directory"]
+        
+        if not save_directory:
+            return jsonify({
+                'success': False,
+                'message': '未设置保存目录'
+            })
+        
+        try:
+            # 确保json和markdown目录存在
+            json_dir = os.path.join(save_directory, 'json')
+            markdown_dir = os.path.join(save_directory, 'markdown')
+            os.makedirs(json_dir, exist_ok=True)
+            os.makedirs(markdown_dir, exist_ok=True)
+            
+            # 保存JSON文件
+            json_path = os.path.join(json_dir, f"{filename}.json")
+            with open(json_path, 'w', encoding='utf-8') as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
+            
+            # 生成Markdown文件
+            md_content = convert_to_markdown(json_data)
+            md_path = os.path.join(markdown_dir, f"{filename}.md")
+            with open(md_path, 'w', encoding='utf-8') as f:
+                f.write(md_content)
+            
+            # 发送webhook请求(如果有)
+            if feishu_webhook or config.get('feishu_webhook'):
+                webhook_url = feishu_webhook or config.get('feishu_webhook')
+                try:
+                    send_to_feishu(json_data, webhook_url)
+                    logger.info(f"已将数据发送到飞书webhook")
+                except Exception as e:
+                    logger.error(f"发送数据到飞书失败: {str(e)}")
+            
+            return jsonify({
+                'success': True,
+                'files': {
+                    'json': json_path,
+                    'markdown': md_path
+                },
+                'message': f'成功处理{site_type}图书数据'
+            })
+            
+        except Exception as e:
+            logger.error(f"处理中文网站数据时发生错误: {str(e)}")
+            import traceback
+            logger.error(traceback.format_exc())
+            return jsonify({
+                'success': False,
+                'message': f'处理数据失败: {str(e)}'
+            })
+    
+    except Exception as e:
+        logger.error(f"处理请求时发生错误: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
+        return jsonify({
+            'success': False,
+            'message': f'处理请求失败: {str(e)}'
+        })
 
 def main():
     """主函数"""

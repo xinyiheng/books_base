@@ -195,45 +195,114 @@
 
     // 提取出版信息
     function extractPublishInfo() {
-        // 提取出版社
-        const publisherSpan = findElementContainingText('span.pl', '出版社');
-        if (publisherSpan) {
-            const publisherText = publisherSpan.nextSibling;
-            if (publisherText) {
-                bookInfo.出版社 = publisherText.textContent.replace(':', '').trim();
-                console.log("提取到出版社:", bookInfo.出版社);
-            }
-        }
-        
-        // 提取出品方 - 如果出版社为空，则使用出品方信息
-        if (!bookInfo.出版社 || bookInfo.出版社 === "") {
-            const producerSpan = findElementContainingText('span.pl', '出品方');
-            if (producerSpan) {
-                const producerText = producerSpan.nextSibling;
-                if (producerText) {
-                    bookInfo.出版社 = producerText.textContent.replace(':', '').trim();
-                    console.log("提取到出品方作为出版社:", bookInfo.出版社);
+        // 从info区域提取出版社信息
+        const infoDiv = document.getElementById('info');
+        if (infoDiv) {
+            // 优先提取出品方
+            const producerSpans = infoDiv.querySelectorAll('span.pl');
+            let publisherFound = false;
+            
+            // 先查找出品方
+            for (let i = 0; i < producerSpans.length; i++) {
+                const span = producerSpans[i];
+                if (span.textContent.trim() === '出品方:') {
+                    const nextNode = span.nextSibling;
+                    if (nextNode) {
+                        bookInfo.出版社 = nextNode.textContent.trim();
+                        console.log("提取到出品方作为出版社:", bookInfo.出版社);
+                        publisherFound = true;
+                        break;
+                    }
                 }
             }
-        }
-        
-        // 提取出版年份
-        const pubYearSpan = findElementContainingText('span.pl', '出版年');
-        if (pubYearSpan) {
-            const pubYearText = pubYearSpan.nextSibling;
-            if (pubYearText) {
-                bookInfo.出版时间 = pubYearText.textContent.replace(':', '').trim();
-                console.log("提取到出版时间:", bookInfo.出版时间);
+            
+            // 如果未找到出品方，尝试查找出版社
+            if (!publisherFound) {
+                for (let i = 0; i < producerSpans.length; i++) {
+                    const span = producerSpans[i];
+                    if (span.textContent.trim() === '出版社:') {
+                        // 检查是否有链接
+                        const nextA = span.nextElementSibling;
+                        if (nextA && nextA.tagName === 'A') {
+                            bookInfo.出版社 = nextA.textContent.trim();
+                            console.log("提取到出版社(链接):", bookInfo.出版社);
+                            publisherFound = true;
+                            break;
+                        } else {
+                            // 如果没有链接，尝试获取文本节点
+                            const nextNode = span.nextSibling;
+                            if (nextNode) {
+                                bookInfo.出版社 = nextNode.textContent.trim();
+                                console.log("提取到出版社(文本):", bookInfo.出版社);
+                                publisherFound = true;
+                                break;
+                            }
+                        }
+                    }
+                }
             }
-        }
-        
-        // 提取ISBN
-        const isbnSpan = findElementContainingText('span.pl', 'ISBN');
-        if (isbnSpan) {
-            const isbnText = isbnSpan.nextSibling;
-            if (isbnText) {
-                bookInfo.ISBN = isbnText.textContent.replace(':', '').trim();
-                console.log("提取到ISBN:", bookInfo.ISBN);
+            
+            // 提取出版年份
+            for (let i = 0; i < producerSpans.length; i++) {
+                const span = producerSpans[i];
+                if (span.textContent.trim() === '出版年:') {
+                    const nextNode = span.nextSibling;
+                    if (nextNode) {
+                        bookInfo.出版时间 = nextNode.textContent.trim();
+                        console.log("提取到出版时间:", bookInfo.出版时间);
+                        break;
+                    }
+                }
+            }
+            
+            // 提取ISBN
+            for (let i = 0; i < producerSpans.length; i++) {
+                const span = producerSpans[i];
+                if (span.textContent.trim() === 'ISBN:') {
+                    const nextNode = span.nextSibling;
+                    if (nextNode) {
+                        bookInfo.ISBN = nextNode.textContent.trim();
+                        console.log("提取到ISBN:", bookInfo.ISBN);
+                        break;
+                    }
+                }
+            }
+        } else {
+            // 如果没有找到info区域，使用之前的方法
+            // 优先提取出品方，如果没有再提取出版社
+            const producerSpan = findElementContainingText('span.pl', '出品方');
+            if (producerSpan && producerSpan.nextSibling) {
+                bookInfo.出版社 = producerSpan.nextSibling.textContent.replace(':', '').trim();
+                console.log("提取到出品方作为出版社:", bookInfo.出版社);
+            }
+            
+            // 如果出品方为空，则提取出版社
+            if (!bookInfo.出版社 || bookInfo.出版社 === "") {
+                const publisherSpan = findElementContainingText('span.pl', '出版社');
+                if (publisherSpan && publisherSpan.nextSibling) {
+                    bookInfo.出版社 = publisherSpan.nextSibling.textContent.replace(':', '').trim();
+                    console.log("提取到出版社:", bookInfo.出版社);
+                }
+            }
+            
+            // 提取出版年份
+            const pubYearSpan = findElementContainingText('span.pl', '出版年');
+            if (pubYearSpan) {
+                const pubYearText = pubYearSpan.nextSibling;
+                if (pubYearText) {
+                    bookInfo.出版时间 = pubYearText.textContent.replace(':', '').trim();
+                    console.log("提取到出版时间:", bookInfo.出版时间);
+                }
+            }
+            
+            // 提取ISBN
+            const isbnSpan = findElementContainingText('span.pl', 'ISBN');
+            if (isbnSpan) {
+                const isbnText = isbnSpan.nextSibling;
+                if (isbnText) {
+                    bookInfo.ISBN = isbnText.textContent.replace(':', '').trim();
+                    console.log("提取到ISBN:", bookInfo.ISBN);
+                }
             }
         }
     }
@@ -288,6 +357,30 @@
     function extractRelatedBooks() {
         // 清空关联图书数组
         bookInfo.关联图书 = [];
+        
+        // 添加"这本书的其他版本"到关联图书
+        const otherVersionsHeading = findElementContainingText('h2', '这本书的其他版本');
+        if (otherVersionsHeading) {
+            console.log("找到'这本书的其他版本'标题");
+            
+            // 提取works链接
+            const worksLink = otherVersionsHeading.querySelector('a[href*="works"]');
+            if (worksLink) {
+                const worksUrl = worksLink.getAttribute('href');
+                if (worksUrl) {
+                    // 确保URL是完整的
+                    const fullWorksUrl = worksUrl.startsWith('/') ? 'https://book.douban.com' + worksUrl : worksUrl;
+                    
+                    // 将"这本书的其他版本"作为特殊的关联图书添加
+                    bookInfo.关联图书.push({
+                        title: '本书的其他版本',
+                        url: fullWorksUrl
+                    });
+                    
+                    console.log(`添加了本书的其他版本链接: ${fullWorksUrl}`);
+                }
+            }
+        }
         
         // 方法1: 从div.content.clearfix获取关联图书
         const relatedSection = document.querySelector('div.content.clearfix');
@@ -392,29 +485,55 @@
             commentItems.forEach((item, index) => {
                 // 最多提取10条评论
                 if (index < 10) {
-                    // 提取评论者信息
-                    const commenter = item.querySelector('a.comment-info') || item.querySelector('a');
-                    const commenterName = commenter ? commenter.textContent.trim() : '匿名';
+                    // 提取评论者信息 - 从comment-info中提取
+                    const commentInfo = item.querySelector('span.comment-info');
+                    let commenterName = '匿名';
+                    let time = '';
                     
-                    // 提取评分
+                    if (commentInfo) {
+                        // 提取用户名
+                        const userLink = commentInfo.querySelector('a[href^="https://www.douban.com/people/"]');
+                        if (userLink) {
+                            commenterName = userLink.textContent.trim();
+                        }
+                        
+                        // 提取评论时间
+                        const timeLink = commentInfo.querySelector('a.comment-time');
+                        if (timeLink) {
+                            time = timeLink.textContent.trim();
+                        }
+                    }
+                    
+                    // 提取评分 - 从user-stars类提取
                     let rating = '';
-                    const ratingSpan = item.querySelector('span[class^="allstar"]');
+                    const ratingSpan = item.querySelector('span.user-stars[class*="allstar"]');
                     if (ratingSpan) {
                         const ratingClass = ratingSpan.getAttribute('class') || '';
                         const ratingMatch = ratingClass.match(/allstar(\d+)/);
                         if (ratingMatch) {
                             const stars = parseInt(ratingMatch[1]) / 10;
-                            rating = `${stars}星`;
+                            
+                            // 检查是否有title属性
+                            const ratingTitle = ratingSpan.getAttribute('title');
+                            if (ratingTitle) {
+                                rating = `${stars}星 (${ratingTitle})`;
+                            } else {
+                                rating = `${stars}星`;
+                            }
                         }
                     }
                     
-                    // 提取评论内容
-                    const commentText = item.querySelector('.comment-content') || item.querySelector('p');
-                    const content = commentText ? commentText.textContent.trim() : '';
-                    
-                    // 提取评论时间
-                    const commentTime = item.querySelector('.comment-time');
-                    const time = commentTime ? commentTime.textContent.trim() : '';
+                    // 提取评论内容 - 从comment-content中提取
+                    let content = '';
+                    const commentContent = item.querySelector('p.comment-content');
+                    if (commentContent) {
+                        const shortSpan = commentContent.querySelector('span.short');
+                        if (shortSpan) {
+                            content = shortSpan.textContent.trim();
+                        } else {
+                            content = commentContent.textContent.trim();
+                        }
+                    }
                     
                     // 构建评论对象
                     if (content) {
@@ -424,7 +543,7 @@
                             content: content,
                             time: time
                         });
-                        console.log(`提取到评论: ${commenterName}`);
+                        console.log(`提取到评论: ${commenterName}, 时间: ${time}, 评分: ${rating}`);
                     }
                 }
             });

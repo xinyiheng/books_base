@@ -37,8 +37,19 @@
     "*://*.amazon.cn/*",
     "*://*.amazon.co.uk/*",
     "*://*.amazon.co.jp/*",
+    "*://*.jd.com/*",
+    "*://*.dangdang.com/*",
+    "*://*.douban.com/*",
     "http://localhost:5001/*"
   ],
+  "web_accessible_resources": [{
+    "resources": [
+      "js/jd_extraction.js",
+      "js/dangdang_extraction.js",
+      "js/douban_extraction.js"
+    ],
+    "matches": ["*://*.jd.com/*", "*://*.dangdang.com/*", "*://*.douban.com/*"]
+  }],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   }

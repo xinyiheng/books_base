@@ -15,6 +15,85 @@ let localServiceConfig = {
 // 当前图书信息缓存
 let currentBookInfo = null;
 
+// 检测网站类型
+function detectWebsiteType(url) {
+  if (url.includes('jd.com')) return 'jd';
+  if (url.includes('dangdang.com')) return 'dangdang';
+  if (url.includes('douban.com/subject/')) return 'douban';
+  if (url.includes('amazon')) return 'amazon';
+  return 'unknown';
+}
+
+// 处理中文网站数据
+function processChinesesSiteData(data, siteType, url, callback) {
+  console.log(`处理${siteType}数据:`, data);
+  
+  // 获取保存目录
+  chrome.storage.local.get(['saveDirectory', 'feishuWebhook'], function(result) {
+    if (!result.saveDirectory) {
+      callback({success: false, message: '未设置保存目录'});
+      return;
+    }
+    
+    // 生成文件名
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const bookTitle = data.书名 ? data.书名.replace(/[\\/:*?"<>|]/g, '_').substring(0, 50) : '';
+    const fileName = bookTitle 
+      ? `${siteType}_book_${data.ISBN || 'unknown'}_${bookTitle}_${timestamp}`
+      : `${siteType}_book_${data.ISBN || 'unknown'}_${timestamp}`;
+    
+    // 添加元数据
+    data.region = 'cn';
+    data.domain = `${siteType}.com`;
+    data.file_name = `${fileName}.html`;
+    data.processed_time = new Date().toISOString().replace('T', ' ').substring(0, 19);
+    data.url = url;
+    
+    // 确定使用的URL
+    const serviceUrl = localServiceConfig.useCloud && localServiceConfig.cloudUrl 
+      ? localServiceConfig.cloudUrl 
+      : localServiceConfig.url;
+    
+    // 创建请求数据
+    const requestData = {
+      json_data: data,
+      filename: fileName,
+      saveDirectory: result.saveDirectory,
+      site_type: siteType
+    };
+    
+    if (result.feishuWebhook) {
+      requestData.feishuWebhook = result.feishuWebhook;
+    }
+    
+    console.log("发送数据到本地服务:", requestData);
+    
+    // 发送数据到后端服务
+    fetch(`${serviceUrl}/process_chinese_site`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestData)
+    })
+    .then(response => response.json())
+    .then(responseData => {
+      if (responseData.success) {
+        callback({
+          success: true, 
+          message: '处理成功! JSON和Markdown文件已生成' + 
+                  (requestData.feishuWebhook ? '，数据已发送到飞书。' : '。'),
+          files: responseData.files
+        });
+      } else {
+        callback({success: false, message: responseData.message || '处理失败'});
+      }
+    })
+    .catch(error => {
+      console.error('处理中文网站数据失败:', error);
+      callback({success: false, message: `处理失败: ${error.message}`});
+    });
+  });
+}
+
 // 监听来自popup或设置页面的消息
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'getLocalServiceStatus') {
@@ -50,9 +129,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       // 使用本地服务处理HTML
       processHtmlViaLocalService(request.fileName, request.htmlContent, request.saveDirectory, request.bookInfo, request.region, request.url, sendResponse);
     } else {
-      // 使用旧方法（提示用户手动运行Python脚本）
+      // 使用旧方法
       runPythonScript(request.fileName, request.saveDirectory, request.bookInfo, request.region, request.url, sendResponse);
     }
+    return true; // 保持消息通道开放，以便异步响应
+  }
+  else if (request.action === 'processChinesesSiteData') {
+    // 处理中文网站数据
+    processChinesesSiteData(request.data, request.siteType, request.url, sendResponse);
     return true; // 保持消息通道开放，以便异步响应
   }
   else if (request.action === 'processHtmlViaLocalService') {

@@ -7645,3 +7645,263 @@ TypeError: 'NoneType' object does not support item assignment
 2025-03-20 23:11:03,468 - LocalService - INFO - 使用书名作为文件名: 无意义的意义_2025-03-20T23-11-03-468Z.json
 2025-03-20 23:11:03,469 - LocalService - INFO - 已保存JD图书数据: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/无意义的意义_2025-03-20T23-11-03-468Z.json
 2025-03-20 23:11:03,469 - werkzeug - INFO - 127.0.0.1 - - [20/Mar/2025 23:11:03] "POST /save-jd-data HTTP/1.1" 200 -
+2025-03-21 09:53:22,584 - LocalService - INFO - 已加载配置
+2025-03-21 09:53:22,584 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 09:53:22,585 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 09:53:22,585 - LocalService - INFO - 已保存配置
+2025-03-21 09:53:22,585 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-21 09:53:22,585 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-21 09:53:22,604 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.131:5001
+2025-03-21 09:53:22,604 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 09:53:39,887 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:53:39] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:55:06,401 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:55:06,406 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:55:06,424 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:55:06,425 - LocalService - INFO - 已保存配置
+2025-03-21 09:55:06,427 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:06] "POST /config HTTP/1.1" 200 -
+2025-03-21 09:55:06,570 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 09:55:06,571 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:06] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 09:55:47,425 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:47] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:55:47,429 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:47] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:55:47,432 - LocalService - INFO - 已保存配置
+2025-03-21 09:55:47,433 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:47] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:55:47,434 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:47] "POST /config HTTP/1.1" 200 -
+2025-03-21 09:55:47,550 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 09:55:47,550 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:55:47] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 09:57:42,334 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:57:42] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:57:42,343 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:57:42] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:57:42,355 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:57:42] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:57:42,365 - LocalService - INFO - 已保存配置
+2025-03-21 09:57:42,373 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:57:42] "POST /config HTTP/1.1" 200 -
+2025-03-21 09:57:42,511 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 09:57:42,512 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:57:42] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 09:58:43,555 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:58:43] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:58:43,559 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:58:43] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:58:43,565 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:58:43] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:58:43,565 - LocalService - INFO - 已保存配置
+2025-03-21 09:58:43,566 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:58:43] "POST /config HTTP/1.1" 200 -
+2025-03-21 09:58:44,633 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 09:58:44,633 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:58:44] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 09:59:50,842 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:59:50] "GET /status HTTP/1.1" 200 -
+2025-03-21 09:59:50,862 - LocalService - INFO - 已保存配置
+2025-03-21 09:59:50,863 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:59:50] "POST /config HTTP/1.1" 200 -
+2025-03-21 09:59:52,603 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 09:59:52,604 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 09:59:52] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:00:31,462 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:00:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:00:31,465 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:00:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:00:31,468 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:00:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:00:31,479 - LocalService - INFO - 已保存配置
+2025-03-21 10:00:31,480 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:00:31] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:00:32,660 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:00:32,660 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:00:32] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:01:08,666 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:01:08] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:01:08,675 - LocalService - INFO - 已保存配置
+2025-03-21 10:01:08,676 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:01:08] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:01:09,715 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:01:09,716 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:01:09] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:01:44,567 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:01:44] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:01:44,575 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:01:44] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:01:44,578 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:01:44] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:01:44,579 - LocalService - INFO - 已保存配置
+2025-03-21 10:01:44,580 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:01:44] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:01:45,717 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:01:45,717 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:01:45] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:02:45,290 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:02:45] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:02:45,294 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:02:45] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:02:45,298 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:02:45] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:02:45,301 - LocalService - INFO - 已保存配置
+2025-03-21 10:02:45,302 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:02:45] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:02:46,592 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:02:46,593 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:02:46] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:21:18,603 - LocalService - INFO - 已加载配置
+2025-03-21 10:21:18,603 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 10:21:18,604 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 10:21:18,604 - LocalService - INFO - 已保存配置
+2025-03-21 10:21:18,604 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-21 10:21:18,605 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-21 10:21:18,700 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.131:5001
+2025-03-21 10:21:18,700 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 10:21:29,872 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:29] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:21:31,565 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:21:31,575 - LocalService - INFO - 已保存配置
+2025-03-21 10:21:31,576 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:31] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:21:31,930 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:21:31,933 - LocalService - INFO - 已保存配置
+2025-03-21 10:21:31,934 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:31] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:21:32,665 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:32] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:21:32,670 - LocalService - INFO - 已保存配置
+2025-03-21 10:21:32,670 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:32] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:21:45,061 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:45] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:21:45,066 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:45] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:21:46,220 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:21:46,220 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:21:46] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:23:06,195 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:23:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:23:06,198 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:23:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:23:06,200 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:23:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:23:06,201 - LocalService - INFO - 已保存配置
+2025-03-21 10:23:06,201 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:23:06] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:23:06,482 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:23:06,484 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:23:06] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:34:31,209 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:34:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:34:31,222 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:34:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:34:31,224 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:34:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:34:31,226 - LocalService - INFO - 已保存配置
+2025-03-21 10:34:31,227 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:34:31] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:34:31,508 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:34:31,509 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:34:31] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:34:47,841 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:34:47] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:34:47,844 - LocalService - INFO - 已保存配置
+2025-03-21 10:34:47,845 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:34:47] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:35:03,062 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:35:03] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:35:12,044 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:35:12] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:35:12,055 - LocalService - INFO - 已保存配置
+2025-03-21 10:35:12,056 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:35:12] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:35:32,781 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:35:32] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:35:32,783 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:35:32] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:35:32,933 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:35:32,933 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:35:32] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 10:39:13,875 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:39:13] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:39:13,879 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:39:13] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:39:13,882 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:39:13] "GET /status HTTP/1.1" 200 -
+2025-03-21 10:39:13,883 - LocalService - INFO - 已保存配置
+2025-03-21 10:39:13,883 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:39:13] "POST /config HTTP/1.1" 200 -
+2025-03-21 10:39:14,005 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 10:39:14,006 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 10:39:14] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 11:02:24,976 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:02:24] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:02:24,982 - LocalService - INFO - 已保存配置
+2025-03-21 11:02:24,983 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:02:24] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:02:36,801 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:02:36] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:02:57,447 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:02:57] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:02:57,460 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:02:57] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:04,993 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 11:03:04,995 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:04] "POST /create_directories HTTP/1.1" 200 -
+2025-03-21 11:03:06,793 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:08,259 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:08] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:08,266 - LocalService - INFO - 已保存配置
+2025-03-21 11:03:08,266 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:08] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:03:09,227 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:09] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:09,232 - LocalService - INFO - 已保存配置
+2025-03-21 11:03:09,233 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:09] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:03:25,130 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:25] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:25,135 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:25] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:31,046 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 11:03:31,063 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:31] "POST /create_directories HTTP/1.1" 200 -
+2025-03-21 11:03:34,925 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:34] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:36,693 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:36] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:36,697 - LocalService - INFO - 已保存配置
+2025-03-21 11:03:36,698 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:36] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:03:37,858 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:37] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:03:37,863 - LocalService - INFO - 已保存配置
+2025-03-21 11:03:37,863 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:03:37] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:03:55,711 - LocalService - INFO - 已加载配置
+2025-03-21 11:03:55,712 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 11:03:55,712 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 11:03:55,713 - LocalService - INFO - 已保存配置
+2025-03-21 11:03:55,714 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-21 11:03:55,714 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-21 11:03:55,752 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.131:5001
+2025-03-21 11:03:55,752 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-21 11:04:00,125 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:00] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:06,153 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:06,157 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:06] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:10,857 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-21 11:04:10,858 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:10] "POST /create_directories HTTP/1.1" 200 -
+2025-03-21 11:04:12,959 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:12] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:14,228 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:14] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:14,235 - LocalService - INFO - 已保存配置
+2025-03-21 11:04:14,236 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:14] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:04:15,158 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:15] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:15,162 - LocalService - INFO - 已保存配置
+2025-03-21 11:04:15,162 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:15] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:04:15,727 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:15] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:15,731 - LocalService - INFO - 已保存配置
+2025-03-21 11:04:15,732 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:15] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:04:21,886 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:21] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:21,906 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:21] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:34,132 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:34] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:34,136 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:34] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:47,293 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:47] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:47,298 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:47] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:04:47,458 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 11:04:47,459 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:04:47] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 11:05:42,652 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:05:42] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:05:42,663 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:05:42] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:05:42,666 - LocalService - INFO - 已保存配置
+2025-03-21 11:05:42,667 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:05:42] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:05:42,669 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:05:42] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:05:44,009 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 11:05:44,009 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:05:44] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 11:06:31,519 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:06:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:06:31,526 - LocalService - INFO - 已保存配置
+2025-03-21 11:06:31,527 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:06:31] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:08:17,141 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:17] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:08:17,146 - LocalService - INFO - 已保存配置
+2025-03-21 11:08:17,147 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:17] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:08:25,288 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:25] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:08:26,956 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:26] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:08:26,962 - LocalService - INFO - 已保存配置
+2025-03-21 11:08:26,963 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:26] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:08:27,788 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:27] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:08:27,793 - LocalService - INFO - 已保存配置
+2025-03-21 11:08:27,793 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:27] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:08:39,521 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:39] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:08:39,528 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:08:39] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:15:49,017 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:15:49] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:15:49,023 - LocalService - INFO - 已保存配置
+2025-03-21 11:15:49,023 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:15:49] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:15:56,548 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:15:56] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:15:58,381 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:15:58] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:15:58,389 - LocalService - INFO - 已保存配置
+2025-03-21 11:15:58,390 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:15:58] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:15:59,451 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:15:59] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:15:59,457 - LocalService - INFO - 已保存配置
+2025-03-21 11:15:59,457 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:15:59] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:16:27,528 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:16:27] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:16:27,532 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:16:27] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:16:29,085 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 11:16:29,085 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:16:29] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 11:17:39,427 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:17:39] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:17:39,436 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:17:39] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:17:39,440 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:17:39] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:17:39,479 - LocalService - INFO - 已保存配置
+2025-03-21 11:17:39,480 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:17:39] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:17:40,135 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 11:17:40,136 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:17:40] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 11:20:13,026 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:13] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:20:13,031 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:13] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:20:13,037 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:13] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:20:13,042 - LocalService - INFO - 已保存配置
+2025-03-21 11:20:13,043 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:13] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:20:13,277 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 11:20:13,279 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:13] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 11:20:31,863 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:20:31,870 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:31] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:20:31,981 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 11:20:31,982 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:31] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 11:20:37,982 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:37] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:20:37,987 - LocalService - INFO - 已保存配置
+2025-03-21 11:20:37,988 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:37] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:20:45,580 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:45] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:20:47,111 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:47] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:20:47,119 - LocalService - INFO - 已保存配置
+2025-03-21 11:20:47,120 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:20:47] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:21:23,557 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:23] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:21:23,563 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:23] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:21:23,568 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:23] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:21:23,600 - LocalService - INFO - 已保存配置
+2025-03-21 11:21:23,601 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:23] "POST /config HTTP/1.1" 200 -
+2025-03-21 11:21:24,212 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 11:21:24,214 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:24] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-21 11:21:49,540 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:49] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:21:49,551 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:49] "GET /status HTTP/1.1" 200 -
+2025-03-21 11:21:50,376 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-21 11:21:50,377 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:50] "POST /process_chinese_site HTTP/1.1" 200 -

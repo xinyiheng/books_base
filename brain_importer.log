@@ -1,0 +1,81 @@
+2025-03-22 20:53:17,327 - BrainImporter - ERROR - JSON文件不存在: /Users/wangxiaohui/Library/Mobile Documents/comappleCloudDocs/bookbase/json/amazon_jp_2025-03-22T12-14-02-395Z.json
+2025-03-22 20:55:38,923 - BrainImporter - INFO - 处理书籍: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 20:55:38,923 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 20:55:38,924 - BrainImporter - INFO - 创建Thought: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 20:55:40,222 - BrainImporter - ERROR - 创建Thought失败: 404 - 
+2025-03-22 20:55:40,226 - BrainImporter - ERROR - 创建Thought失败，无法继续
+2025-03-22 21:01:26,022 - BrainImporter - INFO - 处理书籍: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 21:01:26,022 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 21:01:26,022 - BrainImporter - INFO - 创建Thought: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 21:01:27,240 - BrainImporter - ERROR - 创建Thought失败: 404 - 
+2025-03-22 21:01:27,243 - BrainImporter - ERROR - 创建Thought失败，无法继续
+2025-03-22 21:14:30,356 - BrainImporter - INFO - 处理书籍: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 21:14:30,356 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 21:14:30,357 - BrainImporter - INFO - 创建Thought: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 21:14:31,533 - BrainImporter - INFO - 成功创建Thought，ID: c8e0e8b1-7909-4a02-a4e3-afd7e3b3094f
+2025-03-22 21:14:31,536 - BrainImporter - INFO - 更新Thought ID c8e0e8b1-7909-4a02-a4e3-afd7e3b3094f的Note
+2025-03-22 21:14:32,596 - BrainImporter - INFO - 成功更新Note
+2025-03-22 21:14:32,600 - BrainImporter - INFO - 成功将书籍 '解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法' 导入到The Brain
+2025-03-22 21:18:20,244 - BrainImporter - WARNING - Markdown文件不存在: 
+2025-03-22 21:18:20,244 - BrainImporter - INFO - 处理书籍: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 21:18:20,244 - BrainImporter - INFO - 未找到Markdown文件，从JSON生成Markdown内容
+2025-03-22 21:18:20,244 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 21:18:20,244 - BrainImporter - INFO - 创建Thought: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 21:18:25,682 - BrainImporter - WARNING - API路径 https://api.thebrain.com/api/thoughts/53d07455-e094-44a5-a29b-82e0314abed1 失败: 404 - 
+2025-03-22 21:18:29,254 - BrainImporter - WARNING - API路径 https://api.thebrain.com/api/brains/53d07455-e094-44a5-a29b-82e0314abed1/thoughts 失败: 404 - 
+2025-03-22 21:18:36,170 - BrainImporter - WARNING - API路径 https://api.thebrain.com/thoughts/53d07455-e094-44a5-a29b-82e0314abed1 失败: 404 - 
+2025-03-22 21:18:37,071 - BrainImporter - WARNING - API路径 https://api.thebrain.com/brains/53d07455-e094-44a5-a29b-82e0314abed1/thoughts 失败: 404 - 
+2025-03-22 21:18:37,072 - BrainImporter - ERROR - 所有API路径都失败，无法创建Thought
+2025-03-22 21:18:37,073 - BrainImporter - ERROR - 创建Thought失败，无法继续
+2025-03-22 22:34:13,904 - AutoImporter - INFO - 测试API连接 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:34:13,904 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:35:14,535 - AutoImporter - INFO - 测试API连接 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:35:14,536 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:36:06,178 - AutoImporter - INFO - 测试API连接 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:36:06,178 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:36:28,019 - AutoImporter - INFO - 测试API连接 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:36:28,019 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:37:13,184 - AutoImporter - INFO - 测试API连接 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:37:13,185 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:42:09,250 - AutoImporter - INFO - 测试API连接 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:42:09,251 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:45:48,564 - AutoImporter - INFO - 测试API连接 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:45:48,564 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:46:11,367 - AutoImporter - INFO - 开始处理书籍数据: 测试书籍
+2025-03-22 22:46:11,367 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/测试书籍_20250322224611.json
+2025-03-22 22:46:11,367 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/测试书籍_20250322224611.json
+2025-03-22 22:46:11,367 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 22:46:11,368 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 22:46:11,368 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:46:11,368 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:46:11,368 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 22:46:11,368 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:46:11,368 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 22:46:11,368 - AutoImporter - INFO - 尝试创建Thought: 测试书籍
+2025-03-22 22:46:11,368 - BrainImporter - INFO - 创建Thought: 测试书籍
+2025-03-22 22:46:12,348 - BrainImporter - INFO - 成功创建Thought，ID: 8c0bf297-ae2d-4220-830d-8d62b0c47a0b
+2025-03-22 22:46:12,350 - AutoImporter - INFO - 成功创建Thought，ID: 8c0bf297-ae2d-4220-830d-8d62b0c47a0b
+2025-03-22 22:46:12,350 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 22:46:12,350 - BrainImporter - INFO - 更新Thought ID 8c0bf297-ae2d-4220-830d-8d62b0c47a0b的Note
+2025-03-22 22:46:13,324 - BrainImporter - INFO - 成功更新Note
+2025-03-22 22:46:13,325 - AutoImporter - INFO - 成功将书籍 '测试书籍' 导入到The Brain
+2025-03-22 22:53:18,869 - AutoImporter - INFO - 测试API连接 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:53:18,869 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:53:30,074 - AutoImporter - INFO - 开始处理书籍数据: 测试书籍
+2025-03-22 22:53:30,075 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/测试书籍_20250322225330.json
+2025-03-22 22:53:30,075 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/测试书籍_20250322225330.json
+2025-03-22 22:53:30,075 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 22:53:30,075 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 22:53:30,075 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:53:30,075 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:53:30,075 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 22:53:30,075 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:53:30,075 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 22:53:30,075 - AutoImporter - INFO - 尝试创建Thought: 测试书籍
+2025-03-22 22:53:30,075 - BrainImporter - INFO - 创建Thought: 测试书籍
+2025-03-22 22:53:31,060 - BrainImporter - INFO - 成功创建Thought，ID: e13f7545-45d2-4be6-947c-0de33b0bcc29
+2025-03-22 22:53:31,061 - AutoImporter - INFO - 成功创建Thought，ID: e13f7545-45d2-4be6-947c-0de33b0bcc29
+2025-03-22 22:53:31,061 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 22:53:31,061 - BrainImporter - INFO - 更新Thought ID e13f7545-45d2-4be6-947c-0de33b0bcc29的Note
+2025-03-22 22:53:31,990 - BrainImporter - INFO - 成功更新Note
+2025-03-22 22:53:31,993 - AutoImporter - INFO - 成功将书籍 '测试书籍' 导入到The Brain

@@ -23,6 +23,14 @@ logging.basicConfig(
 )
 logger = logging.getLogger("AmazonBookProcessor")
 
+# 添加TheBrain导入专用日志
+brain_logger = logging.getLogger("TheBrainImport")
+brain_handler = logging.FileHandler("thebrain_import.log")
+brain_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+brain_logger.setLevel(logging.INFO)
+brain_logger.addHandler(brain_handler)
+brain_logger.addHandler(logging.StreamHandler())
+
 # 导入自定义模块
 try:
     from amazon_feishu_extractor import extract_from_file, convert_to_feishu_format
@@ -169,6 +177,44 @@ def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", ur
             logger.error(traceback.format_exc())
     else:
         logger.warning("No Feishu webhook URL provided, skipping sending data to Feishu")
+    
+    # 添加:自动导入数据到TheBrain
+    try:
+        # 检查父目录下是否存在auto_brain_importer.py
+        parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        auto_importer_path = os.path.join(parent_dir, "auto_brain_importer.py")
+        
+        if os.path.exists(auto_importer_path):
+            # 导入auto_brain_importer模块
+            sys.path.insert(0, parent_dir)
+            try:
+                from auto_brain_importer import auto_import_book
+                from brain_importer import process_markdown_content
+                
+                brain_logger.info(f"开始自动导入Amazon图书到TheBrain: {title}")
+                brain_logger.info(f"JSON文件路径: {json_file}")
+                
+                # 使用process_markdown_content处理Markdown内容，确保移除标题
+                # 自动导入时会再次调用此函数，这里只是确保日志一致性
+                processed_content = process_markdown_content(markdown_content)
+                brain_logger.info(f"已处理Markdown内容，移除了YAML frontmatter和标题")
+                
+                # 调用导入函数
+                import_result = auto_import_book(book_data)
+                
+                if import_result.get("success"):
+                    brain_logger.info(f"成功将书籍导入到TheBrain: {title}")
+                    brain_logger.info(f"Thought ID: {import_result.get('thought_id')}")
+                else:
+                    brain_logger.error(f"导入到TheBrain失败: {import_result.get('message')}")
+            except ImportError as e:
+                brain_logger.error(f"导入auto_brain_importer模块失败: {str(e)}")
+        else:
+            brain_logger.warning(f"未找到auto_brain_importer.py，跳过导入到TheBrain。路径: {auto_importer_path}")
+    except Exception as e:
+        brain_logger.error(f"导入到TheBrain时出错: {str(e)}")
+        import traceback
+        brain_logger.error(traceback.format_exc())
     
     return json_file, markdown_file
 

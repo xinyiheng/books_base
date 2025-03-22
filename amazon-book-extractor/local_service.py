@@ -36,6 +36,22 @@ logger = logging.getLogger("LocalService")
 # 导入自定义模块
 try:
     from process_amazon_book import process_book
+    # 确保能够导入父目录中的模块
+    import sys
+    import os
+    parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if parent_dir not in sys.path:
+        sys.path.append(parent_dir)
+        
+    # 尝试导入auto_brain_importer模块，用于自动导入到TheBrain
+    try:
+        from auto_brain_importer import auto_import_book
+        logger.info("成功导入auto_brain_importer模块")
+    except ImportError as e:
+        logger.warning(f"导入auto_brain_importer模块失败: {str(e)}")
+        logger.warning("将无法自动导入数据到TheBrain")
+    
+    # 导入其他模块
     from json_to_markdown import convert_to_markdown
     from feishu_webhook import send_to_feishu
 except ImportError as e:
@@ -649,6 +665,8 @@ def save_jd_data():
         timestamp = data.get('timestamp', datetime.now().isoformat())
         
         # 解析JSON数据，获取书名和ISBN
+        book_title = filename
+        book_data = None
         try:
             book_data = json.loads(json_data)
             book_title = book_data.get('书名', '')
@@ -685,12 +703,51 @@ def save_jd_data():
         
         logger.info(f"已保存JD图书数据: {json_file_path}")
         
+        # 添加: 自动导入到TheBrain
+        thought_id = None
+        if book_data:
+            try:
+                # 检查是否可以导入auto_brain_importer模块
+                parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                auto_importer_path = os.path.join(parent_dir, "auto_brain_importer.py")
+                
+                if os.path.exists(auto_importer_path):
+                    # 导入auto_brain_importer模块
+                    sys.path.insert(0, parent_dir)
+                    from auto_brain_importer import auto_import_book
+                    
+                    logger.info(f"开始自动导入JD图书到TheBrain: {book_title}")
+                    
+                    # 调用导入函数
+                    import_result = auto_import_book(book_data)
+                    
+                    if import_result.get("success"):
+                        logger.info(f"成功将JD图书 '{book_title}' 导入到TheBrain")
+                        thought_id = import_result.get('thought_id')
+                        logger.info(f"Thought ID: {thought_id}")
+                    else:
+                        logger.error(f"导入JD图书到TheBrain失败: {import_result.get('message')}")
+                else:
+                    logger.warning(f"未找到auto_brain_importer.py，跳过导入到TheBrain。路径: {auto_importer_path}")
+            except Exception as e:
+                logger.error(f"导入JD图书到TheBrain时出错: {str(e)}")
+                import traceback
+                logger.error(traceback.format_exc())
+                # 继续处理，不让导入错误影响正常流程
+        
         # 返回成功响应
-        return jsonify({
+        response = {
             "success": True,
             "message": f"数据已保存: {filename}",
             "file_path": json_file_path
-        })
+        }
+        
+        # 如果导入到TheBrain成功，添加thought_id到响应中
+        if thought_id:
+            response["thought_id"] = thought_id
+            response["message"] += f" 并已导入到TheBrain"
+        
+        return jsonify(response)
     
     except Exception as e:
         logger.error(f"保存JD图书数据时发生错误: {str(e)}")
@@ -748,6 +805,36 @@ def process_chinese_site():
                     logger.info(f"已将数据发送到飞书webhook")
                 except Exception as e:
                     logger.error(f"发送数据到飞书失败: {str(e)}")
+            
+            # 添加: 自动导入到TheBrain
+            try:
+                # 检查是否可以导入auto_brain_importer模块
+                parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                auto_importer_path = os.path.join(parent_dir, "auto_brain_importer.py")
+                
+                if os.path.exists(auto_importer_path):
+                    # 导入auto_brain_importer模块
+                    sys.path.insert(0, parent_dir)
+                    from auto_brain_importer import auto_import_book
+                    
+                    book_title = json_data.get('标题') or json_data.get('书名') or json_data.get('title', filename)
+                    logger.info(f"开始自动导入中文网站图书到TheBrain: {book_title}")
+                    
+                    # 调用导入函数
+                    import_result = auto_import_book(json_data)
+                    
+                    if import_result.get("success"):
+                        logger.info(f"成功将中文网站图书 '{book_title}' 导入到TheBrain")
+                        logger.info(f"Thought ID: {import_result.get('thought_id')}")
+                    else:
+                        logger.error(f"导入中文网站图书到TheBrain失败: {import_result.get('message')}")
+                else:
+                    logger.warning(f"未找到auto_brain_importer.py，跳过导入到TheBrain。路径: {auto_importer_path}")
+            except Exception as e:
+                logger.error(f"导入中文网站图书到TheBrain时出错: {str(e)}")
+                import traceback
+                logger.error(traceback.format_exc())
+                # 继续处理，不让导入错误影响正常流程
             
             return jsonify({
                 'success': True,

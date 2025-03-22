@@ -8404,3 +8404,883 @@ TypeError: 'NoneType' object does not support item assignment
 2025-03-22 19:49:00,379 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:49:00] "GET /status HTTP/1.1" 200 -
 2025-03-22 19:49:03,140 - LocalService - INFO - 已将数据发送到飞书webhook
 2025-03-22 19:49:03,141 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:49:03] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:52:09,344 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:52:09] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:52:09,349 - LocalService - INFO - 已保存配置
+2025-03-22 19:52:09,350 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:52:09] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:52:10,278 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:52:10,278 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:52:10] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:52:17,057 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:52:17] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:52:17,059 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:52:17] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:52:17,815 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:52:17,816 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:52:17] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:52:59,865 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:52:59] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:52:59,871 - LocalService - INFO - 已保存配置
+2025-03-22 19:52:59,872 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:52:59] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:53:00,131 - LocalService - INFO - 收到处理HTML请求: amazon_us_2025-03-22T11-53-00-040Z.html
+2025-03-22 19:53:00,131 - LocalService - INFO - 从URL检测到域名: amazon.com
+2025-03-22 19:53:00,135 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_us_2025-03-22T11-53-00-040Z.html
+2025-03-22 19:53:00,135 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 19:53:00,136 - LocalService - INFO - 已启动后台处理线程: amazon_us_2025-03-22T11-53-00-040Z.html
+2025-03-22 19:53:00,136 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:53:00] "POST /process HTTP/1.1" 200 -
+2025-03-22 19:53:00,137 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_us_2025-03-22T11-53-00-040Z.html
+2025-03-22 19:53:00,140 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.com
+2025-03-22 19:53:00,140 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 19:53:03,742 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_us_2025-03-22T11-53-00-040Z.json
+2025-03-22 19:53:03,743 - AmazonBookProcessor - INFO - Using book title as filename: The Technological Republic: Hard Power, Soft Belief, and the Future of the West
+2025-03-22 19:53:03,743 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/The Technological Republic: Hard Power, Soft Belief, and the Future of the West.md
+2025-03-22 19:53:03,744 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 19:53:03,748 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 19:53:04,078 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 19:53:04,079 - LocalService - INFO - 后台处理完成: amazon_us_2025-03-22T11-53-00-040Z.html
+2025-03-22 19:53:18,821 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:53:18] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:53:18,823 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:53:18] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:53:18,900 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T11-53-18-841Z.html
+2025-03-22 19:53:18,901 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 19:53:18,904 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-53-18-841Z.html
+2025-03-22 19:53:18,904 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 19:53:18,904 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T11-53-18-841Z.html
+2025-03-22 19:53:18,905 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:53:18] "POST /process HTTP/1.1" 200 -
+2025-03-22 19:53:18,905 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-53-18-841Z.html
+2025-03-22 19:53:18,909 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 19:53:18,909 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 19:53:20,756 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T11-53-18-841Z.json
+2025-03-22 19:53:20,757 - AmazonBookProcessor - INFO - Using book title as filename: 冒険する組織のつくりかた「軍事的世界観」を抜け出す５つの思考法
+2025-03-22 19:53:20,757 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/冒険する組織のつくりかた「軍事的世界観」を抜け出す５つの思考法.md
+2025-03-22 19:53:20,757 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 19:53:20,757 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 19:53:20,969 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 19:53:20,970 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T11-53-18-841Z.html
+2025-03-22 19:53:34,456 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:53:34] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:53:34,458 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:53:34] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:53:34,558 - LocalService - INFO - 收到处理HTML请求: amazon_uk_2025-03-22T11-53-34-481Z.html
+2025-03-22 19:53:34,559 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-22 19:53:34,567 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_uk_2025-03-22T11-53-34-481Z.html
+2025-03-22 19:53:34,568 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 19:53:34,569 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_uk_2025-03-22T11-53-34-481Z.html
+2025-03-22 19:53:34,570 - LocalService - INFO - 已启动后台处理线程: amazon_uk_2025-03-22T11-53-34-481Z.html
+2025-03-22 19:53:34,571 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:53:34] "POST /process HTTP/1.1" 200 -
+2025-03-22 19:53:34,582 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-22 19:53:34,582 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 19:53:35,777 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_uk_2025-03-22T11-53-34-481Z.json
+2025-03-22 19:53:35,778 - AmazonBookProcessor - INFO - Using book title as filename: The Next Conversation: Argue Less, Talk More
+2025-03-22 19:53:35,779 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/The Next Conversation: Argue Less, Talk More.md
+2025-03-22 19:53:35,779 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 19:53:35,780 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 19:53:36,181 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 19:53:36,183 - LocalService - INFO - 后台处理完成: amazon_uk_2025-03-22T11-53-34-481Z.html
+2025-03-22 19:55:24,574 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:55:24] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:55:24,581 - LocalService - INFO - 已保存配置
+2025-03-22 19:55:24,581 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:55:24] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:55:24,630 - LocalService - INFO - 收到处理HTML请求: amazon_uk_2025-03-22T11-55-24-570Z.html
+2025-03-22 19:55:24,631 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-22 19:55:24,635 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_uk_2025-03-22T11-55-24-570Z.html
+2025-03-22 19:55:24,635 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 19:55:24,635 - LocalService - INFO - 已启动后台处理线程: amazon_uk_2025-03-22T11-55-24-570Z.html
+2025-03-22 19:55:24,636 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:55:24] "POST /process HTTP/1.1" 200 -
+2025-03-22 19:55:24,636 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_uk_2025-03-22T11-55-24-570Z.html
+2025-03-22 19:55:24,638 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-22 19:55:24,638 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 19:55:25,800 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_uk_2025-03-22T11-55-24-570Z.json
+2025-03-22 19:55:25,802 - AmazonBookProcessor - INFO - Using book title as filename: What's Your Dream?: The #1 Sunday Times Bestselling Guide to Help Find Your Passion, Love Your Work 
+2025-03-22 19:55:25,802 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/What's Your Dream?: The #1 Sunday Times Bestselling Guide to Help Find Your Passion, Love Your Work .md
+2025-03-22 19:55:25,803 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 19:55:25,803 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 19:55:26,058 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 19:55:26,058 - LocalService - INFO - 后台处理完成: amazon_uk_2025-03-22T11-55-24-570Z.html
+2025-03-22 19:59:06,336 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:59:06] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:59:06,339 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:59:06] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:59:06,343 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:59:06] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:59:06,360 - LocalService - INFO - 已保存配置
+2025-03-22 19:59:06,360 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:59:06] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:59:06,427 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T11-59-06-374Z.html
+2025-03-22 19:59:06,427 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 19:59:06,430 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-59-06-374Z.html
+2025-03-22 19:59:06,430 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 19:59:06,430 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T11-59-06-374Z.html
+2025-03-22 19:59:06,431 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:59:06] "POST /process HTTP/1.1" 200 -
+2025-03-22 19:59:06,431 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-59-06-374Z.html
+2025-03-22 19:59:06,436 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 19:59:06,436 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 19:59:08,569 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T11-59-06-374Z.json
+2025-03-22 19:59:08,582 - AmazonBookProcessor - INFO - Using book title as filename: モンテッソーリ教育・レッジョ・エミリア教育を知り尽くした オックスフォード児童発達学博士が語る 自分でできる子に育つ ほめ方 叱り方 3歳 〜 12歳 の子ども対象
+2025-03-22 19:59:08,582 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/モンテッソーリ教育・レッジョ・エミリア教育を知り尽くした オックスフォード児童発達学博士が語る 自分でできる子に育つ ほめ方 叱り方 3歳 〜 12歳 の子ども対象.md
+2025-03-22 19:59:08,588 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 19:59:08,590 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 19:59:08,903 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 19:59:08,903 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T11-59-06-374Z.html
+2025-03-22 20:12:05,153 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:05] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:12:05,162 - LocalService - INFO - 已保存配置
+2025-03-22 20:12:05,162 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:05] "POST /config HTTP/1.1" 200 -
+2025-03-22 20:12:05,224 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-12-05-164Z.html
+2025-03-22 20:12:05,225 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:12:05,228 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-12-05-164Z.html
+2025-03-22 20:12:05,228 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:12:05,229 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-12-05-164Z.html
+2025-03-22 20:12:05,230 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:05] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:12:05,230 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-12-05-164Z.html
+2025-03-22 20:12:05,244 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:12:05,245 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:12:07,334 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-12-05-164Z.json
+2025-03-22 20:12:07,338 - AmazonBookProcessor - INFO - Using book title as filename: 嫌われる勇気 自己啓発の源流「アドラー」の教え
+2025-03-22 20:12:07,338 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/嫌われる勇気 自己啓発の源流「アドラー」の教え.md
+2025-03-22 20:12:07,339 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 20:12:07,339 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 20:12:07,995 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 20:12:07,996 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T12-12-05-164Z.html
+2025-03-22 20:12:12,055 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:12] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:12:12,058 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:12] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:12:12,126 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-12-12-075Z.html
+2025-03-22 20:12:12,127 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:12:12,131 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-12-12-075Z.html
+2025-03-22 20:12:12,132 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:12:12,132 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-12-12-075Z.html
+2025-03-22 20:12:12,133 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:12] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:12:12,134 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-12-12-075Z.html
+2025-03-22 20:12:12,138 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:12:12,138 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:12:13,263 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-12-12-075Z.json
+2025-03-22 20:12:13,265 - AmazonBookProcessor - INFO - Using book title as filename: シン読解力: 学力と人生を決めるもうひとつの読み方
+2025-03-22 20:12:13,265 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/シン読解力: 学力と人生を決めるもうひとつの読み方.md
+2025-03-22 20:12:13,266 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 20:12:13,267 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 20:12:13,505 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 20:12:13,505 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T12-12-12-075Z.html
+2025-03-22 20:12:15,877 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:15] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:12:15,879 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:15] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:12:15,969 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-12-15-922Z.html
+2025-03-22 20:12:15,970 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:12:15,972 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-12-15-922Z.html
+2025-03-22 20:12:15,972 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:12:15,972 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-12-15-922Z.html
+2025-03-22 20:12:15,973 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:15] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:12:15,973 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-12-15-922Z.html
+2025-03-22 20:12:15,979 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:12:15,979 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:12:17,940 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-12-15-922Z.json
+2025-03-22 20:12:17,943 - AmazonBookProcessor - INFO - Using book title as filename: 副業図鑑: 初心者必見！凡人でも稼いだ20種の副業を徹底比較 稼ぐ力を鍛える
+2025-03-22 20:12:17,943 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/副業図鑑: 初心者必見！凡人でも稼いだ20種の副業を徹底比較 稼ぐ力を鍛える.md
+2025-03-22 20:12:17,944 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 20:12:17,945 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 20:12:18,227 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 20:12:18,227 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T12-12-15-922Z.html
+2025-03-22 20:12:19,536 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:19] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:12:19,538 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:19] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:12:19,610 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-12-19-562Z.html
+2025-03-22 20:12:19,610 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:12:19,613 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-12-19-562Z.html
+2025-03-22 20:12:19,613 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:12:19,614 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-12-19-562Z.html
+2025-03-22 20:12:19,615 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:12:19] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:12:19,615 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-12-19-562Z.html
+2025-03-22 20:12:19,619 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:12:19,619 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:12:21,442 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-12-19-562Z.json
+2025-03-22 20:12:21,443 - AmazonBookProcessor - INFO - Using book title as filename: 「会社四季報」業界地図 2025年版
+2025-03-22 20:12:21,444 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/「会社四季報」業界地図 2025年版.md
+2025-03-22 20:12:21,444 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 20:12:21,445 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 20:12:21,655 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 20:12:21,655 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T12-12-19-562Z.html
+2025-03-22 20:13:43,796 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:43] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:13:43,835 - LocalService - INFO - 已保存配置
+2025-03-22 20:13:43,836 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:43] "POST /config HTTP/1.1" 200 -
+2025-03-22 20:13:43,843 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-13-43-783Z.html
+2025-03-22 20:13:43,843 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:13:43,846 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-13-43-783Z.html
+2025-03-22 20:13:43,847 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:13:43,847 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-13-43-783Z.html
+2025-03-22 20:13:43,848 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:43] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:13:43,848 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-13-43-783Z.html
+2025-03-22 20:13:43,853 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:13:43,853 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:13:45,535 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-13-43-783Z.json
+2025-03-22 20:13:45,538 - AmazonBookProcessor - INFO - Using book title as filename: キーエンス流 性弱説経営
+2025-03-22 20:13:45,538 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/キーエンス流 性弱説経営.md
+2025-03-22 20:13:45,539 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 20:13:45,539 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 20:13:45,897 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 20:13:45,898 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T12-13-43-783Z.html
+2025-03-22 20:13:49,473 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:49] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:13:49,476 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:49] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:13:49,557 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-13-49-514Z.html
+2025-03-22 20:13:49,557 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:13:49,560 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-13-49-514Z.html
+2025-03-22 20:13:49,560 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:13:49,560 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-13-49-514Z.html
+2025-03-22 20:13:49,561 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:49] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:13:49,562 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-13-49-514Z.html
+2025-03-22 20:13:49,566 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:13:49,566 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:13:50,898 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-13-49-514Z.json
+2025-03-22 20:13:50,899 - AmazonBookProcessor - INFO - Using book title as filename: 新版　思考の整理学 (ちくま文庫 と-1-11)
+2025-03-22 20:13:50,899 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/新版　思考の整理学 (ちくま文庫 と-1-11).md
+2025-03-22 20:13:50,899 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 20:13:50,900 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 20:13:51,329 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 20:13:51,330 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T12-13-49-514Z.html
+2025-03-22 20:13:53,628 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:53] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:13:53,631 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:53] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:13:53,691 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-13-53-647Z.html
+2025-03-22 20:13:53,691 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:13:53,694 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-13-53-647Z.html
+2025-03-22 20:13:53,694 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:13:53,694 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-13-53-647Z.html
+2025-03-22 20:13:53,695 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:53] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:13:53,696 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-13-53-647Z.html
+2025-03-22 20:13:53,700 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:13:53,701 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:13:54,824 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-13-53-647Z.json
+2025-03-22 20:13:54,827 - AmazonBookProcessor - INFO - Using book title as filename: 図解 コンサル一年目が学ぶこと
+2025-03-22 20:13:54,827 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/図解 コンサル一年目が学ぶこと.md
+2025-03-22 20:13:54,828 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 20:13:54,828 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 20:13:55,246 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 20:13:55,247 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T12-13-53-647Z.html
+2025-03-22 20:13:58,421 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:58] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:13:58,423 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:58] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:13:58,494 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-13-58-446Z.html
+2025-03-22 20:13:58,494 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:13:58,499 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-13-58-446Z.html
+2025-03-22 20:13:58,499 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:13:58,499 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-13-58-446Z.html
+2025-03-22 20:13:58,501 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:13:58] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:13:58,501 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-13-58-446Z.html
+2025-03-22 20:13:58,510 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:13:58,511 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:13:59,100 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-13-58-446Z.json
+2025-03-22 20:13:59,101 - AmazonBookProcessor - INFO - Using book title as filename: 解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法
+2025-03-22 20:13:59,101 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/解像度を上げる――曖昧な思考を明晰にする「深さ・広さ・構造・時間」の４視点と行動法.md
+2025-03-22 20:13:59,101 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 20:13:59,102 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 20:13:59,429 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 20:13:59,430 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T12-13-58-446Z.html
+2025-03-22 20:14:02,369 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:14:02] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:14:02,371 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:14:02] "GET /status HTTP/1.1" 200 -
+2025-03-22 20:14:02,430 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T12-14-02-395Z.html
+2025-03-22 20:14:02,430 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 20:14:02,433 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-14-02-395Z.html
+2025-03-22 20:14:02,434 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 20:14:02,434 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T12-14-02-395Z.html
+2025-03-22 20:14:02,435 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 20:14:02] "POST /process HTTP/1.1" 200 -
+2025-03-22 20:14:02,435 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T12-14-02-395Z.html
+2025-03-22 20:14:02,440 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 20:14:02,440 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 20:14:02,862 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T12-14-02-395Z.json
+2025-03-22 20:14:02,862 - AmazonBookProcessor - INFO - Using book title as filename: 『FIRE』子どもを2人育てながら1億円貯めた夫婦の40代FIREまでの道のり: GAFA部長が教える、40歳まで役職なし/手取り25万円だった僕が夫婦で取り組んだ資産形成/セミリタイア・アーリーリタ
+2025-03-22 20:14:02,862 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/『FIRE』子どもを2人育てながら1億円貯めた夫婦の40代FIREまでの道のり: GAFA部長が教える、40歳まで役職なし/手取り25万円だった僕が夫婦で取り組んだ資産形成/セミリタイア・アーリーリタ.md
+2025-03-22 20:14:02,863 - LocalService - ERROR - 后台处理出错: [Errno 2] No such file or directory: '/Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/『FIRE』子どもを2人育てながら1億円貯めた夫婦の40代FIREまでの道のり: GAFA部長が教える、40歳まで役職なし/手取り25万円だった僕が夫婦で取り組んだ資産形成/セミリタイア・アーリーリタ.md'
+2025-03-22 22:24:17,479 - LocalService - INFO - 已加载配置
+2025-03-22 22:24:17,479 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 22:24:17,479 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 22:24:17,480 - LocalService - INFO - 已保存配置
+2025-03-22 22:24:17,480 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 22:24:17,480 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 22:24:17,507 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 22:24:17,507 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 22:24:42,883 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:24:42] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:25:11,575 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:25:11] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:25:13,306 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:25:13] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:25:13,315 - LocalService - INFO - 已保存配置
+2025-03-22 22:25:13,316 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:25:13] "POST /config HTTP/1.1" 200 -
+2025-03-22 22:25:37,469 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:25:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:25:37,472 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:25:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:25:37,530 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T14-25-37-490Z.html
+2025-03-22 22:25:37,530 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 22:25:37,535 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T14-25-37-490Z.html
+2025-03-22 22:25:37,535 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 22:25:37,536 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T14-25-37-490Z.html
+2025-03-22 22:25:37,536 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:25:37] "POST /process HTTP/1.1" 200 -
+2025-03-22 22:25:37,537 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T14-25-37-490Z.html
+2025-03-22 22:25:37,543 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 22:25:37,543 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 22:25:37,790 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T14-25-37-490Z.json
+2025-03-22 22:25:37,792 - AmazonBookProcessor - INFO - Using book title as filename: 構造化思考のレッスン
+2025-03-22 22:25:37,792 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/構造化思考のレッスン.md
+2025-03-22 22:25:37,792 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 22:25:37,792 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 22:25:38,142 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 22:25:38,142 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T14-25-37-490Z.html
+2025-03-22 22:47:13,370 - LocalService - INFO - 已加载配置
+2025-03-22 22:47:13,370 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 22:47:13,370 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 22:47:13,373 - LocalService - INFO - 已保存配置
+2025-03-22 22:47:13,373 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 22:47:13,373 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 22:47:13,400 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 22:47:13,400 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 22:47:26,079 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:26] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:47:26,080 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 22:47:26,081 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:26] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 22:47:26,085 - LocalService - INFO - 已保存配置
+2025-03-22 22:47:26,086 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:26] "POST /config HTTP/1.1" 200 -
+2025-03-22 22:47:28,376 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:28] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:47:30,208 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:30] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:47:30,214 - LocalService - INFO - 已保存配置
+2025-03-22 22:47:30,215 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:30] "POST /config HTTP/1.1" 200 -
+2025-03-22 22:47:36,942 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:36] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:47:36,946 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:36] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:47:37,054 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T14-47-37-005Z.html
+2025-03-22 22:47:37,054 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 22:47:37,059 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T14-47-37-005Z.html
+2025-03-22 22:47:37,059 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 22:47:37,059 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T14-47-37-005Z.html
+2025-03-22 22:47:37,060 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:47:37] "POST /process HTTP/1.1" 200 -
+2025-03-22 22:47:37,061 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T14-47-37-005Z.html
+2025-03-22 22:47:37,065 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 22:47:37,065 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 22:47:37,342 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T14-47-37-005Z.json
+2025-03-22 22:47:37,344 - AmazonBookProcessor - INFO - Using book title as filename: 構造化思考のレッスン
+2025-03-22 22:47:37,344 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/構造化思考のレッスン.md
+2025-03-22 22:47:37,344 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 22:47:37,344 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 22:47:37,676 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 22:47:37,677 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T14-47-37-005Z.html
+2025-03-22 22:49:13,975 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:49:13] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:49:13,980 - LocalService - INFO - 已保存配置
+2025-03-22 22:49:13,981 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:49:13] "POST /config HTTP/1.1" 200 -
+2025-03-22 22:49:14,033 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T14-49-13-975Z.html
+2025-03-22 22:49:14,034 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 22:49:14,037 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T14-49-13-975Z.html
+2025-03-22 22:49:14,038 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 22:49:14,038 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T14-49-13-975Z.html
+2025-03-22 22:49:14,039 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:49:14] "POST /process HTTP/1.1" 200 -
+2025-03-22 22:49:14,039 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T14-49-13-975Z.html
+2025-03-22 22:49:14,046 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 22:49:14,046 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 22:49:15,936 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T14-49-13-975Z.json
+2025-03-22 22:49:15,938 - AmazonBookProcessor - INFO - Using book title as filename: 「わかる」から「動ける」まで 言葉の解像度を上げる
+2025-03-22 22:49:15,938 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/「わかる」から「動ける」まで 言葉の解像度を上げる.md
+2025-03-22 22:49:15,939 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 22:49:15,940 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 22:49:16,361 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 22:49:16,361 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T14-49-13-975Z.html
+2025-03-22 22:58:24,360 - LocalService - INFO - 成功导入auto_brain_importer模块
+2025-03-22 22:58:24,363 - LocalService - INFO - 已加载配置
+2025-03-22 22:58:24,363 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 22:58:24,363 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 22:58:24,364 - LocalService - INFO - 已保存配置
+2025-03-22 22:58:24,364 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 22:58:24,364 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 22:58:24,390 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 22:58:24,390 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 22:58:33,928 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:33] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:58:33,932 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:33] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:58:33,935 - LocalService - INFO - 已保存配置
+2025-03-22 22:58:33,936 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:33] "POST /config HTTP/1.1" 200 -
+2025-03-22 22:58:35,415 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 22:58:35,416 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:35] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 22:58:38,048 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:38] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:58:38,058 - LocalService - INFO - 已保存配置
+2025-03-22 22:58:38,058 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:38] "POST /config HTTP/1.1" 200 -
+2025-03-22 22:58:39,982 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:39] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:58:39,991 - LocalService - INFO - 已保存配置
+2025-03-22 22:58:39,992 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:39] "POST /config HTTP/1.1" 200 -
+2025-03-22 22:58:51,888 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:51] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:58:51,892 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:51] "GET /status HTTP/1.1" 200 -
+2025-03-22 22:58:51,956 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T14-58-51-912Z.html
+2025-03-22 22:58:51,956 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 22:58:51,961 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T14-58-51-912Z.html
+2025-03-22 22:58:51,961 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 22:58:51,961 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T14-58-51-912Z.html
+2025-03-22 22:58:51,962 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 22:58:51] "POST /process HTTP/1.1" 200 -
+2025-03-22 22:58:51,963 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T14-58-51-912Z.html
+2025-03-22 22:58:51,967 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 22:58:51,967 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 22:58:53,443 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T14-58-51-912Z.json
+2025-03-22 22:58:53,445 - AmazonBookProcessor - INFO - Using book title as filename: いい質問が部下を動かす: 傾聴する、問いかける、気づかせる秘訣 (単行本)
+2025-03-22 22:58:53,445 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/いい質問が部下を動かす: 傾聴する、問いかける、気づかせる秘訣 (単行本).md
+2025-03-22 22:58:53,446 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 22:58:53,447 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 22:58:53,848 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 22:58:53,849 - TheBrainImport - INFO - 开始自动导入图书到TheBrain: いい質問が部下を動かす: 傾聴する、問いかける、気づかせる秘訣 (単行本)
+2025-03-22 22:58:53,849 - TheBrainImport - INFO - JSON文件路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T14-58-51-912Z.json
+2025-03-22 22:58:53,849 - AutoImporter - INFO - 开始处理书籍数据: いい質問が部下を動かす: 傾聴する、問いかける、気づかせる秘訣 (単行本)
+2025-03-22 22:58:53,850 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/いい質問が部下を動かす 傾聴する問いかける気づかせる秘訣 単行本_20250322225853.json
+2025-03-22 22:58:53,850 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/いい質問が部下を動かす 傾聴する問いかける気づかせる秘訣 単行本_20250322225853.json
+2025-03-22 22:58:53,850 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 22:58:53,850 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 22:58:53,850 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:58:53,850 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 22:58:53,850 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 22:58:53,850 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 22:58:53,850 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 22:58:53,850 - AutoImporter - INFO - 尝试创建Thought: いい質問が部下を動かす: 傾聴する、問いかける、気づかせる秘訣 (単行本)
+2025-03-22 22:58:53,851 - BrainImporter - INFO - 创建Thought: いい質問が部下を動かす: 傾聴する、問いかける、気づかせる秘訣 (単行本)
+2025-03-22 22:58:55,063 - BrainImporter - INFO - 成功创建Thought，ID: 70f0a70b-7325-49a2-b21a-9e7347fc49a2
+2025-03-22 22:58:55,065 - AutoImporter - INFO - 成功创建Thought，ID: 70f0a70b-7325-49a2-b21a-9e7347fc49a2
+2025-03-22 22:58:55,065 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 22:58:55,065 - BrainImporter - INFO - 更新Thought ID 70f0a70b-7325-49a2-b21a-9e7347fc49a2的Note
+2025-03-22 22:58:56,065 - BrainImporter - INFO - 成功更新Note
+2025-03-22 22:58:56,067 - AutoImporter - INFO - 成功将书籍 'いい質問が部下を動かす: 傾聴する、問いかける、気づかせる秘訣 (単行本)' 导入到The Brain
+2025-03-22 22:58:56,067 - TheBrainImport - INFO - 成功将书籍导入到TheBrain: いい質問が部下を動かす: 傾聴する、問いかける、気づかせる秘訣 (単行本)
+2025-03-22 22:58:56,067 - TheBrainImport - INFO - Thought ID: 70f0a70b-7325-49a2-b21a-9e7347fc49a2
+2025-03-22 22:58:56,067 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T14-58-51-912Z.html
+2025-03-22 23:09:44,551 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:09:44] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:09:44,554 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:09:44] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:09:44,556 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:09:44] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:09:44,558 - LocalService - INFO - 已保存配置
+2025-03-22 23:09:44,558 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:09:44] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:09:45,400 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:09:45,401 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:09:45] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:12:02,277 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:12:02] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:12:02,289 - LocalService - INFO - 已保存配置
+2025-03-22 23:12:02,290 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:12:02] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:12:02,928 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:12:02,929 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:12:02] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:12:27,842 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:12:27] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:12:27,852 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:12:27] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:12:27,933 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T15-12-27-882Z.html
+2025-03-22 23:12:27,933 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 23:12:27,937 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T15-12-27-882Z.html
+2025-03-22 23:12:27,937 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 23:12:27,938 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T15-12-27-882Z.html
+2025-03-22 23:12:27,938 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:12:27] "POST /process HTTP/1.1" 200 -
+2025-03-22 23:12:27,938 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T15-12-27-882Z.html
+2025-03-22 23:12:27,943 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 23:12:27,943 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 23:12:29,696 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T15-12-27-882Z.json
+2025-03-22 23:12:29,699 - AmazonBookProcessor - INFO - Using book title as filename: 日本再生の道 (幻冬舎新書)
+2025-03-22 23:12:29,699 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/日本再生の道 (幻冬舎新書).md
+2025-03-22 23:12:29,699 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 23:12:29,699 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 23:12:29,984 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 23:12:29,984 - TheBrainImport - INFO - 开始自动导入图书到TheBrain: 日本再生の道 (幻冬舎新書)
+2025-03-22 23:12:29,985 - TheBrainImport - INFO - JSON文件路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T15-12-27-882Z.json
+2025-03-22 23:12:29,986 - AutoImporter - INFO - 开始处理书籍数据: 日本再生の道 (幻冬舎新書)
+2025-03-22 23:12:29,987 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/日本再生の道 幻冬舎新書_20250322231229.json
+2025-03-22 23:12:29,987 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/日本再生の道 幻冬舎新書_20250322231229.json
+2025-03-22 23:12:29,987 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:12:29,987 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:12:29,987 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:12:29,988 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:12:29,988 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:12:29,988 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:12:29,988 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:12:29,988 - AutoImporter - INFO - 尝试创建Thought: 日本再生の道 (幻冬舎新書)
+2025-03-22 23:12:29,988 - BrainImporter - INFO - 创建Thought: 日本再生の道 (幻冬舎新書)
+2025-03-22 23:12:32,020 - BrainImporter - INFO - 成功创建Thought，ID: ac6b0dd1-2886-4a3f-bde4-d6431bdf1299
+2025-03-22 23:12:32,023 - AutoImporter - INFO - 成功创建Thought，ID: ac6b0dd1-2886-4a3f-bde4-d6431bdf1299
+2025-03-22 23:12:32,023 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:12:32,023 - BrainImporter - INFO - 更新Thought ID ac6b0dd1-2886-4a3f-bde4-d6431bdf1299的Note
+2025-03-22 23:12:33,542 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:12:33,544 - AutoImporter - INFO - 成功将书籍 '日本再生の道 (幻冬舎新書)' 导入到The Brain
+2025-03-22 23:12:33,544 - TheBrainImport - INFO - 成功将书籍导入到TheBrain: 日本再生の道 (幻冬舎新書)
+2025-03-22 23:12:33,544 - TheBrainImport - INFO - Thought ID: ac6b0dd1-2886-4a3f-bde4-d6431bdf1299
+2025-03-22 23:12:33,545 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T15-12-27-882Z.html
+2025-03-22 23:13:14,636 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:13:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:13:14,660 - LocalService - INFO - 已保存配置
+2025-03-22 23:13:14,662 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:13:14] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:13:14,712 - LocalService - INFO - 收到处理HTML请求: amazon_uk_2025-03-22T15-13-14-654Z.html
+2025-03-22 23:13:14,713 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-22 23:13:14,717 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_uk_2025-03-22T15-13-14-654Z.html
+2025-03-22 23:13:14,717 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 23:13:14,717 - LocalService - INFO - 已启动后台处理线程: amazon_uk_2025-03-22T15-13-14-654Z.html
+2025-03-22 23:13:14,719 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:13:14] "POST /process HTTP/1.1" 200 -
+2025-03-22 23:13:14,719 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_uk_2025-03-22T15-13-14-654Z.html
+2025-03-22 23:13:14,721 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-22 23:13:14,721 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 23:13:15,968 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_uk_2025-03-22T15-13-14-654Z.json
+2025-03-22 23:13:15,970 - AmazonBookProcessor - INFO - Using book title as filename: Careless People: The explosive memoir that Meta doesn't want you to read
+2025-03-22 23:13:15,970 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/Careless People: The explosive memoir that Meta doesn't want you to read.md
+2025-03-22 23:13:15,970 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 23:13:15,971 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 23:13:16,276 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 23:13:16,276 - TheBrainImport - INFO - 开始自动导入图书到TheBrain: Careless People: The explosive memoir that Meta doesn't want you to read
+2025-03-22 23:13:16,276 - TheBrainImport - INFO - JSON文件路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_uk_2025-03-22T15-13-14-654Z.json
+2025-03-22 23:13:16,276 - AutoImporter - INFO - 开始处理书籍数据: Careless People: The explosive memoir that Meta doesn't want you to read
+2025-03-22 23:13:16,278 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/Careless People The explosive memoir that Meta doesnt want you to read_20250322231316.json
+2025-03-22 23:13:16,278 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/Careless People The explosive memoir that Meta doesnt want you to read_20250322231316.json
+2025-03-22 23:13:16,278 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:13:16,278 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:13:16,278 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:13:16,278 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:13:16,278 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:13:16,278 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:13:16,278 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:13:16,278 - AutoImporter - INFO - 尝试创建Thought: Careless People: The explosive memoir that Meta doesn't want you to read
+2025-03-22 23:13:16,278 - BrainImporter - INFO - 创建Thought: Careless People: The explosive memoir that Meta doesn't want you to read
+2025-03-22 23:13:17,315 - BrainImporter - INFO - 成功创建Thought，ID: 5fbcd788-78c3-4b97-bee8-4e8a0a4ad847
+2025-03-22 23:13:17,317 - AutoImporter - INFO - 成功创建Thought，ID: 5fbcd788-78c3-4b97-bee8-4e8a0a4ad847
+2025-03-22 23:13:17,317 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:13:17,317 - BrainImporter - INFO - 更新Thought ID 5fbcd788-78c3-4b97-bee8-4e8a0a4ad847的Note
+2025-03-22 23:13:18,548 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:13:18,550 - AutoImporter - INFO - 成功将书籍 'Careless People: The explosive memoir that Meta doesn't want you to read' 导入到The Brain
+2025-03-22 23:13:18,550 - TheBrainImport - INFO - 成功将书籍导入到TheBrain: Careless People: The explosive memoir that Meta doesn't want you to read
+2025-03-22 23:13:18,550 - TheBrainImport - INFO - Thought ID: 5fbcd788-78c3-4b97-bee8-4e8a0a4ad847
+2025-03-22 23:13:18,551 - LocalService - INFO - 后台处理完成: amazon_uk_2025-03-22T15-13-14-654Z.html
+2025-03-22 23:14:41,273 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:14:41] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:14:41,281 - LocalService - INFO - 已保存配置
+2025-03-22 23:14:41,282 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:14:41] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:14:41,347 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T15-14-41-279Z.html
+2025-03-22 23:14:41,347 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 23:14:41,353 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T15-14-41-279Z.html
+2025-03-22 23:14:41,353 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 23:14:41,353 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T15-14-41-279Z.html
+2025-03-22 23:14:41,354 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:14:41] "POST /process HTTP/1.1" 200 -
+2025-03-22 23:14:41,355 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T15-14-41-279Z.html
+2025-03-22 23:14:41,376 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 23:14:41,377 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 23:14:43,930 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T15-14-41-279Z.json
+2025-03-22 23:14:43,932 - AmazonBookProcessor - INFO - Using book title as filename: JUST KEEP BUYING 自動的に富が増え続ける「お金」と「時間」の法則
+2025-03-22 23:14:43,933 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/JUST KEEP BUYING 自動的に富が増え続ける「お金」と「時間」の法則.md
+2025-03-22 23:14:43,934 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 23:14:43,935 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 23:14:44,116 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 23:14:44,117 - TheBrainImport - INFO - 开始自动导入图书到TheBrain: JUST KEEP BUYING 自動的に富が増え続ける「お金」と「時間」の法則
+2025-03-22 23:14:44,118 - TheBrainImport - INFO - JSON文件路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T15-14-41-279Z.json
+2025-03-22 23:14:44,118 - AutoImporter - INFO - 开始处理书籍数据: JUST KEEP BUYING 自動的に富が増え続ける「お金」と「時間」の法則
+2025-03-22 23:14:44,119 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/JUST KEEP BUYING 自動的に富が増え続けるお金と時間の法則_20250322231444.json
+2025-03-22 23:14:44,119 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/JUST KEEP BUYING 自動的に富が増え続けるお金と時間の法則_20250322231444.json
+2025-03-22 23:14:44,120 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:14:44,120 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:14:44,120 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:14:44,121 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:14:44,121 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:14:44,121 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:14:44,121 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:14:44,121 - AutoImporter - INFO - 尝试创建Thought: JUST KEEP BUYING 自動的に富が増え続ける「お金」と「時間」の法則
+2025-03-22 23:14:44,121 - BrainImporter - INFO - 创建Thought: JUST KEEP BUYING 自動的に富が増え続ける「お金」と「時間」の法則
+2025-03-22 23:14:45,309 - BrainImporter - INFO - 成功创建Thought，ID: 59faee1c-d9d4-42e5-9599-b4c7232f3e1c
+2025-03-22 23:14:45,310 - AutoImporter - INFO - 成功创建Thought，ID: 59faee1c-d9d4-42e5-9599-b4c7232f3e1c
+2025-03-22 23:14:45,310 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:14:45,311 - BrainImporter - INFO - 更新Thought ID 59faee1c-d9d4-42e5-9599-b4c7232f3e1c的Note
+2025-03-22 23:14:46,384 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:14:46,386 - AutoImporter - INFO - 成功将书籍 'JUST KEEP BUYING 自動的に富が増え続ける「お金」と「時間」の法則' 导入到The Brain
+2025-03-22 23:14:46,386 - TheBrainImport - INFO - 成功将书籍导入到TheBrain: JUST KEEP BUYING 自動的に富が増え続ける「お金」と「時間」の法則
+2025-03-22 23:14:46,386 - TheBrainImport - INFO - Thought ID: 59faee1c-d9d4-42e5-9599-b4c7232f3e1c
+2025-03-22 23:14:46,387 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T15-14-41-279Z.html
+2025-03-22 23:16:21,650 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:16:21] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:16:21,652 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:16:21] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:16:21,653 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:16:21] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:16:21,663 - LocalService - INFO - 已保存配置
+2025-03-22 23:16:21,663 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:16:21] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:16:22,315 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:16:22,316 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:16:22] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:18:58,796 - LocalService - INFO - 成功导入auto_brain_importer模块
+2025-03-22 23:18:58,799 - LocalService - INFO - 已加载配置
+2025-03-22 23:18:58,799 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 23:18:58,800 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 23:18:58,800 - LocalService - INFO - 已保存配置
+2025-03-22 23:18:58,801 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 23:18:58,801 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 23:18:58,834 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 23:18:58,834 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 23:19:24,645 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:24] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:19:24,649 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:24] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:19:24,651 - LocalService - INFO - 已保存配置
+2025-03-22 23:19:24,651 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:24] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:19:26,193 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 23:19:26,194 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:26] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 23:19:45,555 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:45] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:19:45,565 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:45] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:19:46,300 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:19:46,300 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 后浪官方正版 打造第二大脑 知识管理时间管理 笔记学习方法 管理学
+2025-03-22 23:19:46,300 - AutoImporter - INFO - 开始处理书籍数据: 后浪官方正版 打造第二大脑 知识管理时间管理 笔记学习方法 管理学
+2025-03-22 23:19:46,301 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/后浪官方正版 打造第二大脑 知识管理时间管理 笔记学习方法 管理学_20250322231946.json
+2025-03-22 23:19:46,301 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/后浪官方正版 打造第二大脑 知识管理时间管理 笔记学习方法 管理学_20250322231946.json
+2025-03-22 23:19:46,301 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:19:46,301 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:19:46,301 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:19:46,301 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:19:46,301 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:19:46,301 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:19:46,301 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:19:46,301 - AutoImporter - INFO - 尝试创建Thought: 后浪官方正版 打造第二大脑 知识管理时间管理 笔记学习方法 管理学
+2025-03-22 23:19:46,301 - BrainImporter - INFO - 创建Thought: 后浪官方正版 打造第二大脑 知识管理时间管理 笔记学习方法 管理学
+2025-03-22 23:19:47,615 - BrainImporter - INFO - 成功创建Thought，ID: f3d98735-2d44-4326-98c5-c9aeaf7be7c6
+2025-03-22 23:19:47,616 - AutoImporter - INFO - 成功创建Thought，ID: f3d98735-2d44-4326-98c5-c9aeaf7be7c6
+2025-03-22 23:19:47,616 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:19:47,616 - BrainImporter - INFO - 更新Thought ID f3d98735-2d44-4326-98c5-c9aeaf7be7c6的Note
+2025-03-22 23:19:48,617 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:19:48,620 - AutoImporter - INFO - 成功将书籍 '后浪官方正版 打造第二大脑 知识管理时间管理 笔记学习方法 管理学' 导入到The Brain
+2025-03-22 23:19:48,620 - LocalService - INFO - 成功将中文网站图书 '后浪官方正版 打造第二大脑 知识管理时间管理 笔记学习方法 管理学' 导入到TheBrain
+2025-03-22 23:19:48,620 - LocalService - INFO - Thought ID: f3d98735-2d44-4326-98c5-c9aeaf7be7c6
+2025-03-22 23:19:48,621 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:48] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:19:49,875 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:49] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:19:49,880 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:19:49] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:21:01,807 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:21:01] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:21:01,818 - LocalService - INFO - 已保存配置
+2025-03-22 23:21:01,819 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:21:01] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:21:02,472 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:21:02,473 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 【包邮】深度工作 新版 卡尔纽波特作品 如何有效使用每一点脑力 职场成长 成功励志书籍 后浪 【包邮】深度工作 2023年新版 卡尔纽波特
+2025-03-22 23:21:02,473 - AutoImporter - INFO - 开始处理书籍数据: 【包邮】深度工作 新版 卡尔纽波特作品 如何有效使用每一点脑力 职场成长 成功励志书籍 后浪 【包邮】深度工作 2023年新版 卡尔纽波特
+2025-03-22 23:21:02,474 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/包邮深度工作 新版 卡尔纽波特作品 如何有效使用每一点脑力 职场成长 成功励志书籍 后浪 包邮深度工作 2023年新版 卡尔纽波特_20250322232102.json
+2025-03-22 23:21:02,474 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/包邮深度工作 新版 卡尔纽波特作品 如何有效使用每一点脑力 职场成长 成功励志书籍 后浪 包邮深度工作 2023年新版 卡尔纽波特_20250322232102.json
+2025-03-22 23:21:02,474 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:21:02,474 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:21:02,474 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:21:02,474 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:21:02,474 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:21:02,474 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:21:02,474 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:21:02,474 - AutoImporter - INFO - 尝试创建Thought: 【包邮】深度工作 新版 卡尔纽波特作品 如何有效使用每一点脑力 职场成长 成功励志书籍 后浪 【包邮】深度工作 2023年新版 卡尔纽波特
+2025-03-22 23:21:02,475 - BrainImporter - INFO - 创建Thought: 【包邮】深度工作 新版 卡尔纽波特作品 如何有效使用每一点脑力 职场成长 成功励志书籍 后浪 【包邮】深度工作 2023年新版 卡尔纽波特
+2025-03-22 23:21:04,219 - BrainImporter - INFO - 成功创建Thought，ID: 27e57580-a46b-4243-bd43-aa3cbf3562da
+2025-03-22 23:21:04,221 - AutoImporter - INFO - 成功创建Thought，ID: 27e57580-a46b-4243-bd43-aa3cbf3562da
+2025-03-22 23:21:04,221 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:21:04,221 - BrainImporter - INFO - 更新Thought ID 27e57580-a46b-4243-bd43-aa3cbf3562da的Note
+2025-03-22 23:21:05,640 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:21:05,644 - AutoImporter - INFO - 成功将书籍 '【包邮】深度工作 新版 卡尔纽波特作品 如何有效使用每一点脑力 职场成长 成功励志书籍 后浪 【包邮】深度工作 2023年新版 卡尔纽波特' 导入到The Brain
+2025-03-22 23:21:05,645 - LocalService - INFO - 成功将中文网站图书 '【包邮】深度工作 新版 卡尔纽波特作品 如何有效使用每一点脑力 职场成长 成功励志书籍 后浪 【包邮】深度工作 2023年新版 卡尔纽波特' 导入到TheBrain
+2025-03-22 23:21:05,645 - LocalService - INFO - Thought ID: 27e57580-a46b-4243-bd43-aa3cbf3562da
+2025-03-22 23:21:05,646 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:21:05] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:21:46,412 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:21:46] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:21:46,431 - LocalService - INFO - 已保存配置
+2025-03-22 23:21:46,431 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:21:46] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:21:55,055 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:21:55] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:21:55,057 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:21:55] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:22:53,706 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:22:53] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:22:53,710 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:22:53] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:22:53,713 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:22:53] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:22:53,714 - LocalService - INFO - 已保存配置
+2025-03-22 23:22:53,715 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:22:53] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:22:54,387 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:22:54,388 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 清晰思考
+2025-03-22 23:22:54,388 - AutoImporter - INFO - 开始处理书籍数据: 清晰思考
+2025-03-22 23:22:54,390 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/清晰思考_20250322232254.json
+2025-03-22 23:22:54,390 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/清晰思考_20250322232254.json
+2025-03-22 23:22:54,390 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:22:54,390 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:22:54,390 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:22:54,391 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:22:54,391 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:22:54,391 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:22:54,391 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:22:54,391 - AutoImporter - INFO - 尝试创建Thought: 清晰思考
+2025-03-22 23:22:54,391 - BrainImporter - INFO - 创建Thought: 清晰思考
+2025-03-22 23:22:55,763 - BrainImporter - INFO - 成功创建Thought，ID: f251de87-7691-47fd-bb3b-2890233476b3
+2025-03-22 23:22:55,767 - AutoImporter - INFO - 成功创建Thought，ID: f251de87-7691-47fd-bb3b-2890233476b3
+2025-03-22 23:22:55,768 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:22:55,768 - BrainImporter - INFO - 更新Thought ID f251de87-7691-47fd-bb3b-2890233476b3的Note
+2025-03-22 23:22:56,807 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:22:56,810 - AutoImporter - INFO - 成功将书籍 '清晰思考' 导入到The Brain
+2025-03-22 23:22:56,811 - LocalService - INFO - 成功将中文网站图书 '清晰思考' 导入到TheBrain
+2025-03-22 23:22:56,811 - LocalService - INFO - Thought ID: f251de87-7691-47fd-bb3b-2890233476b3
+2025-03-22 23:22:56,811 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:22:56] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:24:31,155 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:24:31] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:24:31,158 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:24:31] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:24:31,164 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:24:31] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:24:31,171 - LocalService - INFO - 已保存配置
+2025-03-22 23:24:31,172 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:24:31] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:24:31,864 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:24:31,864 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 一如既往
+2025-03-22 23:24:31,864 - AutoImporter - INFO - 开始处理书籍数据: 一如既往
+2025-03-22 23:24:31,865 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/一如既往_20250322232431.json
+2025-03-22 23:24:31,865 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/一如既往_20250322232431.json
+2025-03-22 23:24:31,865 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:24:31,865 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:24:31,865 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:24:31,865 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:24:31,865 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:24:31,866 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:24:31,866 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:24:31,866 - AutoImporter - INFO - 尝试创建Thought: 一如既往
+2025-03-22 23:24:31,866 - BrainImporter - INFO - 创建Thought: 一如既往
+2025-03-22 23:24:33,235 - BrainImporter - INFO - 成功创建Thought，ID: b1ced354-eae7-4534-bca7-90badf1549a6
+2025-03-22 23:24:33,238 - AutoImporter - INFO - 成功创建Thought，ID: b1ced354-eae7-4534-bca7-90badf1549a6
+2025-03-22 23:24:33,238 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:24:33,238 - BrainImporter - INFO - 更新Thought ID b1ced354-eae7-4534-bca7-90badf1549a6的Note
+2025-03-22 23:24:34,224 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:24:34,227 - AutoImporter - INFO - 成功将书籍 '一如既往' 导入到The Brain
+2025-03-22 23:24:34,227 - LocalService - INFO - 成功将中文网站图书 '一如既往' 导入到TheBrain
+2025-03-22 23:24:34,227 - LocalService - INFO - Thought ID: b1ced354-eae7-4534-bca7-90badf1549a6
+2025-03-22 23:24:34,228 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:24:34] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:25:06,264 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:25:06] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:25:06,267 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:25:06] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:25:06,269 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:25:06] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:25:06,318 - LocalService - INFO - 已保存配置
+2025-03-22 23:25:06,319 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:25:06] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:25:06,969 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:25:06,969 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 怎样做成大事
+2025-03-22 23:25:06,969 - AutoImporter - INFO - 开始处理书籍数据: 怎样做成大事
+2025-03-22 23:25:06,971 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/怎样做成大事_20250322232506.json
+2025-03-22 23:25:06,971 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/怎样做成大事_20250322232506.json
+2025-03-22 23:25:06,971 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:25:06,971 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:25:06,971 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:25:06,971 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:25:06,971 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:25:06,971 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:25:06,971 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:25:06,971 - AutoImporter - INFO - 尝试创建Thought: 怎样做成大事
+2025-03-22 23:25:06,971 - BrainImporter - INFO - 创建Thought: 怎样做成大事
+2025-03-22 23:25:07,931 - BrainImporter - INFO - 成功创建Thought，ID: dd14a042-b6ef-4c7f-b1e3-bd179d1633c0
+2025-03-22 23:25:07,934 - AutoImporter - INFO - 成功创建Thought，ID: dd14a042-b6ef-4c7f-b1e3-bd179d1633c0
+2025-03-22 23:25:07,935 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:25:07,935 - BrainImporter - INFO - 更新Thought ID dd14a042-b6ef-4c7f-b1e3-bd179d1633c0的Note
+2025-03-22 23:25:09,345 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:25:09,348 - AutoImporter - INFO - 成功将书籍 '怎样做成大事' 导入到The Brain
+2025-03-22 23:25:09,349 - LocalService - INFO - 成功将中文网站图书 '怎样做成大事' 导入到TheBrain
+2025-03-22 23:25:09,349 - LocalService - INFO - Thought ID: dd14a042-b6ef-4c7f-b1e3-bd179d1633c0
+2025-03-22 23:25:09,350 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:25:09] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:25:12,120 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:25:12] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:25:12,122 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:25:12] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:25:12,892 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:25:12,892 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 思考如何超越思考
+2025-03-22 23:25:12,892 - AutoImporter - INFO - 开始处理书籍数据: 思考如何超越思考
+2025-03-22 23:25:12,894 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/思考如何超越思考_20250322232512.json
+2025-03-22 23:25:12,894 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/思考如何超越思考_20250322232512.json
+2025-03-22 23:25:12,894 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:25:12,895 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:25:12,895 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:25:12,895 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:25:12,895 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:25:12,895 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:25:12,895 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:25:12,895 - AutoImporter - INFO - 尝试创建Thought: 思考如何超越思考
+2025-03-22 23:25:12,895 - BrainImporter - INFO - 创建Thought: 思考如何超越思考
+2025-03-22 23:25:13,811 - BrainImporter - INFO - 成功创建Thought，ID: 99b85725-5cf5-487e-94c2-2bcefa17919f
+2025-03-22 23:25:13,813 - AutoImporter - INFO - 成功创建Thought，ID: 99b85725-5cf5-487e-94c2-2bcefa17919f
+2025-03-22 23:25:13,813 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:25:13,813 - BrainImporter - INFO - 更新Thought ID 99b85725-5cf5-487e-94c2-2bcefa17919f的Note
+2025-03-22 23:25:14,846 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:25:14,849 - AutoImporter - INFO - 成功将书籍 '思考如何超越思考' 导入到The Brain
+2025-03-22 23:25:14,849 - LocalService - INFO - 成功将中文网站图书 '思考如何超越思考' 导入到TheBrain
+2025-03-22 23:25:14,849 - LocalService - INFO - Thought ID: 99b85725-5cf5-487e-94c2-2bcefa17919f
+2025-03-22 23:25:14,850 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:25:14] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:32:31,235 - LocalService - INFO - 成功导入auto_brain_importer模块
+2025-03-22 23:32:31,238 - LocalService - INFO - 已加载配置
+2025-03-22 23:32:31,238 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 23:32:31,238 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 23:32:31,239 - LocalService - INFO - 已保存配置
+2025-03-22 23:32:31,239 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 23:32:31,239 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 23:32:31,265 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 23:32:31,265 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 23:33:02,512 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:33:02] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:33:02,521 - LocalService - INFO - 已保存配置
+2025-03-22 23:33:02,522 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:33:02] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:33:03,255 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:33:03,256 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 练好口才的本书新版 工作整理术图解+深度解读
+2025-03-22 23:33:03,256 - AutoImporter - INFO - 开始处理书籍数据: 练好口才的本书新版 工作整理术图解+深度解读
+2025-03-22 23:33:03,257 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/练好口才的本书新版 工作整理术图解深度解读_20250322233303.json
+2025-03-22 23:33:03,257 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/练好口才的本书新版 工作整理术图解深度解读_20250322233303.json
+2025-03-22 23:33:03,257 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:33:03,257 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:33:03,257 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:33:03,257 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:33:03,257 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:33:03,257 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:33:03,257 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:33:03,257 - AutoImporter - INFO - 尝试创建Thought: 练好口才的本书新版 工作整理术图解+深度解读
+2025-03-22 23:33:03,257 - BrainImporter - INFO - 创建Thought: 练好口才的本书新版 工作整理术图解+深度解读
+2025-03-22 23:33:04,591 - BrainImporter - INFO - 成功创建Thought，ID: 90aeba56-5039-4c6b-9553-4e42aa754f2b
+2025-03-22 23:33:04,593 - AutoImporter - INFO - 成功创建Thought，ID: 90aeba56-5039-4c6b-9553-4e42aa754f2b
+2025-03-22 23:33:04,593 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:33:04,593 - BrainImporter - INFO - 更新Thought ID 90aeba56-5039-4c6b-9553-4e42aa754f2b的Note
+2025-03-22 23:33:05,561 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:33:05,565 - AutoImporter - INFO - 成功将书籍 '练好口才的本书新版 工作整理术图解+深度解读' 导入到The Brain
+2025-03-22 23:33:05,565 - LocalService - INFO - 成功将中文网站图书 '练好口才的本书新版 工作整理术图解+深度解读' 导入到TheBrain
+2025-03-22 23:33:05,566 - LocalService - INFO - Thought ID: 90aeba56-5039-4c6b-9553-4e42aa754f2b
+2025-03-22 23:33:05,566 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:33:05] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:34:47,864 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:34:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:34:47,868 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:34:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:34:47,871 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:34:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:34:47,871 - LocalService - INFO - 已保存配置
+2025-03-22 23:34:47,871 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:34:47] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:34:48,643 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:34:48,643 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 巴拉吉预言
+2025-03-22 23:34:48,643 - AutoImporter - INFO - 开始处理书籍数据: 巴拉吉预言
+2025-03-22 23:34:48,644 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/巴拉吉预言_20250322233448.json
+2025-03-22 23:34:48,644 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/巴拉吉预言_20250322233448.json
+2025-03-22 23:34:48,644 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:34:48,644 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:34:48,645 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:34:48,645 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:34:48,645 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:34:48,645 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:34:48,645 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:34:48,645 - AutoImporter - INFO - 尝试创建Thought: 巴拉吉预言
+2025-03-22 23:34:48,645 - BrainImporter - INFO - 创建Thought: 巴拉吉预言
+2025-03-22 23:34:50,180 - BrainImporter - INFO - 成功创建Thought，ID: 5530d6dc-0023-4e2d-bce9-e6db7a456b95
+2025-03-22 23:34:50,182 - AutoImporter - INFO - 成功创建Thought，ID: 5530d6dc-0023-4e2d-bce9-e6db7a456b95
+2025-03-22 23:34:50,183 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:34:50,183 - BrainImporter - INFO - 更新Thought ID 5530d6dc-0023-4e2d-bce9-e6db7a456b95的Note
+2025-03-22 23:34:51,192 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:34:51,195 - AutoImporter - INFO - 成功将书籍 '巴拉吉预言' 导入到The Brain
+2025-03-22 23:34:51,195 - LocalService - INFO - 成功将中文网站图书 '巴拉吉预言' 导入到TheBrain
+2025-03-22 23:34:51,195 - LocalService - INFO - Thought ID: 5530d6dc-0023-4e2d-bce9-e6db7a456b95
+2025-03-22 23:34:51,196 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:34:51] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 23:35:53,964 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:35:53] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:35:53,988 - LocalService - INFO - 已保存配置
+2025-03-22 23:35:53,989 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:35:53] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:35:54,048 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T15-35-53-971Z.html
+2025-03-22 23:35:54,051 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 23:35:54,054 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T15-35-53-971Z.html
+2025-03-22 23:35:54,054 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 23:35:54,054 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T15-35-53-971Z.html
+2025-03-22 23:35:54,055 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:35:54] "POST /process HTTP/1.1" 200 -
+2025-03-22 23:35:54,056 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T15-35-53-971Z.html
+2025-03-22 23:35:54,063 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 23:35:54,070 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 23:35:57,496 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T15-35-53-971Z.json
+2025-03-22 23:35:57,498 - AmazonBookProcessor - INFO - Using book title as filename: サイコロジー・オブ・マネー 一生お金に困らない「富」のマインドセット
+2025-03-22 23:35:57,498 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/サイコロジー・オブ・マネー 一生お金に困らない「富」のマインドセット.md
+2025-03-22 23:35:57,500 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 23:35:57,503 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 23:35:57,751 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 23:35:57,751 - TheBrainImport - INFO - 开始自动导入Amazon图书到TheBrain: サイコロジー・オブ・マネー 一生お金に困らない「富」のマインドセット
+2025-03-22 23:35:57,752 - TheBrainImport - INFO - JSON文件路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T15-35-53-971Z.json
+2025-03-22 23:35:57,752 - TheBrainImport - INFO - 已处理Markdown内容，移除了YAML frontmatter和标题
+2025-03-22 23:35:57,752 - AutoImporter - INFO - 开始处理书籍数据: サイコロジー・オブ・マネー 一生お金に困らない「富」のマインドセット
+2025-03-22 23:35:57,753 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/サイコロジーオブマネー 一生お金に困らない富のマインドセット_20250322233557.json
+2025-03-22 23:35:57,754 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/サイコロジーオブマネー 一生お金に困らない富のマインドセット_20250322233557.json
+2025-03-22 23:35:57,754 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:35:57,754 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:35:57,755 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:35:57,755 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:35:57,755 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:35:57,755 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:35:57,755 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:35:57,755 - AutoImporter - INFO - 尝试创建Thought: サイコロジー・オブ・マネー 一生お金に困らない「富」のマインドセット
+2025-03-22 23:35:57,755 - BrainImporter - INFO - 创建Thought: サイコロジー・オブ・マネー 一生お金に困らない「富」のマインドセット
+2025-03-22 23:35:58,835 - BrainImporter - INFO - 成功创建Thought，ID: c07c45d3-710d-42e8-bf79-f674879170c1
+2025-03-22 23:35:58,838 - AutoImporter - INFO - 成功创建Thought，ID: c07c45d3-710d-42e8-bf79-f674879170c1
+2025-03-22 23:35:58,838 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:35:58,839 - BrainImporter - INFO - 更新Thought ID c07c45d3-710d-42e8-bf79-f674879170c1的Note
+2025-03-22 23:35:59,808 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:35:59,813 - AutoImporter - INFO - 成功将书籍 'サイコロジー・オブ・マネー 一生お金に困らない「富」のマインドセット' 导入到The Brain
+2025-03-22 23:35:59,813 - TheBrainImport - INFO - 成功将书籍导入到TheBrain: サイコロジー・オブ・マネー 一生お金に困らない「富」のマインドセット
+2025-03-22 23:35:59,814 - TheBrainImport - INFO - Thought ID: c07c45d3-710d-42e8-bf79-f674879170c1
+2025-03-22 23:35:59,815 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T15-35-53-971Z.html
+2025-03-22 23:37:19,371 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:37:19] "GET /status HTTP/1.1" 200 -
+2025-03-22 23:37:19,378 - LocalService - INFO - 已保存配置
+2025-03-22 23:37:19,380 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:37:19] "POST /config HTTP/1.1" 200 -
+2025-03-22 23:37:20,048 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 23:37:20,050 - LocalService - INFO - 开始自动导入中文网站图书到TheBrain: 精准学习
+2025-03-22 23:37:20,050 - AutoImporter - INFO - 开始处理书籍数据: 精准学习
+2025-03-22 23:37:20,051 - AutoImporter - INFO - 已保存图书数据到文件: /Users/wangxiaohui/Downloads/books_base/json_backup/精准学习_20250322233720.json
+2025-03-22 23:37:20,051 - AutoImporter - INFO - 已备份原始数据到: /Users/wangxiaohui/Downloads/books_base/json_backup/精准学习_20250322233720.json
+2025-03-22 23:37:20,051 - AutoImporter - INFO - 生成Markdown内容...
+2025-03-22 23:37:20,051 - AutoImporter - INFO - 处理Markdown内容，移除YAML frontmatter...
+2025-03-22 23:37:20,051 - AutoImporter - INFO - 使用的API信息 - Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:37:20,051 - AutoImporter - INFO - API Key前8位: 720f806f...
+2025-03-22 23:37:20,051 - AutoImporter - INFO - 源Thought ID: d9bb8a54-cfec-4ed4-986a-ae1c53471207
+2025-03-22 23:37:20,051 - BrainImporter - INFO - 初始化Brain导入器，Brain ID: 53d07455-e094-44a5-a29b-82e0314abed1
+2025-03-22 23:37:20,052 - BrainImporter - INFO - 使用API Base URL: https://api.bra.in
+2025-03-22 23:37:20,052 - AutoImporter - INFO - 尝试创建Thought: 精准学习
+2025-03-22 23:37:20,052 - BrainImporter - INFO - 创建Thought: 精准学习
+2025-03-22 23:37:21,224 - BrainImporter - INFO - 成功创建Thought，ID: 05780e19-c1b4-455f-9142-a4ab4a1b34cb
+2025-03-22 23:37:21,227 - AutoImporter - INFO - 成功创建Thought，ID: 05780e19-c1b4-455f-9142-a4ab4a1b34cb
+2025-03-22 23:37:21,227 - AutoImporter - INFO - 尝试更新Note内容...
+2025-03-22 23:37:21,227 - BrainImporter - INFO - 更新Thought ID 05780e19-c1b4-455f-9142-a4ab4a1b34cb的Note
+2025-03-22 23:37:22,159 - BrainImporter - INFO - 成功更新Note
+2025-03-22 23:37:22,162 - AutoImporter - INFO - 成功将书籍 '精准学习' 导入到The Brain
+2025-03-22 23:37:22,162 - LocalService - INFO - 成功将中文网站图书 '精准学习' 导入到TheBrain
+2025-03-22 23:37:22,162 - LocalService - INFO - Thought ID: 05780e19-c1b4-455f-9142-a4ab4a1b34cb
+2025-03-22 23:37:22,163 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 23:37:22] "POST /process_chinese_site HTTP/1.1" 200 -

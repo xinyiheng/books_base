@@ -145,6 +145,31 @@ def process_book(html_file, output_dir, feishu_webhook_url=None):
             else:
                 logger.warning("发送数据到飞书失败")
         
+        # 自动导入到The Brain
+        try:
+            # 导入auto_brain_importer模块
+            import sys
+            parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            if parent_dir not in sys.path:
+                sys.path.append(parent_dir)
+            
+            from auto_brain_importer import auto_import_book
+            
+            logger.info("开始导入书籍到The Brain...")
+            result = auto_import_book(book_info)
+            
+            if result and result.get("success"):
+                logger.info(f"成功导入书籍到The Brain: {result.get('message')}")
+                logger.info(f"创建的Thought ID: {result.get('thought_id')}")
+            else:
+                logger.warning(f"导入到The Brain失败: {result.get('message') if result else '未知错误'}")
+                
+        except Exception as e:
+            logger.warning(f"导入到The Brain时出错: {str(e)}")
+            import traceback
+            logger.warning(traceback.format_exc())
+            # 不因为Brain导入失败而中断整个处理流程
+        
         logger.info("处理完成!")
         return True
     

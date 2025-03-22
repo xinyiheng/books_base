@@ -31,6 +31,13 @@ logger = logging.getLogger("LocalService")
 # 导入自定义模块
 try:
     from process_amazon_book import process_book
+    # 添加导入auto_brain_importer模块
+    import sys
+    import os
+    parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if parent_dir not in sys.path:
+        sys.path.append(parent_dir)
+    from auto_brain_importer import auto_import_book
 except ImportError as e:
     logger.error(f"导入模块失败: {str(e)}")
     logger.error("请确保所有必要的Python脚本都在同一目录下")

@@ -29,18 +29,19 @@ def json_to_markdown(json_file, output_file=None):
         # 获取书名用于生成文件名
         title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
         
-        # 如果未指定输出文件，则基于书名生成，删除所有前缀和后缀
+        # 如果未指定输出文件，则基于书名生成
         if not output_file:
             # 直接使用JSON文件中的标题或书名
             if title:
-                # 仅替换文件系统不允许的字符
+                # 清理书名，只保留书名部分，移除文件系统不允许的字符
                 clean_title = title
+                # 替换文件系统不允许的字符为下划线
                 for char in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']:
                     clean_title = clean_title.replace(char, '_')
                 
                 print(f"使用书名作为文件名: {clean_title}")
             else:
-                # 如果没有提取到标题，尝试从ISBN或文件名生成
+                # 如果没有提取到标题，使用ISBN或原文件名
                 json_filename = os.path.basename(json_file)
                 if json_filename.endswith('.json'):
                     json_filename = json_filename[:-5]  # 去掉.json扩展名
@@ -48,14 +49,14 @@ def json_to_markdown(json_file, output_file=None):
                 # 检查是否有ISBN可用
                 isbn = book_data.get('ISBN', book_data.get('isbn', ''))
                 if isbn:
-                    clean_title = isbn
-                    print(f"没有找到标题，使用ISBN作为文件名: {isbn}")
+                    clean_title = f"书籍_{isbn}"
+                    print(f"没有找到标题，使用ISBN作为文件名: {clean_title}")
                 else:
                     # 使用文件名
                     clean_title = json_filename
                     print(f"没有找到标题或ISBN，使用原文件名: {json_filename}")
             
-            # 限制文件名长度
+            # 限制文件名长度，避免过长
             if len(clean_title) > 100:
                 clean_title = clean_title[:100]
             
@@ -95,18 +96,122 @@ def convert_to_markdown(book_data):
     # 生成Markdown内容
     md_content = []
     
-    # 书名作为标题
+    # 封装一个处理YAML值中的换行符的函数
+    def clean_yaml_value(value):
+        """处理YAML值中的换行符和特殊字符，避免破坏YAML格式"""
+        if not value:
+            return ""
+        
+        if isinstance(value, str):
+            # 替换换行符为空格
+            value = value.replace('\n', ' ')
+            
+            # 特殊处理：对于作者字段，始终使用引号包裹，因为作者名称经常包含可能破坏YAML格式的字符
+            # 同时检查其他可能导致YAML解析问题的字符
+            if ':' in value or '[' in value or ']' in value or '{' in value or '}' in value or \
+               '#' in value or '&' in value or '*' in value or '!' in value or '|' in value or \
+               '>' in value or "'" in value or '"' in value or '%' in value or '@' in value or \
+               '`' in value or ',' in value or '-' in value or '?' in value:
+                # 如果包含双引号，先将其转义
+                value = value.replace('"', '\\"')
+                return f'"{value}"'
+            return value
+        return value
+    
+    # 添加YAML frontmatter
+    md_content.append("---")
+    
+    # 书名
     title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
+    md_content.append(f"书名: {clean_yaml_value(title)}")
+    
+    # 主题 (暂时为空)
+    md_content.append("主题: ")
+    
+    # 作者
+    author = book_data.get('作者') or book_data.get('author', '')
+    # 强制对作者使用引号包裹
+    if author:
+        author_value = clean_yaml_value(author)
+        # 确保作者始终使用引号包裹
+        if not (author_value.startswith('"') and author_value.endswith('"')):
+            # 转义已存在的双引号
+            author_value = author.replace('"', '\\"')
+            author_value = f'"{author_value}"'
+        md_content.append(f"作者: {author_value}")
+    else:
+        md_content.append("作者: ")
+    
+    # 出版社
+    publisher = book_data.get('出版社') or book_data.get('publisher', '')
+    if not publisher:
+        publisher = book_data.get('publisherName', '') or book_data.get('publish', '')
+    md_content.append(f"出版社: {clean_yaml_value(publisher)}")
+    
+    # 出版时间
+    pub_date = book_data.get('出版时间') or book_data.get('publication_date', '')
+    if not pub_date:
+        pub_date = book_data.get('publicationDate', '') or book_data.get('publishDate', '')
+    md_content.append(f"出版时间: {clean_yaml_value(pub_date)}")
+    
+    # 书本页面
+    book_url = book_data.get('书本页面') or book_data.get('URL') or book_data.get('book_url', '') or book_data.get('url', '')
+    md_content.append(f"书本页面: {clean_yaml_value(book_url)}")
+    
+    # 作者页面
+    author_url = book_data.get('作者页面') or book_data.get('author_url', '')
+    md_content.append(f"作者页面: {clean_yaml_value(author_url)}")
+    
+    # 评分
+    rating_text = ""
+    amazon_rating = book_data.get('评分') or book_data.get('rating', '') or book_data.get('amazon_rating', '')
+    amazon_count = book_data.get('amazon_rating_count', '')
+    goodreads_rating = book_data.get('goodreads_rating', '')
+    goodreads_count = book_data.get('goodreads_rating_count', '')
+    
+    if amazon_rating:
+        rating_text = amazon_rating
+        if amazon_count:
+            rating_text += f" ({amazon_count})"
+        if goodreads_rating:
+            rating_text += f", Goodreads: {goodreads_rating}"
+            if goodreads_count:
+                rating_text += f" ({goodreads_count})"
+    elif goodreads_rating:
+        rating_text = f"Goodreads: {goodreads_rating}"
+        if goodreads_count:
+            rating_text += f" ({goodreads_count})"
+    
+    md_content.append(f"评分: {clean_yaml_value(rating_text)}")
+    
+    # 作者简介
+    author_bio = book_data.get('作者简介') or book_data.get('author_bio', '')
+    md_content.append(f"作者简介: {clean_yaml_value(author_bio)}")
+    
+    # 内容简介
+    book_description = book_data.get('内容简介') or book_data.get('description', '')
+    md_content.append(f"内容简介: {clean_yaml_value(book_description)}")
+    
+    # 封面
+    cover_url = book_data.get('封面') or book_data.get('cover_image_url') or book_data.get('cover_image') or book_data.get('imageUrl', '')
+    if cover_url and not cover_url.startswith(('http://', 'https://')):
+        if cover_url.startswith('//'):
+            cover_url = 'https:' + cover_url
+    md_content.append(f"封面: {clean_yaml_value(cover_url)}")
+    
+    # 备注
+    md_content.append("备注: ")
+    
+    # 结束YAML frontmatter
+    md_content.append("---")
+    md_content.append("")
+    
+    # 书名作为标题
     md_content.append(f"# {title}")
     md_content.append("")
     
     # 添加封面图片（如果有）- 直接使用图片链接，不添加前缀文字
-    cover_url = book_data.get('封面') or book_data.get('cover_image_url') or book_data.get('cover_image') or book_data.get('imageUrl', '')
     if cover_url:
-        # 确保封面图片链接完整可访问
-        if cover_url and not cover_url.startswith(('http://', 'https://')):
-            if cover_url.startswith('//'):
-                cover_url = 'https:' + cover_url
         md_content.append(f"![]({cover_url})")
         md_content.append("")
     
@@ -116,33 +221,36 @@ def convert_to_markdown(book_data):
     md_content.append("| 项目 | 内容 |")
     md_content.append("| --- | --- |")
     
-    # 书本页面 - 尝试所有可能的字段名
-    book_url = book_data.get('书本页面') or book_data.get('URL') or book_data.get('book_url', '') or book_data.get('url', '')
+    # 封装一个处理表格值中换行符的函数，用于所有表格字段
+    def clean_table_value(value):
+        """处理表格值中的换行符，避免破坏表格格式"""
+        if isinstance(value, str):
+            return value.replace('\n', ' ')
+        return value
+    
+    # 书本页面
     if book_url:
+        book_url = clean_table_value(book_url)
         md_content.append(f"| 书本页面 | {book_url} |")
     
-    # 作者信息 - 尝试所有可能的字段名
-    author = book_data.get('作者') or book_data.get('author', '')
+    # 作者信息
     if author:
+        author = clean_table_value(author)
         md_content.append(f"| 作者 | {author} |")
     
-    # 作者页面 - 尝试所有可能的字段名
-    author_url = book_data.get('作者页面') or book_data.get('author_url', '')
+    # 作者页面
     if author_url:
+        author_url = clean_table_value(author_url)
         md_content.append(f"| 作者页面 | {author_url} |")
     
-    # 出版社 - 尝试所有可能的字段名
-    publisher = book_data.get('出版社') or book_data.get('publisher', '')
-    if not publisher:
-        publisher = book_data.get('publisherName', '') or book_data.get('publish', '')
+    # 出版社
     if publisher:
+        publisher = clean_table_value(publisher)
         md_content.append(f"| 出版社 | {publisher} |")
         
-    # 出版时间 - 尝试所有可能的字段名
-    pub_date = book_data.get('出版时间') or book_data.get('publication_date', '')
-    if not pub_date:
-        pub_date = book_data.get('publicationDate', '') or book_data.get('publishDate', '')
+    # 出版时间
     if pub_date:
+        pub_date = clean_table_value(pub_date) 
         md_content.append(f"| 出版时间 | {pub_date} |")
     
     # ISBN - 尝试所有可能的字段名
@@ -156,47 +264,22 @@ def convert_to_markdown(book_data):
                     isbn = detail.get('value', '')
                     break
     if isbn:
+        isbn = clean_table_value(isbn)
         md_content.append(f"| ISBN | {isbn} |")
         
-    # 作者简介 - 尝试所有可能的字段名
-    author_bio = book_data.get('作者简介') or book_data.get('author_bio', '')
+    # 作者简介
     if author_bio:
+        author_bio = clean_table_value(author_bio)
         md_content.append(f"| 作者简介 | {author_bio} |")
     
-    # 内容简介 - 尝试所有可能的字段名
-    book_description = book_data.get('内容简介') or book_data.get('description', '')
+    # 内容简介
     if book_description:
+        book_description = clean_table_value(book_description)
         md_content.append(f"| 内容简介 | {book_description} |")
     
-    # 评分 - 尝试所有可能的字段名
-    rating_text = ""
-    
-    # 检查是否有Amazon评分信息
-    amazon_rating = book_data.get('评分') or book_data.get('rating', '') or book_data.get('amazon_rating', '')
-    amazon_count = book_data.get('amazon_rating_count', '')
-    
-    # 检查是否有Goodreads评分信息
-    goodreads_rating = book_data.get('goodreads_rating', '')
-    goodreads_count = book_data.get('goodreads_rating_count', '')
-    
-    # 合并评分信息
-    if amazon_rating:
-        rating_text = amazon_rating
-        if amazon_count:
-            rating_text += f" ({amazon_count})"
-            
-        # 如果有Goodreads评分，直接附加
-        if goodreads_rating:
-            rating_text += f", Goodreads: {goodreads_rating}"
-            if goodreads_count:
-                rating_text += f" ({goodreads_count})"
-    elif goodreads_rating:
-        # 只有Goodreads评分的情况
-        rating_text = f"Goodreads: {goodreads_rating}"
-        if goodreads_count:
-            rating_text += f" ({goodreads_count})"
-    
+    # 评分
     if rating_text:
+        rating_text = clean_table_value(rating_text)
         md_content.append(f"| 评分 | {rating_text} |")
     
     md_content.append("")

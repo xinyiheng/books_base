@@ -106,25 +106,20 @@ def process_book(html_file, output_dir, feishu_webhook_url=None, region="us", ur
     # 将JSON转换为Markdown
     markdown_content = convert_to_markdown(book_data)
     
-    # 为Markdown文件生成文件名 - 统一所有区域的命名逻辑，不再特殊处理日本区域
+    # 为Markdown文件生成文件名 - 只保留书名
     title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
     if title:
-        # 清理书名用于文件名
-        clean_title = title
-        for char in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']:
-            clean_title = clean_title.replace(char, '_')
-        
         # 限制文件名长度
-        if len(clean_title) > 100:
-            clean_title = clean_title[:100]
+        if len(title) > 100:
+            title = title[:100]
         
-        markdown_file = os.path.join(markdown_dir, f"{clean_title}.md")
-        logger.info(f"Using book title as filename: {clean_title}")
+        markdown_file = os.path.join(markdown_dir, f"{title}.md")
+        logger.info(f"Using book title as filename: {title}")
     else:
         # 如果找不到标题，尝试使用ISBN
         isbn = book_data.get('ISBN', book_data.get('isbn', ''))
         if isbn:
-            markdown_file = os.path.join(markdown_dir, f"{isbn}.md")
+            markdown_file = os.path.join(markdown_dir, f"书籍_{isbn}.md")
             logger.info(f"No title found, using ISBN as filename: {isbn}")
         else:
             # 如果没有标题和ISBN，使用原始文件名

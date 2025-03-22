@@ -25,10 +25,36 @@ def json_to_markdown(json_file, output_file=None):
         with open(json_file, 'r', encoding='utf-8') as f:
             book_data = json.load(f)
         
-        # 如果未指定输出文件，则基于JSON文件名生成
+        # 如果未指定输出文件，则基于书名生成
         if not output_file:
-            base_name = os.path.splitext(os.path.basename(json_file))[0]
-            output_file = os.path.join(os.path.dirname(json_file), f"{base_name}.md")
+            # 获取书名
+            title = book_data.get('标题') or book_data.get('书名') or book_data.get('title', '')
+            
+            if title:
+                # 清理书名，去除文件系统不允许的字符
+                clean_title = title
+                for char in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']:
+                    clean_title = clean_title.replace(char, '_')
+                
+                # 限制文件名长度
+                if len(clean_title) > 100:
+                    clean_title = clean_title[:100]
+                
+                output_dir = os.path.dirname(json_file)
+                output_file = os.path.join(output_dir, f"{clean_title}.md")
+            else:
+                # 如果找不到标题，使用ISBN或原文件名
+                base_name = os.path.splitext(os.path.basename(json_file))[0]
+                
+                # 检查是否有ISBN可用
+                isbn = book_data.get('ISBN', book_data.get('isbn', ''))
+                if isbn:
+                    output_dir = os.path.dirname(json_file)
+                    output_file = os.path.join(output_dir, f"书籍_{isbn}.md")
+                else:
+                    # 使用原始文件名
+                    output_dir = os.path.dirname(json_file)
+                    output_file = os.path.join(output_dir, f"{base_name}.md")
         
         # 生成Markdown内容
         md_content = []
@@ -174,13 +200,98 @@ def convert_to_markdown(book_data):
     # 生成Markdown内容
     md_content = []
     
+    # 封装一个处理YAML值中的换行符的函数
+    def clean_yaml_value(value):
+        """处理YAML值中的换行符和特殊字符，避免破坏YAML格式"""
+        if not value:
+            return ""
+        
+        if isinstance(value, str):
+            # 替换换行符为空格
+            value = value.replace('\n', ' ')
+            
+            # 特殊处理：对于作者字段，始终使用引号包裹，因为作者名称经常包含可能破坏YAML格式的字符
+            # 同时检查其他可能导致YAML解析问题的字符
+            if ':' in value or '[' in value or ']' in value or '{' in value or '}' in value or \
+               '#' in value or '&' in value or '*' in value or '!' in value or '|' in value or \
+               '>' in value or "'" in value or '"' in value or '%' in value or '@' in value or \
+               '`' in value or ',' in value or '-' in value or '?' in value:
+                # 如果包含双引号，先将其转义
+                value = value.replace('"', '\\"')
+                return f'"{value}"'
+            return value
+        return value
+    
+    # 添加YAML frontmatter
+    md_content.append("---")
+    
+    # 书名
+    title = book_data.get('书名', '')
+    md_content.append(f"书名: {clean_yaml_value(title)}")
+    
+    # 主题 (暂时为空)
+    md_content.append("主题: ")
+    
+    # 作者信息
+    author = book_data.get('作者', '')
+    # 强制对作者使用引号包裹
+    if author:
+        author_value = clean_yaml_value(author)
+        # 确保作者始终使用引号包裹
+        if not (author_value.startswith('"') and author_value.endswith('"')):
+            # 转义已存在的双引号
+            author_value = author.replace('"', '\\"')
+            author_value = f'"{author_value}"'
+        md_content.append(f"作者: {author_value}")
+    else:
+        md_content.append("作者: ")
+    
+    # 出版社
+    publisher = book_data.get('出版社', '')
+    md_content.append(f"出版社: {clean_yaml_value(publisher)}")
+    
+    # 出版时间
+    pub_date = book_data.get('出版时间', '')
+    md_content.append(f"出版时间: {clean_yaml_value(pub_date)}")
+    
+    # 书本页面
+    book_url = book_data.get('书本页面', '')
+    md_content.append(f"书本页面: {clean_yaml_value(book_url)}")
+    
+    # 作者页面
+    author_url = book_data.get('作者页面', '')
+    md_content.append(f"作者页面: {clean_yaml_value(author_url)}")
+    
+    # 评分
+    rating = book_data.get('评分', '')
+    md_content.append(f"评分: {clean_yaml_value(rating)}")
+    
+    # 作者简介
+    author_bio = book_data.get('作者简介', '')
+    md_content.append(f"作者简介: {clean_yaml_value(author_bio)}")
+    
+    # 内容简介
+    description = book_data.get('内容简介', '')
+    md_content.append(f"内容简介: {clean_yaml_value(description)}")
+    
+    # 封面
+    cover_url = book_data.get('封面', '')
+    md_content.append(f"封面: {clean_yaml_value(cover_url)}")
+    
+    # 备注
+    md_content.append("备注: ")
+    
+    # 结束YAML frontmatter
+    md_content.append("---")
+    md_content.append("")
+    
     # 书名作为标题
-    md_content.append(f"# {book_data.get('书名', '')}")
+    md_content.append(f"# {title}")
     md_content.append("")
     
     # 添加封面图片（如果有）
-    if book_data.get('封面'):
-        md_content.append(f"![封面]({book_data.get('封面')})")
+    if cover_url:
+        md_content.append(f"![封面]({cover_url})")
         md_content.append("")
     
     # 基本信息表格
@@ -189,9 +300,19 @@ def convert_to_markdown(book_data):
     md_content.append("| 项目 | 内容 |")
     md_content.append("| --- | --- |")
     
+    # 封装一个处理表格值中换行符的函数
+    def clean_table_value(value):
+        """处理表格值中的换行符，避免破坏表格格式"""
+        if isinstance(value, str):
+            return value.replace('\n', ' ')
+        return value
+    
     # 添加基本信息字段
     for key, value in book_data.items():
         if key != '封面' and key != '书名' and key != '详情' and key != 'URL' and key != '关联图书' and key != '读者评论':
+            # 处理值中的换行符，避免破坏表格格式
+            if isinstance(value, str):
+                value = clean_table_value(value)
             md_content.append(f"| {key} | {value} |")
     
     # 添加URL（如果有）

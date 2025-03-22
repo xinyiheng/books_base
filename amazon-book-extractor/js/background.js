@@ -35,12 +35,15 @@ function processChinesesSiteData(data, siteType, url, callback) {
       return;
     }
     
-    // 生成文件名
+    // 使用书名作为文件名
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const bookTitle = data.书名 ? data.书名.replace(/[\\/:*?"<>|]/g, '_').substring(0, 50) : '';
-    const fileName = bookTitle 
-      ? `${siteType}_book_${data.ISBN || 'unknown'}_${bookTitle}_${timestamp}`
-      : `${siteType}_book_${data.ISBN || 'unknown'}_${timestamp}`;
+    const bookTitle = data.书名 ? data.书名 : '';
+    
+    // 限制文件名长度
+    const cleanTitle = bookTitle.substring(0, 100) || `${siteType}_book_unknown`;
+    
+    // 添加时间戳生成唯一的JSON文件名
+    const fileName = `${cleanTitle}_${timestamp}`;
     
     // 添加元数据
     data.region = 'cn';
@@ -57,7 +60,7 @@ function processChinesesSiteData(data, siteType, url, callback) {
     // 创建请求数据
     const requestData = {
       json_data: data,
-      filename: fileName,
+      filename: cleanTitle,  // 提供不包含时间戳的干净书名作为基础文件名
       saveDirectory: result.saveDirectory,
       site_type: siteType
     };

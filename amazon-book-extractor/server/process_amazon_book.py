@@ -106,7 +106,7 @@ def process_book(html_file, output_dir, feishu_webhook_url=None):
         
         # 清理书名，移除特殊字符，限制长度
         if book_title:
-            book_title = book_title.replace('/', '_').replace('\\', '_').replace(':', '_').replace('*', '_').replace('?', '_').replace('"', '_').replace('<', '_').replace('>', '_').replace('|', '_')
+            # 仅限制长度，不替换特殊字符
             if len(book_title) > 100:
                 book_title = book_title[:100]
         

@@ -7905,3 +7905,502 @@ TypeError: 'NoneType' object does not support item assignment
 2025-03-21 11:21:49,551 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:49] "GET /status HTTP/1.1" 200 -
 2025-03-21 11:21:50,376 - LocalService - INFO - 已将数据发送到飞书webhook
 2025-03-21 11:21:50,377 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2025 11:21:50] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:02:45,412 - LocalService - INFO - 已加载配置
+2025-03-22 18:02:45,413 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:02:45,413 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:02:45,413 - LocalService - INFO - 已保存配置
+2025-03-22 18:02:45,413 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 18:02:45,413 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 18:02:45,426 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 18:02:45,426 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 18:03:01,822 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:03:01] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:03:01,825 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:03:01] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:03:01,827 - LocalService - INFO - 已保存配置
+2025-03-22 18:03:01,828 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:03:01] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:03:03,306 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:03:03,307 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:03:03] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 18:03:08,982 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:03:08] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:03:08,984 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:03:08] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:03:09,844 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:03:09,846 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:03:09] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:06:39,075 - LocalService - INFO - 已加载配置
+2025-03-22 18:06:39,076 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:06:39,076 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:06:39,076 - LocalService - INFO - 已保存配置
+2025-03-22 18:06:39,076 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 18:06:39,076 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 18:06:39,103 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 18:06:39,103 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 18:06:49,188 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:06:49] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:06:49,191 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:06:49] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:06:49,192 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:06:49] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:06:49,205 - LocalService - INFO - 已保存配置
+2025-03-22 18:06:49,205 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:06:49] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:06:56,496 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:06:56,498 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:06:56] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 18:07:13,126 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:07:13] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:07:13,128 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:07:13] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:07:13,978 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:07:13,979 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:07:13] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:07:31,395 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:07:31] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:07:31,396 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:07:31] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:07:32,211 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:07:32,212 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:07:32] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:32:52,508 - LocalService - INFO - 已加载配置
+2025-03-22 18:32:52,508 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:32:52,508 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:32:52,508 - LocalService - INFO - 已保存配置
+2025-03-22 18:32:52,509 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 18:32:52,509 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 18:32:52,540 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 18:32:52,540 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 18:33:17,426 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:33:17] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:33:17,436 - LocalService - INFO - 已保存配置
+2025-03-22 18:33:17,436 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:33:17] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:33:26,341 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:33:26] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:33:28,218 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:33:28] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:33:28,225 - LocalService - INFO - 已保存配置
+2025-03-22 18:33:28,225 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:33:28] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:33:39,996 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:33:39] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:33:40,001 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:33:40] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:33:40,864 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:33:40,864 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:33:40] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:34:48,504 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:34:48] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:34:48,508 - LocalService - INFO - 已保存配置
+2025-03-22 18:34:48,508 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:34:48] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:34:57,838 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:34:57] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:34:57,839 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:34:57] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:35:04,946 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:04] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:35:07,146 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:35:07,147 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:07] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 18:35:08,613 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:08] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:35:08,620 - LocalService - INFO - 已保存配置
+2025-03-22 18:35:08,621 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:08] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:35:09,778 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:09] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:35:09,779 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:09] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:35:15,829 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:15] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:35:15,831 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:15] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:35:50,882 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:35:50] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:01,611 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:01] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:03,178 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:03] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:03,188 - LocalService - INFO - 已保存配置
+2025-03-22 18:36:03,189 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:03] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:36:23,276 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:23] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:24,674 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 18:36:24,675 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:24] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 18:36:28,609 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:28] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:28,620 - LocalService - INFO - 已保存配置
+2025-03-22 18:36:28,621 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:28] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:36:33,423 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:33] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:33,425 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:33] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:34,273 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:36:34,275 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:34] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:36:54,723 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:54] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:54,724 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:54] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:36:55,423 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:36:55,424 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:36:55] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:37:17,510 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:37:17] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:37:17,511 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:37:17] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:37:18,345 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:37:18,346 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:37:18] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:38:35,374 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:38:35] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:38:35,388 - LocalService - INFO - 已保存配置
+2025-03-22 18:38:35,388 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:38:35] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:38:36,097 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:38:36,098 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:38:36] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:40:05,943 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:40:05] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:40:05,945 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:40:05] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:40:05,948 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:40:05] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:40:05,966 - LocalService - INFO - 已保存配置
+2025-03-22 18:40:05,967 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:40:05] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:40:06,703 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:40:06,704 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:40:06] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:40:34,871 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:40:34] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:40:34,875 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:40:34] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:40:34,978 - LocalService - INFO - 收到处理HTML请求: amazon_uk_2025-03-22T10-40-34-927Z.html
+2025-03-22 18:40:34,978 - LocalService - INFO - 从URL检测到域名: amazon.co.uk
+2025-03-22 18:40:34,982 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_uk_2025-03-22T10-40-34-927Z.html
+2025-03-22 18:40:34,982 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 18:40:34,982 - LocalService - INFO - 已启动后台处理线程: amazon_uk_2025-03-22T10-40-34-927Z.html
+2025-03-22 18:40:34,983 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:40:34] "POST /process HTTP/1.1" 200 -
+2025-03-22 18:40:34,984 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_uk_2025-03-22T10-40-34-927Z.html
+2025-03-22 18:40:34,986 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.uk
+2025-03-22 18:40:34,986 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 18:40:36,310 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_uk_2025-03-22T10-40-34-927Z.json
+2025-03-22 18:40:36,311 - AmazonBookProcessor - INFO - Using book title as filename: Careless People_ A Cautionary Tale of Power, Greed, and Lost Idealism
+2025-03-22 18:40:36,311 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/Careless People_ A Cautionary Tale of Power, Greed, and Lost Idealism.md
+2025-03-22 18:40:36,311 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 18:40:36,312 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 18:40:36,592 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 18:40:36,592 - LocalService - INFO - 后台处理完成: amazon_uk_2025-03-22T10-40-34-927Z.html
+2025-03-22 18:42:04,078 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:42:04] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:42:04,087 - LocalService - INFO - 已保存配置
+2025-03-22 18:42:04,088 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:42:04] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:42:04,209 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T10-42-04-151Z.html
+2025-03-22 18:42:04,209 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 18:42:04,216 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T10-42-04-151Z.html
+2025-03-22 18:42:04,235 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 18:42:04,235 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T10-42-04-151Z.html
+2025-03-22 18:42:04,248 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:42:04] "POST /process HTTP/1.1" 200 -
+2025-03-22 18:42:04,248 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T10-42-04-151Z.html
+2025-03-22 18:42:04,254 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 18:42:04,256 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 18:42:06,335 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T10-42-04-151Z.json
+2025-03-22 18:42:06,337 - AmazonBookProcessor - INFO - Using book title as filename: 22世紀の資本主義 やがてお金は絶滅する (文春新書 1474)
+2025-03-22 18:42:06,338 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/22世紀の資本主義 やがてお金は絶滅する (文春新書 1474).md
+2025-03-22 18:42:06,338 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 18:42:06,338 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 18:42:06,609 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 18:42:06,610 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T10-42-04-151Z.html
+2025-03-22 18:42:46,188 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:42:46] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:42:46,191 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:42:46] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:42:46,194 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:42:46] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:42:46,197 - LocalService - INFO - 已保存配置
+2025-03-22 18:42:46,197 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:42:46] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:42:46,818 - LocalService - INFO - 收到处理HTML请求: amazon_us_2025-03-22T10-42-46-751Z.html
+2025-03-22 18:42:46,818 - LocalService - INFO - 从URL检测到域名: amazon.com
+2025-03-22 18:42:46,824 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_us_2025-03-22T10-42-46-751Z.html
+2025-03-22 18:42:46,824 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 18:42:46,824 - LocalService - INFO - 已启动后台处理线程: amazon_us_2025-03-22T10-42-46-751Z.html
+2025-03-22 18:42:46,850 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_us_2025-03-22T10-42-46-751Z.html
+2025-03-22 18:42:46,850 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:42:46] "POST /process HTTP/1.1" 200 -
+2025-03-22 18:42:46,855 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.com
+2025-03-22 18:42:46,856 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 18:42:51,276 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_us_2025-03-22T10-42-46-751Z.json
+2025-03-22 18:42:51,282 - AmazonBookProcessor - INFO - Using book title as filename: The Technological Republic_ Hard Power, Soft Belief, and the Future of the West
+2025-03-22 18:42:51,282 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/The Technological Republic_ Hard Power, Soft Belief, and the Future of the West.md
+2025-03-22 18:42:51,283 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 18:42:51,285 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 18:42:51,586 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 18:42:51,587 - LocalService - INFO - 后台处理完成: amazon_us_2025-03-22T10-42-46-751Z.html
+2025-03-22 18:44:55,026 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:44:55] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:44:55,037 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:44:55] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:44:55,072 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:44:55] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:44:55,072 - LocalService - INFO - 已保存配置
+2025-03-22 18:44:55,072 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:44:55] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:44:55,828 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:44:55,828 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:44:55] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:46:13,234 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:46:13] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:46:13,241 - LocalService - INFO - 已保存配置
+2025-03-22 18:46:13,242 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:46:13] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:46:13,903 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:46:13,904 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:46:13] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:47:26,942 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:47:26] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:47:26,946 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:47:26] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:47:26,947 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:47:26] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:47:26,954 - LocalService - INFO - 已保存配置
+2025-03-22 18:47:26,955 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:47:26] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:47:55,206 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:47:55] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:47:55,210 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:47:55] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:47:56,057 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:47:56,058 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:47:56] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:50:14,041 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:50:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:50:14,043 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:50:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:50:14,046 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:50:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:50:14,056 - LocalService - INFO - 已保存配置
+2025-03-22 18:50:14,057 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:50:14] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:50:14,125 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T10-50-14-080Z.html
+2025-03-22 18:50:14,125 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 18:50:14,131 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T10-50-14-080Z.html
+2025-03-22 18:50:14,131 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 18:50:14,131 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T10-50-14-080Z.html
+2025-03-22 18:50:14,131 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T10-50-14-080Z.html
+2025-03-22 18:50:14,136 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:50:14] "POST /process HTTP/1.1" 200 -
+2025-03-22 18:50:14,146 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 18:50:14,146 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 18:50:14,494 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T10-50-14-080Z.json
+2025-03-22 18:50:14,495 - AmazonBookProcessor - INFO - Using book title as filename: 大学4年間の経済学が10時間でざっと学べる (角川文庫)
+2025-03-22 18:50:14,495 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/大学4年間の経済学が10時間でざっと学べる (角川文庫).md
+2025-03-22 18:50:14,495 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 18:50:14,495 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 18:50:14,814 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 18:50:14,815 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T10-50-14-080Z.html
+2025-03-22 18:50:31,073 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:50:31] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:50:31,076 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:50:31] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:50:31,862 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:50:31,863 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:50:31] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:51:25,061 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:51:25] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:51:25,067 - LocalService - INFO - 已保存配置
+2025-03-22 18:51:25,068 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:51:25] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:51:25,797 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:51:25,797 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:51:25] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:52:50,995 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:52:50] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:52:51,000 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:52:51] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:52:51,003 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:52:51] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:52:51,004 - LocalService - INFO - 已保存配置
+2025-03-22 18:52:51,004 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:52:51] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:52:51,840 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:52:51,841 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:52:51] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 18:53:33,037 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:53:33] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:53:33,040 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:53:33] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:53:33,041 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:53:33] "GET /status HTTP/1.1" 200 -
+2025-03-22 18:53:33,042 - LocalService - INFO - 已保存配置
+2025-03-22 18:53:33,042 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:53:33] "POST /config HTTP/1.1" 200 -
+2025-03-22 18:53:33,875 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 18:53:33,876 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 18:53:33] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:02:37,888 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:02:37,891 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:02:37,895 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:02:37,898 - LocalService - INFO - 已保存配置
+2025-03-22 19:02:37,898 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:37] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:02:38,689 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:02:38,690 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:38] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:02:43,022 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:43] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:02:43,025 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:43] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:02:43,685 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:02:43,687 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:43] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:02:46,603 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:46] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:02:46,604 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:46] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:02:47,336 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:02:47,338 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:02:47] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:12:14,728 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:12:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:12:14,735 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:12:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:12:14,741 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:12:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:12:14,795 - LocalService - INFO - 已保存配置
+2025-03-22 19:12:14,796 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:12:14] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:12:14,818 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T11-12-14-767Z.html
+2025-03-22 19:12:14,818 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 19:12:14,823 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-12-14-767Z.html
+2025-03-22 19:12:14,824 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 19:12:14,824 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T11-12-14-767Z.html
+2025-03-22 19:12:14,825 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:12:14] "POST /process HTTP/1.1" 200 -
+2025-03-22 19:12:14,825 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-12-14-767Z.html
+2025-03-22 19:12:14,832 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 19:12:14,832 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 19:12:16,258 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T11-12-14-767Z.json
+2025-03-22 19:12:16,261 - AmazonBookProcessor - INFO - Using book title as filename: 科学的根拠（エビデンス）で子育て 教育経済学の最前線
+2025-03-22 19:12:16,262 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/科学的根拠（エビデンス）で子育て 教育経済学の最前線.md
+2025-03-22 19:12:16,262 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 19:12:16,264 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 19:12:16,566 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 19:12:16,567 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T11-12-14-767Z.html
+2025-03-22 19:20:02,473 - LocalService - INFO - 已加载配置
+2025-03-22 19:20:02,473 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:20:02,474 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:20:02,474 - LocalService - INFO - 已保存配置
+2025-03-22 19:20:02,475 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 19:20:02,475 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 19:20:02,508 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 19:20:02,508 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 19:20:14,480 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:20:14,482 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:20:14,484 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:14] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 19:20:14,486 - LocalService - INFO - 已保存配置
+2025-03-22 19:20:14,487 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:14] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:20:16,194 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:16] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:20:18,094 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:18] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:20:18,102 - LocalService - INFO - 已保存配置
+2025-03-22 19:20:18,102 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:18] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:20:18,893 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:18] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:20:18,902 - LocalService - INFO - 已保存配置
+2025-03-22 19:20:18,903 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:18] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:20:25,141 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:25] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:20:25,143 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:25] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:20:25,908 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:20:25,909 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:20:25] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:23:13,215 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:13] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:13,218 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:13] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:13,224 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:13] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:13,235 - LocalService - INFO - 已保存配置
+2025-03-22 19:23:13,235 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:13] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:23:14,061 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:23:14,062 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:14] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:23:16,516 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:16] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:16,520 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:16] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:17,220 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:23:17,220 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:17] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:23:19,225 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:19] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:19,229 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:19] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:19,917 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:23:19,918 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:19] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:23:27,250 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:27] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:27,282 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:27] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:23:27,970 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:23:27,971 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:23:27] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:24:14,897 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:24:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:24:14,905 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:24:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:24:14,907 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:24:14] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:24:14,908 - LocalService - INFO - 已保存配置
+2025-03-22 19:24:14,908 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:24:14] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:24:15,559 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:24:15,560 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:24:15] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:27:51,434 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:27:51] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:27:51,436 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:27:51] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:27:51,438 - LocalService - INFO - 已保存配置
+2025-03-22 19:27:51,439 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:27:51] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:27:51,440 - LocalService - INFO - 已保存配置
+2025-03-22 19:27:51,440 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:27:51] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:28:32,011 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:32] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:28:32,013 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:32] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:28:32,015 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:32] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:28:32,020 - LocalService - INFO - 已保存配置
+2025-03-22 19:28:32,020 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:32] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:28:32,743 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:28:32,744 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:32] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:28:41,357 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:41] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:28:41,360 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:41] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:28:42,064 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:28:42,064 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:42] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:28:47,991 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:28:47,993 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:28:48,661 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:28:48,662 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:28:48] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:29:55,647 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:29:55] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:29:55,654 - LocalService - INFO - 已保存配置
+2025-03-22 19:29:55,656 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:29:55] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:29:55,708 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T11-29-55-658Z.html
+2025-03-22 19:29:55,708 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 19:29:55,713 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-29-55-658Z.html
+2025-03-22 19:29:55,713 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 19:29:55,713 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T11-29-55-658Z.html
+2025-03-22 19:29:55,714 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:29:55] "POST /process HTTP/1.1" 200 -
+2025-03-22 19:29:55,714 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-29-55-658Z.html
+2025-03-22 19:29:55,722 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 19:29:55,722 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 19:29:57,673 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T11-29-55-658Z.json
+2025-03-22 19:29:57,678 - AmazonBookProcessor - INFO - Using book title as filename: 「学力」の経済学
+2025-03-22 19:29:57,679 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/「学力」の経済学.md
+2025-03-22 19:29:57,681 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 19:29:57,687 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 19:29:58,115 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 19:29:58,117 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T11-29-55-658Z.html
+2025-03-22 19:34:23,866 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:34:23] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:34:23,867 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:34:23] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:34:23,869 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:34:23] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:34:23,870 - LocalService - INFO - 已保存配置
+2025-03-22 19:34:23,870 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:34:23] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:34:23,942 - LocalService - INFO - 收到处理HTML请求: amazon_jp_2025-03-22T11-34-23-894Z.html
+2025-03-22 19:34:23,942 - LocalService - INFO - 从URL检测到域名: amazon.co.jp
+2025-03-22 19:34:23,946 - LocalService - INFO - 已保存HTML文件: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-34-23-894Z.html
+2025-03-22 19:34:23,947 - LocalService - INFO - 使用飞书Webhook: https://thc4xpukay.feishu.cn/base/automation/webhook/event/NiSSacYBNwta2shHV9Acyf08nlh
+2025-03-22 19:34:23,947 - LocalService - INFO - 已启动后台处理线程: amazon_jp_2025-03-22T11-34-23-894Z.html
+2025-03-22 19:34:23,948 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:34:23] "POST /process HTTP/1.1" 200 -
+2025-03-22 19:34:23,948 - AmazonBookProcessor - INFO - Reading HTML file: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/html/amazon_jp_2025-03-22T11-34-23-894Z.html
+2025-03-22 19:34:23,954 - AmazonBookProcessor - INFO - Using domain from frontend: amazon.co.jp
+2025-03-22 19:34:23,954 - AmazonBookProcessor - INFO - Extracting book data...
+2025-03-22 19:34:24,218 - AmazonBookProcessor - INFO - Saving JSON data to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/json/amazon_jp_2025-03-22T11-34-23-894Z.json
+2025-03-22 19:34:24,218 - AmazonBookProcessor - INFO - Using book title as filename: 「学力」の経済学
+2025-03-22 19:34:24,218 - AmazonBookProcessor - INFO - Saving Markdown to: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase/markdown/「学力」の経済学.md
+2025-03-22 19:34:24,219 - AmazonBookProcessor - INFO - Preparing data for Feishu...
+2025-03-22 19:34:24,219 - AmazonBookProcessor - INFO - Sending data to Feishu...
+2025-03-22 19:34:24,456 - AmazonBookProcessor - INFO - Successfully sent data to Feishu
+2025-03-22 19:34:24,456 - LocalService - INFO - 后台处理完成: amazon_jp_2025-03-22T11-34-23-894Z.html
+2025-03-22 19:35:47,642 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:35:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:35:47,644 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:35:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:35:47,646 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:35:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:35:47,648 - LocalService - INFO - 已保存配置
+2025-03-22 19:35:47,649 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:35:47] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:35:48,317 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:35:48,318 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:35:48] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:36:13,381 - LocalService - INFO - 已加载配置
+2025-03-22 19:36:13,381 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:36:13,381 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:36:13,382 - LocalService - INFO - 已保存配置
+2025-03-22 19:36:13,382 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 19:36:13,382 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 19:36:13,408 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 19:36:13,408 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 19:36:23,878 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:23] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:36:23,879 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:36:23,880 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:23] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 19:36:23,882 - LocalService - INFO - 已保存配置
+2025-03-22 19:36:23,882 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:23] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:36:25,767 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:25] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:36:27,534 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:27] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:36:27,541 - LocalService - INFO - 已保存配置
+2025-03-22 19:36:27,541 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:27] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:36:28,135 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:28] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:36:28,141 - LocalService - INFO - 已保存配置
+2025-03-22 19:36:28,142 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:28] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:36:32,141 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:32] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:36:32,143 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:36:32] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:37:26,094 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:37:26] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:37:26,096 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:37:26] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:37:26,787 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:37:26,787 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:37:26] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:38:37,057 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:38:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:38:37,061 - LocalService - INFO - 已保存配置
+2025-03-22 19:38:37,061 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:38:37] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:38:37,782 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:38:37,783 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:38:37] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:43:56,326 - LocalService - INFO - 已加载配置
+2025-03-22 19:43:56,326 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:43:56,326 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:43:56,326 - LocalService - INFO - 已保存配置
+2025-03-22 19:43:56,327 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 19:43:56,327 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 19:43:56,354 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 19:43:56,355 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 19:44:08,673 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:44:08] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:44:08,674 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:44:08,675 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:44:08] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 19:44:08,679 - LocalService - INFO - 已保存配置
+2025-03-22 19:44:08,680 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:44:08] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:44:11,122 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:44:11] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:44:11,130 - LocalService - INFO - 已保存配置
+2025-03-22 19:44:11,130 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:44:11] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:44:22,569 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:44:22] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:44:22,571 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:44:22] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:44:23,301 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:44:23,302 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:44:23] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:46:43,640 - LocalService - INFO - 已加载配置
+2025-03-22 19:46:43,640 - LocalService - INFO - 检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:46:43,640 - LocalService - INFO - 已验证iCloud目录权限: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:46:43,640 - LocalService - INFO - 已保存配置
+2025-03-22 19:46:43,640 - LocalService - INFO - 已创建服务状态页面: /Users/wangxiaohui/Downloads/books_base/amazon-book-extractor/service_status.html
+2025-03-22 19:46:43,640 - LocalService - INFO - 正在启动本地服务，端口: 5001
+2025-03-22 19:46:43,673 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.31.37:5001
+2025-03-22 19:46:43,673 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-22 19:46:56,639 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:46:56] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:46:56,639 - LocalService - INFO - 创建目录时检测到iCloud路径: /Users/wangxiaohui/Library/Mobile Documents/com~apple~CloudDocs/bookbase
+2025-03-22 19:46:56,641 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:46:56] "POST /create_directories HTTP/1.1" 200 -
+2025-03-22 19:46:56,644 - LocalService - INFO - 已保存配置
+2025-03-22 19:46:56,644 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:46:56] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:47:00,222 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:00] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:47:00,228 - LocalService - INFO - 已保存配置
+2025-03-22 19:47:00,229 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:00] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:47:10,881 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:10] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:47:10,883 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:10] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:47:11,616 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:47:11,617 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:11] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:47:35,255 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:35] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:47:47,090 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:47] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:47:48,924 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:48] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:47:48,932 - LocalService - INFO - 已保存配置
+2025-03-22 19:47:48,933 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:47:48] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:48:06,888 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:48:06] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:48:06,890 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:48:06] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:48:07,569 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:48:07,569 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:48:07] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:48:37,801 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:48:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:48:37,805 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:48:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:48:37,808 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:48:37] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:48:37,808 - LocalService - INFO - 已保存配置
+2025-03-22 19:48:37,809 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:48:37] "POST /config HTTP/1.1" 200 -
+2025-03-22 19:48:38,447 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:48:38,448 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:48:38] "POST /process_chinese_site HTTP/1.1" 200 -
+2025-03-22 19:49:00,376 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:49:00] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:49:00,379 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:49:00] "GET /status HTTP/1.1" 200 -
+2025-03-22 19:49:03,140 - LocalService - INFO - 已将数据发送到飞书webhook
+2025-03-22 19:49:03,141 - werkzeug - INFO - 127.0.0.1 - - [22/Mar/2025 19:49:03] "POST /process_chinese_site HTTP/1.1" 200 -
